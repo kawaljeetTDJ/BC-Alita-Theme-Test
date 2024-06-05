@@ -1,0 +1,7 @@
+{{#each blog.posts}}
+    {{#each tags}}
+		<li class="tags-list-item" data-tag="{{camelcase name}}">
+			<a href='{{url}}' class="link">{{name}}</a>
+		</li>
+    {{/each}}
+{{/each}}

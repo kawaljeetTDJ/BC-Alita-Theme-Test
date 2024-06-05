@@ -1,0 +1,13 @@
+<nav>
+	{{> components/halothemes/sidebar/halo-recent-articles post=post}}
+	{{> components/halothemes/sidebar/halo-popular-tags}}
+	{{#if theme_settings.halo-sidebar-products '==' 'Featured'}}
+        {{> components/halothemes/sidebar/halo-product-sidebar products=products.featured title=theme_settings.halo-sidebar-products-title}}
+    {{else if theme_settings.halo-sidebar-products '==' 'New'}}
+        {{> components/halothemes/sidebar/halo-product-sidebar products=products.new title=theme_settings.halo-sidebar-products-title}}
+    {{else if theme_settings.halo-sidebar-products '==' 'Top'}}
+        {{> components/halothemes/sidebar/halo-product-sidebar products=products.top_sellers title=theme_settings.halo-sidebar-products-title}}
+    {{/if}}
+    {{> components/halothemes/sidebar/halo-advertisement-image}}
+    {{> components/halothemes/sidebar/halo-advertisement-content}}	
+</nav>

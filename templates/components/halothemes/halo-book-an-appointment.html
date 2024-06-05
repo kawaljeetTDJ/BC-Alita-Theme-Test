@@ -1,0 +1,94 @@
+{{#if theme_settings.halo-book-an-appointment-title}}
+    <div class="modal-header">
+        <h2 class="modal-header-title">{{theme_settings.halo-book-an-appointment-title}}</h2>
+    </div>
+{{/if}}
+<div class="modal-body">
+    <div id="halo-booking-results" class="halo-booking-text"></div>
+    <form class="halo-booking-form form" id="halo-booking-form">
+        <div class="form-row">
+            <div class="form-field">
+            	<label class="form-label" for="customer_name1">Name*</label>
+                <input required type="text" class="form-input" name="customer_name1" id="customer_name1">
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="customer_name2">Last Name*</label>
+                <input required type="text" class="form-input" name="customer_name2" id="customer_name2">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+                <label class="form-label" for="customer_phone1">Phone number*</label>
+                <input required type="tel" class="form-input" name="customer_phone1" id="customer_phone1">
+            </div>
+            <div class="form-field">
+            	<label class="form-label" for="customer_email1">Email*</label>
+                <input required type="text" class="form-input" name="customer_email1" id="customer_email1">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+                <label class="form-label" for="customer_country">Country*</label>
+                {{#if cart.shipping_handling.countries.length}}
+                    <select required class="form-select" name="customer_country" id="customer_country" data-field-type="Country">
+                        <option>Please select</option>
+                        {{#each cart.shipping_handling.countries}}
+                            <option value="{{id}}">
+                                {{name}}
+                            </option>
+                        {{/each}}
+                    </select>
+                {{else}}
+                    <input required class="form-input" name="customer_country" id="customer_country">
+                {{/if}}
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="customer_state">State/province*</label>
+                {{#if states.length}}
+                    <select required class="form-select" name="customer_state" id="customer_state" data-field-type="State">
+                        <option>Please select</option>
+                        {{#each states}}
+                            <option value="{{id}}">
+                                {{name}}
+                            </option>
+                        {{/each}}
+                    </select>
+                {{else}}
+                    <input required class="form-input" name="customer_state" id="customer_state">
+                {{/if}}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field form-field-datepicker">
+                <label class="form-label" for="customer_date1">Pick a date for your appointment*</label>
+                <input required type="text" class="form-input" name="customer_date1" id="customer_date1">
+            </div>
+            <div class="form-field form-field-datepicker">
+                <label class="form-label" for="customer_date2">Day of your wedding*</label>
+                <input required type="text" class="form-input" name="customer_date2" id="customer_date2">
+            </div>
+        </div>
+        <div class="form-field form-field-textarea">
+            <label class="form-label" for="comment_area1">Leave a comment</label>
+            <textarea name="comment_area1" cols="30" rows="6" class="form-input" id="comment_area1"></textarea>
+        </div>
+        <div class="form-field form-field-radio form-field-radio2">
+            <label class="form-label form-label-custom">How would you like me to contact you?</label>
+            <input class="form-radio" id="phone-radio-2" type="radio" name="type_contact1" checked value="Phone">
+            <label class="form-label" for="phone-radio-2">Phone</label>
+            <input class="form-radio" id="email-radio-2" type="radio" name="type_contact1" value="Email">
+            <label class="form-label" for="email-radio-2">Email</label>
+            <input class="form-radio" id="both-radio-3" type="radio" name="type_contact1" value="Phone & Email">
+            <label class="form-label" for="both-radio-3">Both</label>
+        </div>
+        <div class="form-field form-field-checkbox">
+            <input type="checkbox" id="term-ask-booking" name="new" value="Terms Conditions">
+            <label class="form-label" for="term-ask-booking">
+                I agree with the <a class="link" href="/privacy-policy/">Data Protection Policy</a> for the Alita Bridal Make an Appointment Form
+            </label>
+        </div>
+        <div class="form-actions">
+           <button type="button" class="button button--primary" id="halo-booking-button" disabled>Submit</button>
+        </div>
+    </form>
+</div>

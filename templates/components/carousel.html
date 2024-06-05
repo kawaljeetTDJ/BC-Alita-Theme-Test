@@ -1,0 +1,96 @@
+<div class="heroCarousel-wrapper">
+    <div class="heroCarousel{{#if arrows}} heroCarousel-arrows{{/if}}"
+        data-slick='{
+            "dots": true,
+            "arrows": false,
+            "mobileFirst": true,
+            "slidesToShow": 1,
+            "slidesToScroll": 1,
+            "autoplay": true,
+            "autoplaySpeed": {{carousel.swap_frequency}},
+            "infinite": true,
+            "fade": true,
+            "lazyLoad": "anticipated",
+            "nextArrow": "<svg class=&apos;slick-next slick-arrow&apos;><use xlink:href=&apos;#icon-long-arrow-right&apos;></use></svg>", 
+            "prevArrow": "<svg class=&apos;slick-prev slick-arrow&apos;><use xlink:href=&apos;#icon-long-arrow-left&apos;></use></svg>",
+            "responsive": [
+                {
+                    "breakpoint": 1025,
+                    "settings": {
+                        "dots": {{dots}},
+                        "arrows": {{arrows}}
+                    }
+                }
+            ]
+        }'>
+        {{#each carousel.slides}}
+            {{#if @index '==' 0}}
+                {{#if (merge this imageMobile=../theme_settings.homepage_show_carousel_0_mobile-image)}}{{/if}}
+                {{#if (merge this position=../theme_settings.homepage_show_carousel_0_position-content)}}{{/if}}
+            {{/if}}
+            {{#if @index '==' 1}}
+                {{#if (merge this imageMobile=../theme_settings.homepage_show_carousel_1_mobile-image)}}{{/if}}
+                {{#if (merge this position=../theme_settings.homepage_show_carousel_1_position-content)}}{{/if}}
+            {{/if}}
+            {{#if @index '==' 2}}
+                {{#if (merge this imageMobile=../theme_settings.homepage_show_carousel_2_mobile-image)}}{{/if}}
+                {{#if (merge this position=../theme_settings.homepage_show_carousel_2_position-content)}}{{/if}}
+            {{/if}}
+            {{#if @index '==' 3}}
+                {{#if (merge this imageMobile=../theme_settings.homepage_show_carousel_3_mobile-image)}}{{/if}}
+                {{#if (merge this position=../theme_settings.homepage_show_carousel_3_position-content)}}{{/if}}
+            {{/if}}
+            {{#if @index '==' 4}}
+                {{#if (merge this imageMobile=../theme_settings.homepage_show_carousel_4_mobile-image)}}{{/if}}
+                {{#if (merge this position=../theme_settings.homepage_show_carousel_4_position-content)}}{{/if}}
+            {{/if}}
+            <a href="{{url}}" class="js-hero-slide" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'common.carousel_slide_number' slide_number=(add @index 1)}}{{/if}}" data-title="0{{add @index 1}}">
+                <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}" data-position="{{position}}">
+                    <div class="heroCarousel-image-wrapper{{#if ../theme_settings.homepage_overlay_carousel_images}} heroCarousel-overlay-wrapper{{/if}}{{#if ../theme_settings.homepage_parallax_carousel_images}} heroCarousel-parallax-wrapper{{/if}}"{{#if ../theme_settings.homepage_parallax_carousel_images}} style="background-image: url('{{getImageSrcset stencil_image 1x=(default fallback_size '1920w')}}');"{{/if}}>
+                        <div class="heroCarousel-image">
+                            {{#if @first}}
+                                {{> components/common/responsive-img
+                                    image=stencil_image
+                                    class=""
+                                    fallback_size='1920w'
+                                    lazyload='disabled'
+                                }}
+                            {{else}}
+                                {{> components/common/responsive-img
+                                    image=stencil_image
+                                    class=""
+                                    fallback_size='1920w'
+                                    lazyload='lazyload'
+                                }}
+                            {{/if}}
+                            {{#if imageMobile}}
+                                {{#if @first}}
+                                    <img class="image-mobile" src="https://cdn11.bigcommerce.com/s-{{../settings.store_hash}}/product_images/uploaded_images/{{imageMobile}}" alt="{{stencil_image.alt}}" title="{{stencil_image.alt}}">
+                                {{else}}
+                                    <img class="lazyload image-mobile" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-{{../settings.store_hash}}/product_images/uploaded_images/{{imageMobile}}" alt="{{stencil_image.alt}}" title="{{stencil_image.alt}}">
+                                {{/if}}
+                            {{else}}
+                                {{#if @first}}
+                                    <img class="image-mobile image-noMobile" src="{{getImageSrcset stencil_image 1x=(default fallback_size '640w')}}" alt="{{stencil_image.alt}}" title="{{stencil_image.alt}}">
+                                {{else}}
+                                    <img class="lazyload image-mobile image-noMobile" src="{{cdn 'img/loading.svg'}}" data-src="{{getImageSrcset stencil_image 1x=(default fallback_size '640w')}}" alt="{{stencil_image.alt}}" title="{{stencil_image.alt}}">
+                                {{/if}}
+                            {{/if}}
+                        </div>
+                    </div>
+                    {{#if heading}}
+                        {{> components/carousel-content show_background=true carousel_bgColor=../theme_settings.carousel-bgColor}}
+                    {{else}}
+                        {{#if text}}
+                            {{> components/carousel-content show_background=true carousel_bgColor=../theme_settings.carousel-bgColor}}
+                        {{else}}
+                            {{#if button_text}}
+                                {{> components/carousel-content show_background=false carousel_bgColor=../theme_settings.carousel-bgColor}}
+                            {{/if}}
+                        {{/if}}
+                    {{/if}}
+                </div>
+            </a>
+        {{/each}}
+    </div>
+</div>

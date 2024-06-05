@@ -1,0 +1,18 @@
+{{#partial "page"}}
+<div class="page-container">
+    <div class="container">
+        <div class="breadcrumb-wrapper">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        </div>
+        <div class="page page-normal">
+            <div class="page-header">
+                <h1 class="page-heading">{{lang 'server_error.page_heading'}}</h1>
+            </div>
+            <main class="page-content">
+            	{{lang 'server_error.message'}}
+            </main>
+        </div>
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}

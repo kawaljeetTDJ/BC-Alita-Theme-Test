@@ -1,0 +1,3 @@
+{
+  "components/halothemes/halo-all-tags": "{{#each blog.posts}}\r\n    {{#each tags}}\r\n\t\t<li class=\"tags-list-item\" data-tag=\"{{camelcase name}}\">\r\n\t\t\t<a href='{{url}}' class=\"link\">{{name}}</a>\r\n\t\t</li>\r\n    {{/each}}\r\n{{/each}}\n"
+}

@@ -1,0 +1,136 @@
+// =============================================================================
+// TOGGLE LINK (CSS)
+// =============================================================================
+
+
+// Toggle link
+// -----------------------------------------------------------------------------
+
+$toggle-spacing: spacing("single") + spacing("half");
+
+.toggle {
+    border-top: container("border");
+    margin-bottom: $toggle-spacing;
+
+    &:last-of-type {
+        margin-bottom: $toggle-spacing * 2;
+    }
+}
+
+.toggle-title {
+    font-family: $fontFamily-headings;
+    font-size: $h4-font-size;
+    font-weight: $fontWeight-normal;
+    letter-spacing: $letterSpacing-base;
+    line-height: 1;
+    color: $color-textBase;
+    padding: 0;
+    margin: 0 0 20px 0;
+    text-transform: unset;
+}
+
+.toggleLink {
+    color: stencilColor("color-textSecondary");
+
+    &:hover {
+        color: stencilColor("color-textSecondary--hover");
+    }
+
+    .toggle-title & {
+        float: right;
+        line-height: 24px;
+    }
+
+    &.toggleLink-viewMore{
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        font-style: italic;
+        line-height: 1.5;
+        letter-spacing: $letterSpacing-base;
+        text-transform: unset;
+        padding: 0;
+        transition: unset;
+        width: auto;
+        color: $color-textLink;
+
+        .toggleLink-text {
+            padding: 0 0 1px 0;
+            background-image: linear-gradient(transparent 97%, $color-textLink 3%);
+            background-repeat: repeat-x;
+            background-position-y: 0;
+            display: inline;
+            font-size: inherit;
+            font-weight: inherit;
+        }
+    }
+
+    &.toggleLink-clear{
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        font-style: italic;
+        line-height: 1.5;
+        letter-spacing: $letterSpacing-base;
+        text-transform: unset;
+        padding: 0;
+        transition: unset;
+        width: auto;
+        color: $color-textLink;
+
+        .toggleLink-text {
+            padding: 0 0 1px 0;
+            background-image: linear-gradient(transparent 97%, $color-textLink 3%);
+            background-repeat: repeat-x;
+            background-position-y: 0;
+            display: inline;
+            font-size: inherit;
+            font-weight: inherit;
+        }
+    }
+
+    @media (min-width: 1025px){
+        &:hover{
+            color: $color-textLink-hover;
+
+            .toggleLink-text {
+                background-image: linear-gradient(transparent 97%, $color-textLink-hover 3%);
+                background-repeat: repeat-x;
+                background-position-y: 0;
+            }
+        }
+    }
+}
+
+.toggleLink-text {
+    font-size: fontSize("smallest");
+    font-weight: fontWeight("normal");
+}
+
+.toggleLink-text--off {
+    display: inline-block;
+
+    .toggleLink.is-open & {
+        display: none;
+    }
+}
+
+.toggleLink-text--on {
+    display: none;
+
+    .toggleLink.is-open & {
+        display: inline-block;
+    }
+}
+
+.toggle-content {
+    display: none;
+
+    &.is-open {
+        display: block;
+    }
+}

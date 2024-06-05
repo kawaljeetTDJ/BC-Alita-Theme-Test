@@ -1,0 +1,613 @@
+// HERO CAROUSEL
+// -----------------------------------------------------------------------------
+//
+// Purpose: Styles the hero carousel component, which basically adds extras to the
+// vendor slick carousel, to specifically display hero images.
+//
+// 1. Use object-fit on the image tag to keep aspect ratio and cover the space
+//    created by the outer div. The JS will detect browsers that do not support
+//    object-fit and instead copy the image src to a the background-image of the
+//    wrapper div and add the compat-object-fit class.
+//
+// 3. Allows image to scale on large screens while preventing the top and bottom
+//    from becoming cut off.
+// -----------------------------------------------------------------------------
+.heroCarousel-wrapper{
+    display: block;
+    position: relative;
+    @include clearfix;
+}
+
+.heroCarousel {
+    width: 1px;
+    min-width: 100%;
+    white-space: nowrap;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+
+    &.slick-dotted{
+        margin-bottom: 0;
+    }
+
+    &.slick-initialized {
+        max-height: 970px;
+        opacity: 1;
+    }
+
+    &:not(.slick-initialized) :not(.heroCarousel-slide--first).heroCarousel-slide {
+        display: none;
+    }
+
+    .slick-arrow{
+        width: 60px;
+        height: 60px;
+        padding: 0;
+        margin: 0;
+        transition: $anchor-transition;
+        background-color: transparent;
+        visibility: hidden;
+        opacity: 0;
+        cursor: pointer;
+        border: 0;
+        padding: 15px;
+        border: 2px solid stencilColor('carousel-arrow-color');
+        fill: stencilColor('carousel-arrow-color');
+        stroke: stencilColor('carousel-arrow-color');
+
+        &:before {
+            display: none;
+        }
+
+        &.slick-prev {
+            left: 15px;
+        }
+
+        &.slick-next {
+            right: 15px;
+        }
+
+        &.slick-disabled{
+            opacity: 0.5!important;
+            cursor: default;
+        }
+    }
+
+    .slick-dots {
+        position: absolute;
+        top: 50%;
+        left: auto;
+        right: 15px;
+        bottom: auto;
+        transform: translateY(-50%);
+        margin: 0;
+        padding: 0;
+        width: auto;
+
+        li{
+            display: block;
+            width: auto;
+            height: auto;
+            padding: 0;
+            text-align: right;
+
+            button{
+                font-size: $fontSize-root;
+                font-weight: $fontWeight-normal;
+                letter-spacing: $letterSpacing-base;
+                line-height: 40px;
+                color: stencilColor('carousel-dot-color');
+                border: 0;
+                border-radius: 0;
+                width: auto;
+                height: auto;
+                position: relative;
+                transition: $anchor-transition;
+                border-bottom: 1px solid transparent;
+
+                &:before{
+                    display: none;
+                }
+            }
+
+            &.slick-active{
+                button{
+                    color: stencilColor('arousel-dot-color-active');
+                    border-color: stencilColor('arousel-dot-color-active');
+                }
+            }
+        }
+    }
+
+    .slick-slide {
+        .heroCarousel-title {
+            visibility: hidden;
+            animation-delay: 0ms;
+            animation-name: fadeOutDown;
+        }
+
+        .heroCarousel-description {
+            visibility: hidden;
+            animation-delay: 0ms;
+            animation-name: fadeOutDown;
+        }
+
+        .heroCarousel-action {
+            visibility: hidden;
+            animation-delay: 0ms;
+            animation-name: fadeOutDown;
+        }
+    }
+
+    .slick-current {
+        .heroCarousel-title {
+            visibility: visible;
+            animation-delay: 50ms;
+            animation-name: fadeInUp;
+        }
+
+        .heroCarousel-description {
+            visibility: visible;
+            animation-delay: 100ms;
+            animation-name: fadeInUp;
+        }
+
+        .heroCarousel-action {
+            visibility: visible;
+            animation-delay: 150ms;
+            animation-name: fadeInUp;
+        }
+    }
+
+    &.heroCarouselRight{
+        .slick-dots {
+            left: 15px;
+            right: auto;
+            
+            li{
+                text-align: left;
+            }
+        }
+    }
+
+    @media (min-width: 551px){
+        .slick-dots {
+            li{
+                button{
+                    border: 0;
+
+                    &:before{
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        top: 20px;
+                        left: auto;
+                        right: 0;
+                        width: 0;
+                        height: 1px;
+                        z-index: 1;
+                        opacity: 1;
+                        visibility: visible;
+                        border: 0;
+                        border-radius: 0;
+                        line-height: unset;
+                        font-size: 0;
+                        font-weight: unset;
+                        background-color: stencilColor('carousel-dot-color');
+                        transition: $anchor-transition;
+                    }
+                }
+
+                &.slick-active{
+                    button{
+                        padding-right: 60px;
+
+                        &:before{
+                            width: 36px;
+                            background-color: stencilColor('carousel-dot-color-active');
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: 768px){
+        overflow: hidden;
+    }
+
+    @media (min-width: 1025px){
+        .slick-arrow{
+            outline: 1px solid!important;
+            outline-color: rgba(stencilColor('carousel-arrow-color'), 0.5)!important;
+            outline-offset: 0px!important;
+            transition: all .7s cubic-bezier(0.19, 1, 0.22, 1);
+
+            &:hover {
+                fill: stencilColor('carousel-arrow-color--hover');
+                stroke: stencilColor('carousel-arrow-color--hover');
+                box-shadow: inset 0 0 20px rgba(stencilColor('carousel-arrow-color'), 0.5), 0 0 20px rgba(stencilColor('carousel-arrow-color'), 0.2);
+                outline-color: rgba(stencilColor('carousel-arrow-color'), 0)!important;
+                outline-offset: 15px!important;
+            }
+
+            &.slick-next {
+                right: 60px;
+            }
+
+            &.slick-prev {
+                left: 60px;
+            }
+        }
+
+        .slick-dots {
+            right: 30px;
+            
+            li{
+                &:hover{
+                    button{
+                        padding-right: 60px;
+
+                        &:before{
+                            width: 36px;
+                            background-color: stencilColor('carousel-dot-color-active');
+                        }
+                    }
+                }
+            }
+        }
+
+        &:hover{
+            .slick-arrow{
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        &.heroCarousel-arrows{
+            .slick-dots{
+                display: none!important;
+            }
+        }
+
+        &.heroCarouselRight{
+            .slick-arrow{
+                display: none;
+            }
+
+            .slick-dots {
+                left: 30px;
+                
+                li{
+                    button{
+                        padding-right: 0;
+
+                        &:before{
+                            left: 0;
+                            right: auto;
+                        }
+                    }
+
+                    &.slick-active{
+                        button{
+                            padding-left: 60px;
+                        }
+                    }
+
+                    &:hover{
+                        button{
+                            padding-left: 60px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.heroCarouselLeft{
+            .slick-arrow{
+                display: none;
+            }
+        }
+    }
+
+    @media (min-width: 1600px){
+        .slick-dots {
+            right: calc((100% - 1570px)/ 2);
+        }
+
+        &.heroCarouselRight{
+            .slick-dots {
+                left: calc((100% - 1570px)/ 2);
+            }
+        }
+    }
+
+    @media (min-width: 1920px){
+        .slick-dots {
+            right: calc((100% - 1770px)/ 2);
+        }
+
+        &.heroCarouselRight{
+            .slick-dots {
+                left: calc((100% - 1770px)/ 2);
+            }
+        }
+    }
+}
+
+.heroCarousel-slide {
+    position: relative;
+
+    &.stretch {
+        .heroCarousel-image-wrapper {
+            height: remCalc(250px);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 56.25vw;
+        }
+
+        .heroCarousel-image {
+            object-fit: cover;
+            object-position: 50% 50%;
+        }
+
+        &.compat-object-fit {
+            .heroCarousel-image {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    @media (min-width: 551px){
+        &.stretch {
+            .heroCarousel-image-wrapper {
+                max-height: remCalc(400px);
+            }
+        } 
+    }
+
+    @media (min-width: 1025px){
+        &.stretch {
+            .heroCarousel-image-wrapper {
+                max-height: remCalc(600px);
+            }
+        } 
+    }
+}
+
+.heroCarousel-image-wrapper{
+    position: relative;
+
+    &.heroCarousel-overlay-wrapper{
+        &:before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            background-color: rgba(stencilColor('homepage_overlay_carousel_images_color'),0.3);
+        }
+    }
+
+    @media (max-width: 1024px){
+        &.heroCarousel-parallax-wrapper{
+            background-image: unset!important;
+        }
+    }
+
+    @media (max-width: 550px){
+        min-height: 370px;
+    }
+
+    @media (min-width: 1025px){
+        &.heroCarousel-parallax-wrapper{
+            position: relative;
+            height: calc(100vh - 100px);
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            .heroCarousel-image{
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    }
+}
+
+.heroCarousel-image {
+    img{
+        display: none;
+
+        &.image-mobile{
+            display: block;
+        }
+
+        &.image-noMobile{
+            min-height: 400px;
+            object-fit: cover;
+        }
+
+        &.lazyload,
+        &.lazyloading{
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            object-fit: scale-down;
+        }
+    }
+
+    @media (min-width: 551px) {
+        img{
+            display: block;
+
+            &.image-mobile{
+                display: none;
+            }
+        }
+    }
+}
+
+.heroCarousel-content {
+    position: absolute;
+    background-color: stencilColor('carousel-bgColor');
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    width: 100%;
+    max-width: calc(100% - 100px);
+    text-align: center;
+    padding: 15px;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    white-space: normal;
+
+    @media (min-width: 551px){
+        max-width: 500px;
+    }
+
+    @media (min-width: 768px) {
+        &.heroCarousel-content--empty {
+            background-color: transparent;
+            padding: 0;
+        }
+    }
+
+    @media (min-width: 1025px){
+        &.heroCarousel-content--left{
+            left: 30px;
+            right: auto;
+            text-align: left;
+            transform: translateY(-50%);
+
+            .heroCarousel-action{
+                margin-left: 0;
+            }
+        }
+
+        &.heroCarousel-content--right{
+            left: auto;
+            right: 30px;
+            text-align: right;
+            transform: translateY(-50%);
+
+            .heroCarousel-action{
+                margin-right: 0;
+            }
+        }
+    }
+
+    @media (min-width: 1600px){
+        &.heroCarousel-content--left{
+            left: calc((100% - 1570px)/ 2);
+        }
+
+        &.heroCarousel-content--right{
+            right: calc((100% - 1570px)/ 2);
+        }
+    }
+
+    @media (min-width: 1920px){
+        &.heroCarousel-content--left{
+            left: calc((100% - 1770px)/ 2);
+        }
+
+        &.heroCarousel-content--right{
+            right: calc((100% - 1770px)/ 2);
+        }
+    }
+}
+
+.heroCarousel-title {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    font-family: $fontFamily-headings;
+    font-size: $fontSize-hero;
+    font-weight: $fontWeight-normal;
+    color: $carousel-title-color;
+    letter-spacing: $letterSpacing-base;
+    line-height: 40px;
+    margin: 0 0 20px 0;
+    text-transform: capitalize;
+
+    @media (min-width: 1025px){
+        margin-bottom: 44px;
+    }
+}
+
+.heroCarousel-description {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0 28px 0;
+    color: $carousel-description-color;
+    width: 100%;
+
+    @media (min-width: 1025px) {
+        margin-bottom: 52px;
+    }
+}
+
+.heroCarousel-action {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    text-transform: uppercase;
+
+    &.button{
+        position: relative;
+        background: transparent;
+        border-color: $carousel-description-color;
+        color: $carousel-description-color;
+        transition: all .7s cubic-bezier(0.19, 1, 0.22, 1);
+
+        &:before{
+            content: '';
+            background: $carousel-description-color;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            transition: $anchor-transition;
+            z-index: -1;
+        }
+        
+        &:active{
+            color: $color-textBase;
+            border-color: $carousel-description-color;
+            background: $carousel-description-color;
+
+            &:before{
+                width: 100%;
+            }
+        }
+    }
+
+
+    @media (min-width: 551px){
+        max-width: 270px;
+    }
+
+    @media (min-width: 1025px){
+        &:hover,
+        &:focus{
+            color: $color-textBase;
+            border-color: $carousel-description-color;
+            background: $carousel-description-color;
+
+            &:before{
+                width: 100%;
+            }
+        }
+    }
+}

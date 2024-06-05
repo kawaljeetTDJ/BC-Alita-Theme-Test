@@ -1,0 +1,261 @@
+<footer class="footer">
+    {{#and (if settings.show_newsletter_box) (if theme_settings.halo_subscription_form)}}
+        <div class="footer-subscription">
+            <div class="container">
+                {{#if theme_settings.halo_subscription_form-logo}}
+                    <div class="footer-subscription-logo">
+                        <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.halo_subscription_form-logo}}" alt="{{settings.newsletter_summary}}" title="{{settings.newsletter_summary}}">
+                    </div>
+                {{/if}}
+                <div class="footer-info-wrapper"> 
+                    {{#if settings.show_newsletter_summary }}
+                        <div class="footer-info-text">
+                            <p>{{settings.newsletter_summary}}</p>
+                        </div>
+                    {{/if}}
+                    {{> components/common/subscription-form}}
+                </div>
+            </div>
+        </div>
+    {{/and}}
+    <div class="footer-top" role="contentinfo">
+        <div class="container">
+            <div class="footer-top-wrapper">
+                {{#if theme_settings.footer-info-1-heading}}
+                    <div class="footer-info-col footer-info-col--mobile footer-shop" data-section-type="footer-categories">
+                        <h3 class="footer-info-heading">{{theme_settings.footer-info-1-heading}}</h3>
+                        <div class="footer-info-wrapper"> 
+                            <ul class="footer-info-list">
+                                {{#each categories}}
+                                    <li>
+                                        <a href="{{url}}" class="footer-info-list-link">
+                                            <span>{{name}}</span>
+                                        </a>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                {{/if}}
+                {{#if theme_settings.footer-info-2-heading}}
+                    <div class="footer-info-col footer-info-col--mobile footer-about" data-section-type="footer-webPages">
+                        <h3 class="footer-info-heading">{{theme_settings.footer-info-2-heading}}</h3>
+                        <div class="footer-info-wrapper"> 
+                            <ul class="footer-info-list">
+                                {{#if theme_settings.footer-info-2-text1}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-2-link1}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-2-text1}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer-info-2-text2}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-2-link2}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-2-text2}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer-info-2-text3}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-2-link3}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-2-text3}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer-info-2-text4}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-2-link4}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-2-text4}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer-info-2-text5}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-2-link5}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-2-text5}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                    </div>
+                {{/if}}
+                {{#if theme_settings.footer-info-3-heading}}
+                    <div class="footer-info-col footer-info-col--mobile footer-page-list" data-section-type="footer-webPages">
+                        <h3 class="footer-info-heading">{{theme_settings.footer-info-3-heading}}</h3>
+                        <div class="footer-info-wrapper"> 
+                            <ul class="footer-info-list">
+                                {{#if theme_settings.footer-info-3-text1}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-3-link1}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-3-text1}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer-info-3-text2}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-3-link2}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-3-text2}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer-info-3-text3}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-3-link3}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-3-text3}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer-info-3-text4}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-3-link4}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-3-text4}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer-info-3-text5}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-3-link5}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-3-text5}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                    </div>
+                {{/if}}
+                {{#if theme_settings.footer-info-4-heading}}
+                    <div class="footer-info-col footer-info-col--mobile footer-service" data-section-type="footer-webPages">
+                        <h3 class="footer-info-heading">{{theme_settings.footer-info-4-heading}}</h3>
+                        <div class="footer-info-wrapper">
+                            <ul class="footer-info-list">
+                                {{#if theme_settings.footer-info-4-text1}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-4-link1}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-4-text1}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer-info-4-text2}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-4-link2}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-4-text2}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer-info-4-text3}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-4-link3}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-4-text3}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer-info-4-text4}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-4-link4}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-4-text4}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                                {{#if theme_settings.footer-info-4-text5}}
+                                    <li>
+                                        <a href="{{theme_settings.footer-info-4-link5}}" class="footer-info-list-link">
+                                            <span>{{theme_settings.footer-info-4-text5}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                            </ul> 
+                        </div>
+                    </div>
+                {{/if}}
+                {{#or (if settings.address) (if theme_settings.geotrust_ssl_common_name) (if theme_settings.footer-info-5-heading) (if settings.paypal_commerce_credit_message)}}
+                    <div class="footer-info-col footer-info" data-section-type="storeInfo">
+                        <h3 class="footer-info-heading">{{theme_settings.footer-info-5-heading}}</h3>
+                        <div class="footer-info-wrapper">
+                            <ul class="footer-info-list footer-info-list-2">
+                                {{#all (if settings.phone_number) (if theme_settings.footer-info-5-phone)}}
+                                    <li>
+                                        <span class="footer-info-icon">{{lang 'footer.call_us'}}</span>
+                                        <a href="tel:{{settings.phone_number}}" class="footer-info-list-link">
+                                            <span>{{settings.phone_number}}</span>
+                                        </a>
+                                    </li>
+                                {{/all}}
+                                {{#if theme_settings.footer-info-5-hour}}
+                                    <li>
+                                        <span class="footer-info-icon">{{lang 'footer.hour'}}</span>
+                                        <span class="footer-info-text">
+                                            {{theme_settings.footer-info-5-hour-1}}
+                                            <br/>
+                                            {{theme_settings.footer-info-5-hour-2}}
+                                        </span>
+                                    </li>
+                                {{/if}}
+                                {{#all (if settings.address) (if theme_settings.footer-info-5-address)}}
+                                    <li>
+                                        <span class="footer-info-icon">{{lang 'footer.address'}}</span>
+                                        <address class="footer-info-text">{{nl2br settings.address}}</address>
+                                    </li>
+                                {{/all}}
+                                {{#if settings.paypal_commerce_credit_message}}
+                                    <li>
+                                        <span class="footer-info-icon">{{lang 'footer.paypal'}}</span>
+                                        <span class="footer-info-text paypal-credit">{{nl2br settings.paypal_commerce_credit_message}}</span>
+                                    </li>
+                                {{/if}}
+                            </ul> 
+                        </div>
+                        {{#if theme_settings.geotrust_ssl_common_name}}
+                            <div class="footer-geotrust-ssl-seal">
+                                {{> components/common/geotrust-ssl-seal}}
+                            </div>
+                        {{/if}}
+                    </div>
+                {{/or}}
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-wrapper">
+                {{#all (if theme_settings.show_social-links) (if social_media)}}
+                    <div class="footer-bottom-item footer-social-media text-left">
+                        <div class="footer-bottom-item__label">
+                            <span>{{lang 'social.connect'}}</span>
+                        </div>
+                        {{> components/common/social-links position="footer"}}
+                    </div>
+                {{/all}}
+                {{#or (if theme_settings.show_copyright_footer) (if theme_settings.show_site_info_footer)}}
+                    <div class="footer-bottom-item text-center">
+                        {{#if theme_settings.show_copyright_footer}}
+                            <div class="footer-copyright">
+                                <p>&copy; {{moment format="YYYY"}} {{settings.store_name}}.{{#if theme_settings.show_powered_by}} {{theme_settings.powered_by-text1}} <a href="{{theme_settings.powered_by-link}}" rel="nofollow"><span>{{theme_settings.powered_by-text2}}</span></a>{{/if}}</p>
+                            </div>
+                        {{/if}}
+                        {{#if theme_settings.show_site_info_footer}}
+                            <div class="footer-copyright footer-site-info">
+                                <p>{{theme_settings.site_info-text1}} <a href="{{theme_settings.site_info-link}}" class="link"><span>{{theme_settings.site_info-text2}}</span></a></p>
+                            </div>
+                        {{/if}}
+                    </div>
+                {{/or}}
+                {{#if theme_settings.show_payments_footer}}
+                    <div class="footer-bottom-item footer-payment text-right">
+                        {{> components/common/payment-icons}}
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</footer>
+{{#unless theme_settings.halo_recently_viewed_products }}
+    {{#if theme_settings.halo-back-to-top}}
+        <div id="haloBackToTop" class="halo-back-to-top">
+            <a href="#">
+                <svg class="icon"><use xlink:href="#icon-keyboard-arrow-down"></use></svg>
+            </a>
+        </div>
+    {{/if }}
+{{/unless}}

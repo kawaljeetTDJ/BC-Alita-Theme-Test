@@ -1,0 +1,84 @@
+{{#if theme_settings.halo_icon_with_text}} 
+    <div class="halo-block halo-block-icon-text">
+        <div class="container container-no-padding">
+            <div class="halo-row">
+                <div class="halo-row-slider">
+                    <div class="halo-row-item">
+                        <div class="icon-with-text">
+                            {{#or (if theme_settings.halo_icon_with_text-1-title) (if theme_settings.halo_icon_with_text-1-text)}} 
+                                <div class="icon">
+                                    <svg><use xlink:href="#icon-truck"></use></svg>
+                                </div>
+                            {{/or}}
+                            <div class="content">
+                                {{#if theme_settings.halo_icon_with_text-1-title}} 
+                                    <h3 class="title">{{theme_settings.halo_icon_with_text-1-title}}</h3>
+                                {{/if}}
+                                {{#if theme_settings.halo_icon_with_text-1-text}} 
+                                    <span class="desc">{{theme_settings.halo_icon_with_text-1-text}}</span>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="halo-row-slider">
+                    <div class="halo-row-item">
+                        <div class="icon-with-text">
+                            {{#or (if theme_settings.halo_icon_with_text-2-title) (if theme_settings.halo_icon_with_text-2-text)}} 
+                                <div class="icon">
+                                    <svg><use xlink:href="#icon-revert"></use></svg>
+                                </div>
+                            {{/or}}
+                            <div class="content">
+                                {{#if theme_settings.halo_icon_with_text-2-title}} 
+                                    <h3 class="title">{{theme_settings.halo_icon_with_text-2-title}}</h3>
+                                {{/if}}
+                                {{#if theme_settings.halo_icon_with_text-2-text}} 
+                                    <span class="desc">{{theme_settings.halo_icon_with_text-2-text}}</span>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="halo-row-slider">
+                    <div class="halo-row-item">
+                        <div class="icon-with-text">
+                            {{#or (if theme_settings.halo_icon_with_text-3-title) (if theme_settings.halo_icon_with_text-3-text)}} 
+                                <div class="icon">
+                                    <svg><use xlink:href="#icon-star-empty"></use></svg>
+                                </div>
+                            {{/or}}
+                            <div class="content">
+                                {{#if theme_settings.halo_icon_with_text-3-title}} 
+                                    <h3 class="title">{{theme_settings.halo_icon_with_text-3-title}}</h3>
+                                {{/if}}
+                                {{#if theme_settings.halo_icon_with_text-3-text}} 
+                                    <span class="desc">{{theme_settings.halo_icon_with_text-3-text}}</span>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="halo-row-slider">
+                    <div class="halo-row-item">
+                        <div class="icon-with-text">
+                            {{#or (if theme_settings.halo_icon_with_text-4-title) (if theme_settings.halo_icon_with_text-4-text)}} 
+                                <div class="icon">
+                                    <svg><use xlink:href="#icon-shield-check"></use></svg>
+                                </div>
+                            {{/or}}
+                            <div class="content">
+                                {{#if theme_settings.halo_icon_with_text-4-title}} 
+                                    <h3 class="title">{{theme_settings.halo_icon_with_text-4-title}}</h3>
+                                {{/if}}
+                                {{#if theme_settings.halo_icon_with_text-4-text}} 
+                                    <span class="desc">{{theme_settings.halo_icon_with_text-4-text}}</span>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/if}}

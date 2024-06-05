@@ -1,0 +1,329 @@
+// =============================================================================
+// SWATCH SIZES (CSS)
+// =============================================================================
+
+
+// Swatch Size Changes
+// -----------------------------------------------------------------------------
+
+.form-option-variant--none {
+    height: 22px;
+    overflow: hidden;
+}
+
+.halo-productOptions{
+    .form-option{
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 10px 10px 0;
+        padding: 0;
+        line-height: 1;
+
+        &-variant{
+            min-width: unset;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            cursor: pointer;
+            border-radius: 50%;
+            text-align: center;
+            border: 1px solid #e6e6e6;
+            font-size: 0;
+            letter-spacing: 0;
+            margin: 0;
+            padding: 0;
+            position: relative;
+
+            &:after{
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
+                transition: $anchor-transition;
+                border-radius: 50%;
+                background-color: rgba(255,255,255, 0);
+                opacity: 1;
+                visibility: visible;
+                border: 2px solid #ffffff;
+            }
+        }
+
+        &-variant--color2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transform: rotate(45deg);
+
+            span{
+                display: block;
+                position: relative;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &-expanded {
+            display: none;
+            background-color: stencilColor("body-bg");
+            border: 1px solid transparent;
+            padding: 2px;
+            position: absolute;
+            top: calc(100% + 5px);
+            left: calc(100% + 5px);
+            transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            visibility: hidden;
+            opacity: 0;
+            box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 1px 2px 0 rgba(0,0,0,.1);
+
+            .form-option-image {
+                display: block;
+                height: 100px;
+                width: 100px;
+                background-position: 50%;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+
+        &-swatch{
+            position: relative;
+            overflow: visible;
+            box-shadow: none!important;
+            border: 0!important;
+
+            .form-option-variant{
+                background-color: #ffffff;
+                background-size: auto;
+
+                &:after{
+                    border-width: 3px;
+                }
+            }
+        }
+
+        &-rectangle{
+            border: 0!important;
+            box-shadow: none!important;
+
+            .form-option-variant{
+                font-size: $fontSize-root;
+                font-weight: $fontWeight-normal;
+                color: $color-textSecondary;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &.form-option-length{
+                    min-width: 40px;
+                    width: auto;
+                    padding-left: 7px;
+                    padding-right: 7px;
+                }
+            }
+        }
+
+        &.unavailable{
+            position: relative;
+            background: transparent;
+            /*pointer-events: none;*/
+
+            .form-option-variant{
+                opacity: .5;
+
+                &:before{
+                    content: "";
+                    top: 18px;
+                    left: -10px;
+                    height: 1px;
+                    opacity: 1;
+                    z-index: 5;
+                    border: none;
+                    position: absolute;
+                    visibility: visible;
+                    width: calc(150% - 1px);
+                    background-color: $productOptions-strikethrough-color;
+                    transform: rotate(-45deg);
+                }
+
+                &:after{
+                    box-shadow: none!important;
+                }
+
+                &.form-option-length{
+                    &:before{
+                        left: 50%;
+                        width: 60px;
+                        transform: translateX(-50%) rotate(-45deg);
+                    }
+                }
+            }
+
+            .form-option-variant--color2{
+                &:before{
+                    transform: rotate(90deg);
+                }
+            }
+
+            &.form-option-rectangle{
+                .form-option-variant{
+                    opacity: 1;
+                    background: #f7f7f9;
+                    border-color: #f7f7f9;
+
+                    &:after{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .form-radio{
+        &:checked{
+            + .form-option{
+                &-swatch{
+                    .form-option-variant{
+                        &:after{
+                            box-shadow: 0 0 0px 1px #505050;
+                        }
+                    }
+                }
+
+                &-rectangle{
+                    .form-option-variant{
+                        font-weight: $fontWeight-bold;
+                        color: $color-textBase;
+
+                        &:after{
+                            box-shadow: 0 0 0px 1px #505050;
+                        }
+                    }
+                }
+            }
+        } 
+    }
+
+    [data-product-attribute="input-checkbox"]{
+        .form-checkbox{
+            + .form-label {
+                line-height: 1.5;
+                color: $color-textSecondary;
+
+                &:before{
+                    top: 5px;
+                }
+
+                &:after{
+                    top: 5px;
+                }
+            }
+
+            &:checked{
+                + .form-label {
+                    font-weight: $fontWeight-bold;
+                    color: $color-textBase;
+                }
+            }
+        }
+    }
+
+    [data-product-attribute="set-radio"]{
+        .form-radio{
+            + .form-label {
+                color: $color-textSecondary;
+            }
+
+            &:checked{
+                + .form-label {
+                    font-weight: $fontWeight-bold;
+                    color: $color-textBase;
+                }
+            }
+        }
+    }
+
+    [data-product-attribute="set-radio"],
+    [data-product-attribute="product-list"] {
+        .unavailable {
+            opacity: $productOptions-disable-opacity * 2;
+            text-decoration: line-through;
+        }
+    }
+
+    [data-product-attribute="input-text"]{
+        .form-input{
+            height: auto;
+        }
+    }
+
+    [data-product-attribute="set-select"]{
+        .form-select{
+            height: 50px;
+            max-width: 100%;
+            font-size: $fontSize-root;
+            font-weight: $fontWeight-normal;
+            letter-spacing: $letterSpacing-base;
+            padding-left: 15px;
+            padding-right: 15px;
+            background-position: right 10px top 16px;
+        }
+    }
+
+    [data-product-attribute="textarea"]{
+        .form-input{
+            line-height: unset;
+            min-height: 150px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+    }
+
+    [data-product-attribute="input-number"]{
+        .form-input{
+            min-width: 100px;
+            font-style: normal;
+        }
+    }
+
+    [data-product-attribute="date"]{
+        .form-select{
+            min-width: 75px;
+            height: 50px;
+            font-size: $fontSize-root;
+            font-weight: $fontWeight-normal;
+            letter-spacing: $letterSpacing-base;
+            padding-left: 15px;
+            padding-right: 15px;
+            background-position: right 10px top 16px;
+        }
+    }
+
+    @media (min-width: 992px){
+        [data-product-attribute="set-select"]{
+            .form-select{
+                max-width: 50%
+            }
+        }
+    }
+
+    @media (min-width: 1025px){
+        .form-option{
+            &-expanded{
+                display: block;
+            }
+
+            &:hover{
+                .form-option-expanded {
+                    opacity: 1;
+                    transform: translate(-50%, 0);
+                    visibility: visible;
+                    z-index: 5000;
+                }
+            }
+        }
+    }
+}

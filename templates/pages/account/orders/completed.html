@@ -1,0 +1,29 @@
+---
+customer:
+orders:
+limit: 3
+---
+{{#partial "page"}}
+<div class="container">
+    <div class="breadcrumb-wrapper">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    </div>
+    <div class="page page-account">
+        <div class="page-header">
+            <h1 class="page-heading">{{lang 'account.orders.heading' }}</h1>
+        </div>
+        {{> components/account/navigation account_page='orders'}}
+        <main class="page-content">
+            <div class="account">
+                <div class="account-row orders-row">
+			        <section class="orders">
+			            {{> components/account/orders-list orders=customer.orders}}
+			            {{> components/common/small-paginator pagination.orders}}
+			        </section>
+			    </div>
+            </div>
+        </main>
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}

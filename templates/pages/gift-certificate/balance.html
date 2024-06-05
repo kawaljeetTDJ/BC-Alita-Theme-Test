@@ -1,0 +1,45 @@
+{{#partial "page"}}
+<div class="container">
+    <div class="breadcrumb-wrapper">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    </div>
+    <div class="page page-giftcertificates">
+        <div class="page-header">
+            <h1 class="page-heading">{{lang 'gift_certificate.heading' }}</h1>
+        </div>
+        {{> components/gift-certificate/navigation gift_page='balance'}}
+        <main class="page-content">
+            <div class="account">
+                <div class="account-body">
+                    <section class="account-content account-content2">
+                        {{#if gift_certificate}}
+                            {{#if gift_certificate.error}}
+                                {{> components/common/alert/alert-error gift_certificate.error}}
+                            {{else}}
+                                {{> components/common/alert/alert-info gift_certificate.balance.formatted}}
+                                {{> components/common/alert/alert-info gift_certificate.code}}
+                            {{/if}}
+                        {{/if}}
+                        <p class="account-description">
+                            {{lang 'gift_certificate.balance.intro' }}
+                        </p>
+                        <form class="form" id="gift-certificate-balance" method="get" data-add-giftcertificates-form>
+                            <input type="hidden" name="action" value="balance">
+                            <div class="form-field">
+                                <label class="form-label" for="giftcertificatecode">
+                                    {{lang 'forms.gift_certificate.balance.code' }}
+                                </label>
+                                <input class="form-input" id="giftcertificatecode" name="giftcertificatecode">
+                            </div>
+                            <div class="form-actions">
+                                <input type="submit" class="button button--primary form-prefixPostfix-button--postfix" value="{{lang 'forms.gift_certificate.balance.submit_value' }}">
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,101 @@
+<div class="quickResults-wrapper">
+    {{#if theme_settings.halo-before-quick-results-trending-now}}
+        <div class="quickResults-item quickResults-text">
+            {{#if theme_settings.halo-before-quick-results-trending-now-title}}
+                <h3 class="quickResults-title">{{theme_settings.halo-before-quick-results-trending-now-title}}</h3>
+            {{/if}}
+            <ul class="productGrid-search">
+                {{#if theme_settings.halo-before-quick-results-trending-now-1}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.halo-before-quick-results-trending-now-1)}}&section=product">
+                            <svg class="icon"><use xlink:href="#icon-search"></use></svg>{{theme_settings.halo-before-quick-results-trending-now-1}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#if theme_settings.halo-before-quick-results-trending-now-2}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.halo-before-quick-results-trending-now-2)}}&section=product">
+                            <svg class="icon"><use xlink:href="#icon-search"></use></svg>{{theme_settings.halo-before-quick-results-trending-now-2}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#if theme_settings.halo-before-quick-results-trending-now-3}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.halo-before-quick-results-trending-now-3)}}&section=product">
+                            <svg class="icon"><use xlink:href="#icon-search"></use></svg>{{theme_settings.halo-before-quick-results-trending-now-3}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#if theme_settings.halo-before-quick-results-trending-now-4}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.halo-before-quick-results-trending-now-4)}}&section=product">
+                            <svg class="icon"><use xlink:href="#icon-search"></use></svg>{{theme_settings.halo-before-quick-results-trending-now-4}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#if theme_settings.halo-before-quick-results-trending-now-5}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.halo-before-quick-results-trending-now-5)}}&section=product">
+                            <svg class="icon"><use xlink:href="#icon-search"></use></svg>{{theme_settings.halo-before-quick-results-trending-now-5}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#if theme_settings.halo-before-quick-results-trending-now-6}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.halo-before-quick-results-trending-now-6)}}&section=product">
+                            <svg class="icon"><use xlink:href="#icon-search"></use></svg>{{theme_settings.halo-before-quick-results-trending-now-6}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#if theme_settings.halo-before-quick-results-trending-now-7}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.halo-before-quick-results-trending-now-7)}}&section=product">
+                            <svg class="icon"><use xlink:href="#icon-search"></use></svg>{{theme_settings.halo-before-quick-results-trending-now-7}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#if theme_settings.halo-before-quick-results-trending-now-8}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.halo-before-quick-results-trending-now-8)}}&section=product">
+                            <svg class="icon"><use xlink:href="#icon-search"></use></svg>{{theme_settings.halo-before-quick-results-trending-now-8}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#if theme_settings.halo-before-quick-results-trending-now-9}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.halo-before-quick-results-trending-now-9)}}&section=product">
+                            <svg class="icon"><use xlink:href="#icon-search"></use></svg>{{theme_settings.halo-before-quick-results-trending-now-9}}
+                        </a>
+                    </li>
+                {{/if}}
+                {{#if theme_settings.halo-before-quick-results-trending-now-10}}
+                    <li class="search-item">
+                        <a class="link" href="/search.php?search_query={{lowercase (plusify theme_settings.halo-before-quick-results-trending-now-10)}}&section=product">
+                            <svg class="icon"><use xlink:href="#icon-search"></use></svg>{{theme_settings.halo-before-quick-results-trending-now-10}}
+                        </a>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+    {{/if}}
+    <div class="quickResults-item quickResults-product">
+        {{#if product_results.products}}
+            <h3 class="quickResults-title">{{lang 'search.results.title'}} ({{pagination.product_results.total}})</h3>
+            <a class="quickResults-link" href="/search.php?search_query={{lowercase (plusify forms.search.query)}}&section=product">
+                <span class="text">{{lang 'search.view_all'}}</span>
+            </a>
+            <ul class="productGrid haloCustomScrollbar-x" {{#if settings.data_tag_enabled}} data-list-name="Quick Search Results" {{/if}}>
+                {{#each (limit product_results.products theme_settings.quickSearchResultLimit)}}
+                    <li class="product">
+                        {{> components/halothemes/search/halo-quick-results-tmp-2 settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1) productsnew=../productsnew}}
+                    </li>
+                {{/each}}
+            </ul>
+        {{else}}
+            <h3 class="quickResults-title">{{lang 'search.results.title'}} ({{pagination.product_results.total}})</h3>
+            <p class="quickSearchMessage">
+                {{{lang 'search.results.quick_count' count=pagination.product_results.total search_query=(sanitize forms.search.query) }}}
+            </p>
+        {{/if}}
+    </div>
+</div>

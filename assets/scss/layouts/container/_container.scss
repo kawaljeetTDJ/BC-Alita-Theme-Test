@@ -1,0 +1,84 @@
+// =============================================================================
+// GRID (CSS)
+// =============================================================================
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+
+    @media (max-width: 1024px){
+    	.halo-block & {
+    		&.container-no-padding{
+				padding-left: 0;
+				padding-right: 0;
+			}
+    	}
+    }
+
+    @media (min-width: 1025px) {
+        max-width: 1200px;
+    }
+}
+
+.page-full-width{
+	.container{
+	    padding-left: 15px;
+	    padding-right: 15px;
+		width: 100%;
+	    max-width: 100%;
+	}
+
+	.page-container{
+	    position: relative;
+	    background-color: #ffffff;
+		transition: all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1);
+
+		.container{
+			max-width: 1570px;
+		}
+	}
+
+	@media (min-width: 1025px){
+		.container{
+			padding-left: 30px;
+		    padding-right: 30px;
+
+		    &.container-custom{
+		    	max-width: 1200px;
+		    	padding-left: 15px;
+		    	padding-right: 15px;
+		    }
+
+		    &.container-custom-3{
+		    	padding-right: 0;
+		    }
+		}
+
+		.page-container{
+		    z-index: 2;
+		}
+	}
+
+	@media (min-width: 1600px){
+		.container{
+			max-width: 100%;
+		    padding-left: calc((100% - 1470px)/2);
+		    padding-right: calc((100% - 1470px)/2);
+		}
+	}
+
+	@media (min-width: 1920px){
+		.container{
+		    padding-left: calc((100% - 1570px)/2);
+		    padding-right: calc((100% - 1570px)/2);
+
+		    &.container-custom-2{
+		    	padding-left: calc((100% - 1770px)/2);
+    			padding-right: calc((100% - 1770px)/2);
+		    }
+		}
+	}
+}

@@ -1,0 +1,9 @@
+<form class="actionBar" data-show-gallery>
+    <div class="form-field">
+        <label class="form-label" for="view_as">{{lang 'common.view_as'}}</label>
+        <select class="form-select" name="view_as" id="view_as">
+            <option value="grid" {{#if theme_settings.product_list_display_mode '===' 'grid'}}selected{{/if}}>{{lang 'common.view_grid'}}</option>
+            <option value="list" {{#if theme_settings.product_list_display_mode '===' 'list'}}selected{{/if}}>{{lang 'common.view_list'}}</option>
+        </select>
+    </div>
+</form>

@@ -1,0 +1,30 @@
+<nav class="navPages">
+    <ul class="navPages-list{{#if theme_settings.haloMegamenu}} navPages-list-megamenu{{/if}}" {{#if theme_settings.haloMenuResize}} id="halo-menu-resize"{{/if}}>
+        {{#each categories}}
+            <li class="navPages-item{{#if children}} has-dropdown{{/if}}">
+                {{> components/common/navigation-list-alternate}}
+            </li>
+        {{/each}}
+        {{#unless theme_settings.hide_content_navigation}}
+            {{#each pages}}
+                {{#if name '!=' 'Blog'}}
+                    <li class="navPages-item navPages-item-page{{#if children}} has-dropdown{{/if}}">
+                        {{> components/common/navigation-list-alternate}}
+                    </li>
+                {{/if}}
+            {{/each}}
+        {{/unless}}
+        {{#if theme_settings.haloMenuResize}}
+            <li class="navPages-item navPages-item-toggle u-hiddenVisually">
+                <p class="navPages-action has-subMenu is-root">
+                    <span class="text">
+                        <svg><use xlink:href="#icon-more"></use></svg>
+                    </span>
+                </p>
+                <div class="navPage-subMenu navPage-subMenu-horizontal" aria-hidden="true" tabindex="-1">
+                    <ul class="navPage-subMenu-list" id="halo-navPages-dropdown" data-dropdown-menu-content></ul>
+                </div>
+            </li>
+        {{/if}}
+    </ul>
+</nav>

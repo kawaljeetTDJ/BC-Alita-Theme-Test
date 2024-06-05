@@ -1,0 +1,19 @@
+<div id="facetedSearch" class="facetedSearch sidebarBlock">
+    {{> components/faceted-search/selected-facets selected}}
+
+    {{#any facets visible=true}}
+        <div id="facetedSearch-navList"
+            class="facetedSearch-navList"
+        >
+            <div class="accordion accordion--navList">
+                {{#each facets}}
+                    {{#if visible}}
+                        {{{dynamicComponent 'components/faceted-search/facets'}}}
+                    {{/if}}
+                {{/each}}
+            </div>
+
+            <div class="blocker" style="display: none;"></div>
+        </div>
+    {{/any}}
+</div>

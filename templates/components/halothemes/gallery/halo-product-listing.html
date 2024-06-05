@@ -1,0 +1,17 @@
+{{#each category.products}}
+    <li class="product">
+        {{> components/products/card-gallery productsnew=../products.new settings=../settings show_compare=../category.show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer position=(add @index 1)}}
+    </li>
+{{/each}}
+
+{{#each brand.products}}
+    <li class="product">
+        {{> components/products/card-gallery productsnew=../products.new settings=../settings show_compare=../brand.show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer position=(add @index 1)}}
+    </li>
+{{/each}}
+
+{{#each product_results.products}}
+    <li class="product">
+        {{> components/products/card-gallery productsnew=../products.new settings=../settings show_compare=../product_results.show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer position=(add @index 1)}}
+    </li>
+{{/each}}

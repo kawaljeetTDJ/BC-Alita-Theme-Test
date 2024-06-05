@@ -1,0 +1,212 @@
+{{#and (if page_type '==' 'default') (if theme_settings.haloTransparentHeader)}}
+    <header class="header header-transparent{{#if theme_settings.haloStickyHeader}} header-sticky{{/if}}" role="banner">
+{{else}}
+    <header class="header{{#if theme_settings.haloStickyHeader}} header-sticky{{/if}}" role="banner">
+{{/and}}
+    {{#if theme_settings.halo_top_bar_promotion}}
+        <div class="halo-top-bar-promotion">
+            <div class="container">
+                <p class="text">
+                    {{theme_settings.halo-top_bar_promotion-text}}
+                </p>
+            </div>
+        </div>
+    {{/if}}
+    <div class="halo-topHeader">
+        <div class="container">
+            {{#or (if theme_settings.halo-book-an-appointment) (if currency_selector.currencies.length '>' 1)}}
+                <div class="topHeader-item text-left">
+                    {{#if currency_selector.currencies.length '>' 1}}
+                        <div class="topHeader-item__item">
+                            {{> components/common/currency-selector}}
+                        </div>
+                    {{/if}}
+                    {{#if theme_settings.halo-book-an-appointment}}
+                        <div class="topHeader-item__item">
+                            <a href="#" class="topHeader-item__link" data-book-an-appointment>
+                                <span class="text">
+                                    <span>{{theme_settings.halo-book-an-appointment-title}}</span>
+                                </span>
+                            </a>
+                        </div>
+                    {{/if}}
+                </div>
+            {{/or}}
+            <div class="topHeader-item text-right">
+                {{#if customer}}
+                    <div class="topHeader-item__item">
+                        <span class="topHeader-item__link">
+                            <span class="text">Hi, <strong>{{ellipsis customer.name 30}}</strong></span>
+                        </span>
+                    </div>
+                    <div class="topHeader-item__item">
+                        <a href="{{urls.account.index}}" class="topHeader-item__link" data-login-form>
+                            <span class="text">{{lang 'common.account'}}</span>
+                        </a>
+                    </div>
+                {{else}}
+                    <div class="topHeader-item__item">
+                        <a href="{{urls.auth.login}}" class="topHeader-item__link" data-login-form>
+                            <span class="text">
+                                <span>{{lang 'common.login'}}</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="topHeader-item__item">
+                        <a href="{{urls.auth.create_account}}" class="topHeader-item__link">
+                            <span class="text">
+                                <span>{{lang 'common.sign_up'}}</span>
+                            </span>
+                        </a>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="halo-middleHeader{{#unless settings.store_logo.image}} halo-middleHeader-2{{/unless}}">
+        <div class="container">
+            <div class="middleHeader-item text-left">
+                <div class="middleHeader-item__item item--hamburger">
+                    <a class="mobileMenu-toggle" href="#" data-mobile-menu-toggle="menu">
+                        <span class="mobileMenu-toggleIcon">{{lang 'common.toggle_menu'}}</span>
+                    </a>
+                </div>
+                <div class="middleHeader-item__item item--searchMobile">
+                    <a class="navUser-action" href="#" data-search="quickSearch" aria-controls="quickSearch" aria-expanded="false">
+                        <div class="navUser-icon">
+                            <svg class="icon" role="img" aria-label="{{lang 'search.quick_search.input_label'}}">
+                                <title>{{lang 'search.quick_search.input_label'}}</title>
+                                <desc>{{lang 'search.quick_search.input_placeholder'}}</desc>
+                                <use xlink:href="#icon-search"></use>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="middleHeader-item text-center">
+                <div class="middleHeader-item__item item--logo">
+                    {{#if page_type '===' 'default'}}
+                        <h1 class="header-logo">
+                            {{> components/common/store-logo}}
+                        </h1>
+                    {{else}}
+                        <div class="header-logo">
+                            {{> components/common/store-logo}}
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="middleHeader-item text-right">
+                <div class="middleHeader-item__item item--quicksearch halo-search">
+                    <a class="navUser-action" href="#" data-search-popup>
+                        <div class="navUser-icon">
+                            <svg class="icon" role="img" aria-label="{{lang 'search.quick_search.input_label'}}">
+                                <title>{{lang 'search.quick_search.input_label'}}</title>
+                                <desc>{{lang 'search.quick_search.input_placeholder'}}</desc>
+                                <use xlink:href="#icon-search"></use>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="middleHeader-item__item item--account">
+                    <a class="navUser-action myAccountMobile" {{#if customer}}href="{{urls.account.index}}"{{else}}href="{{urls.auth.login}}"{{/if}} data-login-form>
+                        <div class="navUser-icon">
+                            <svg class="icon" role="img" aria-label="{{lang 'common.account'}}">
+                                <title>{{lang 'common.account'}}</title>
+                                <desc>{{lang 'common.account'}}</desc>
+                                <use xlink:href="#icon-user"></use>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                {{#if settings.show_wishlist}}
+                    <div class="middleHeader-item__item item--wishlist">
+                        <a class="navUser-action" href="{{urls.account.wishlists.all}}">
+                            <div class="navUser-icon">
+                                <svg class="icon" role="img" aria-label="{{lang 'account.wishlists.heading'}}">
+                                    <title>{{lang 'account.wishlists.heading'}}</title>
+                                    <desc>{{lang 'account.wishlists.heading'}}</desc>
+                                    <use xlink:href="#icon-heart"></use>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                {{/if}}
+                <div class="middleHeader-item__item item--cart halo-cart">
+                    <a class="navUser-action" data-cart-preview href="{{urls.cart}}">
+                        <div class="navUser-icon navUser-item-cartIcon">
+                            <svg class="icon" role="img" aria-label="{{lang 'cart.cart_preview'}}">
+                                <title>{{lang 'cart.cart_preview'}}</title>
+                                <desc>{{lang 'cart.cart_preview'}}</desc>
+                                <use xlink:href="#icon-cart"></use>
+                            </svg>
+                            <span class="countPill cart-quantity">{{#if cart.items}}{{cart.quantity}}{{else}}0{{/if}}</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="halo-bottomHeader">
+        <div class="container">
+            <div class="bottomHeader-item text-left">
+                <div class="bottomHeader-item__item item--sticky-logo">
+                    {{#if page_type '===' 'default'}}
+                        <h1 class="header-logo">
+                            {{> components/common/store-logo}}
+                        </h1>
+                    {{else}}
+                        <div class="header-logo">
+                            {{> components/common/store-logo}}
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="bottomHeader-item text-center">
+                <div class="navPages-container bottomHeader-item__item" id="menu" data-menu>
+                    {{> components/common/navigation-menu}}
+                </div>
+            </div>
+            <div class="bottomHeader-item text-right">
+                <div class="bottomHeader-item__item item--quicksearch halo-search">
+                    <a class="navUser-action" href="#" data-search-popup>
+                        <div class="navUser-icon">
+                            <svg class="icon" role="img" aria-label="{{lang 'search.quick_search.input_label'}}">
+                                <title>{{lang 'search.quick_search.input_label'}}</title>
+                                <desc>{{lang 'search.quick_search.input_placeholder'}}</desc>
+                                <use xlink:href="#icon-search"></use>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                {{#if settings.show_wishlist}}
+                    <div class="bottomHeader-item__item item--wishlist">
+                        <a class="navUser-action" href="{{urls.account.wishlists.all}}">
+                            <div class="navUser-icon">
+                                <svg class="icon" role="img" aria-label="{{lang 'account.wishlists.heading'}}">
+                                    <title>{{lang 'account.wishlists.heading'}}</title>
+                                    <desc>{{lang 'account.wishlists.heading'}}</desc>
+                                    <use xlink:href="#icon-heart"></use>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                {{/if}}
+                <div class="bottomHeader-item__item item--cart halo-cart">
+                    <a class="navUser-action" data-cart-preview href="{{urls.cart}}">
+                        <div class="navUser-icon navUser-item-cartIcon">
+                            <svg class="icon" role="img" aria-label="{{lang 'cart.cart_preview'}}">
+                                <title>{{lang 'cart.cart_preview'}}</title>
+                                <desc>{{lang 'cart.cart_preview'}}</desc>
+                                <use xlink:href="#icon-cart"></use>
+                            </svg>
+                            <span class="countPill cart-quantity">
+                                {{#if cart.items}}{{cart.quantity}}{{else}}0{{/if}}
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

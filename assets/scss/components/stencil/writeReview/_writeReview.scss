@@ -1,0 +1,111 @@
+// =============================================================================
+// WRITE A REVIEW (CSS)
+// =============================================================================
+
+.writeReview-productDetails {
+    text-align: center;
+
+    .product-brand {
+        font-family: $fontFamily-sans;
+        font-size: $fontSize-root - 2px;
+        font-weight: $fontWeight-normal;
+        color: $color-textSecondary;
+        line-height: 28px;
+        text-transform: uppercase;
+        margin: 19px 0 0 0;
+
+        + .product-title{
+            margin-top: 0;
+        }
+    }
+
+    .product-title {
+        font-family: $fontFamily-sans;
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-bold;
+        line-height: 2;
+        letter-spacing: $letterSpacing-base;
+        text-transform: capitalize;
+        color: $color-textBase;
+        margin-top: 19px;
+        margin-bottom: 0;
+    }
+
+    @media (min-width: 768px) {
+        @include grid-column(6);
+        padding-right: 15px;
+        margin-top: 10px;
+    }
+}
+
+.writeReview-form {
+    margin-top: 30px;
+
+    .form-field{
+        margin-bottom: 24px;
+    }
+
+    .form-label{
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        line-height: 20px;
+        letter-spacing: $letterSpacing-base;
+        color: $color-textBase;
+        margin-bottom: 12px;
+
+        small{
+            font-size: $fontSize-root - 2px;
+            font-weight: $fontWeight-normal;
+            font-style: italic;
+            letter-spacing: $letterSpacing-base;
+            line-height: 20px;
+            margin-top: 0;
+            text-transform: capitalize;
+        }
+    }
+
+    .form-select{
+        height: 50px;
+        max-width: 100%;
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        letter-spacing: $letterSpacing-base;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-position: right 10px top 15px;
+    }
+
+    .form-input{
+        &[rows]{
+            height: 170px;
+        }
+    }
+
+    .button{
+        width: auto;
+        min-width: 230px;
+        text-transform: uppercase;
+    }
+
+    @media (min-width: 768px) {
+        position: relative;
+        top: -5px;
+        margin-top: 10px;
+        @include grid-column(6);
+        padding-left: 15px;
+    }
+}
+
+.writeReview-productImage-container {
+    position: relative;
+
+    img {
+        @include lazy-loaded-img;
+        height: 100%;
+        object-fit: contain;
+        /* Object-fit polyfill */
+        font-family: 'object-fit: contain;';
+    }
+
+    @include lazy-loaded-padding('product_size');
+}

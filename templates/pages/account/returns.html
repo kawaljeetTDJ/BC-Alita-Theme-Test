@@ -1,0 +1,27 @@
+{{#partial "page"}}
+	<div class="container">
+	    <div class="breadcrumb-wrapper">
+	        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+	    </div>
+	    <div class="page page-account">
+	        <div class="page-header">
+	            <h1 class="page-heading">{{lang 'account.returns.heading' }}</h1>
+	        </div>
+	        {{> components/account/navigation account_page='returns'}}
+	        <main class="page-content">
+	            <div class="account">
+	                <div class="account-body">
+	                    <section class="account-content account-content2">
+	                        {{#if customer.returns}}
+				                {{> components/account/returns-list returns=customer.returns}}
+				            {{else}}
+				                {{> components/common/alert/alert-info (lang 'account.returns.none')}}
+				            {{/if}}
+	                    </section>
+	                </div>
+	            </div>
+	        </main>
+	    </div>
+	</div>
+{{/partial}}
+{{> layout/base}}

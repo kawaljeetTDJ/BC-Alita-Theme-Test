@@ -1,0 +1,31 @@
+{{#if currency_selector.currencies.length '>' 1}}
+    <a class="topHeader-item__link topHeader-item__currency"
+        href="#"
+        data-dropdown="currencySelection"
+        aria-controls="currencySelection"
+        aria-expanded="false"
+    >
+        <span class="flag">{{{currency_selector.active_currency_flag}}}</span> 
+        <span class="text">
+            <span>{{lang 'common.currency' code=currency_selector.active_currency_code}}</span>
+        </span>
+        <svg class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-down" /></svg>
+    </a>
+    <ul class="dropdown-menu" id="currencySelection" data-dropdown-content aria-hidden="true" tabindex="-1">
+        {{#each currency_selector.currencies}}
+        <li class="dropdown-menu-item">
+            <a href="{{{switch_url}}}"
+               data-currency-code="{{{code}}}"
+               {{#if cart_currency_switch_url.length '>' 0 }}
+               data-cart-currency-switch-url="{{{cart_currency_switch_url}}}"
+               {{/if}}
+               data-warning="{{lang 'common.currency_switch_promotion'}}"
+              {{#if is_active}} class="is-active"{{/if}}
+            >
+                <span class="flag">{{{flag}}}</span>
+                <span class="text">{{code}}</span>
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+{{/if}}

@@ -1,0 +1,37 @@
+<ul class="socialLinks socialLinks--alt">
+	{{#if position '==' 'footer'}}
+        {{#each social_media}}
+            <li class="socialLinks-item">
+                <a class="icon icon--{{display_name}}" href="{{url}}" target="_blank" rel="noopener">
+                    <svg role="img" aria-label="{{display_name}}">
+                        <title>{{display_name}}</title>
+                        <desc>{{display_name}}</desc>
+                        <use xlink:href="#icon-{{display_name}}" />
+                    </svg>
+                </a>
+            </li>
+        {{/each}}
+        {{#if theme_settings.show_social-links-messenger}}
+        	<li class="socialLinks-item">
+                <a class="icon icon--messenger" href="{{theme_settings.show_social-links-messenger}}" target="_blank" rel="noopener">
+                    <svg role="img" aria-label="{{theme_settings.show_social-links-messenger}}">
+                        <title>{{theme_settings.show_social-links-messenger}}</title>
+                        <desc>{{theme_settings.show_social-links-messenger}}</desc>
+                        <use xlink:href="#icon-messenger" />
+                    </svg>
+                </a>
+            </li>
+        {{/if}}
+        {{#if theme_settings.show_social-links-snapchat}}
+        	<li class="socialLinks-item">
+                <a class="icon icon--snapchat" href="{{theme_settings.show_social-links-snapchat}}" target="_blank" rel="noopener">
+                    <svg role="img" aria-label="{{theme_settings.show_social-links-snapchat}}">
+                        <title>{{theme_settings.show_social-links-snapchat}}</title>
+                        <desc>{{theme_settings.show_social-links-snapchat}}</desc>
+                        <use xlink:href="#icon-snapchat" />
+                    </svg>
+                </a>
+            </li>
+        {{/if}}
+	{{/if}}
+</ul>

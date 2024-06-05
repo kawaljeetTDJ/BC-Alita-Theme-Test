@@ -1,0 +1,53 @@
+<section class="productCarousel"
+    id="{{block_id}}"
+    data-list-name="{{list}}"
+    data-slick='{
+        "dots": true,
+        "arrows": false,
+        "infinite": false,
+        "mobileFirst": true,
+        "adaptiveHeight": true,
+        "infinite": false,
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "slide": ".js-product-slide",
+        "nextArrow": "<svg class=&apos;slick-next slick-arrow&apos;><use xlink:href=&apos;#slick-arrow-next2&apos;></use></svg>", 
+        "prevArrow": "<svg class=&apos;slick-prev slick-arrow&apos;><use xlink:href=&apos;#slick-arrow-prev2&apos;></use></svg>",
+        "responsive": [
+            {
+                "breakpoint": 1024,
+                "settings": {
+                    "arrows": true,
+                    "slidesToShow": {{block_column}},
+                    "slidesToScroll": 1
+                }
+            },
+            {
+                "breakpoint": 991,
+                "settings": {
+                    "slidesToShow": 4,
+                    "slidesToScroll": 1
+                }
+            },
+            {
+                "breakpoint": 767,
+                "settings": {
+                    "slidesToShow": 3,
+                    "slidesToScroll": 1
+                }
+            },
+            {
+                "breakpoint": 320,
+                "settings": {
+                    "slidesToShow": 2,
+                    "slidesToScroll": 1
+                }
+            }
+        ]
+    }'>
+    {{#each (limit products block_limit)}}
+        <div class="productCarousel-slide js-product-slide">
+            {{> components/products/card productsnew=../productsnew settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+        </div>
+    {{/each}}
+</section>

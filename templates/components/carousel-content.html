@@ -1,0 +1,11 @@
+<div class="heroCarousel-content{{#or (if show_background '!=' true) (if carousel_bgColor '==' 'transparent')}} heroCarousel-content--empty{{/or}} heroCarousel-content--{{position}}">
+    {{#if heading}}
+    	<span class="heroCarousel-title animated">{{{heading}}}</span>
+    {{/if}}
+    {{#if text}}
+    	<p class="heroCarousel-description animated">{{{text}}}</p>
+    {{/if}}
+    {{#if button_text}}
+        <span class="heroCarousel-action button animated">{{button_text}}</span>
+    {{/if}}
+</div>

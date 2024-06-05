@@ -1,0 +1,12 @@
+<li>
+    <a href="{{url}}">
+    	<span class="text">{{label}}</span>
+    </a>
+    {{#if children}}
+        <ul>
+            {{#each children}}
+                {{> components/sitemap/links}}
+            {{/each}}
+        </ul>
+    {{/if}}
+</li>

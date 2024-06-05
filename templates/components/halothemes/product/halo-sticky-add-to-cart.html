@@ -1,0 +1,111 @@
+{{#if theme_settings.halo_sticky_add_to_cart}}
+	<div class="sticky-add-to-cart{{#if theme_settings.halo_product_template_mobile}} sticky-add-to-cart-2{{/if}}">
+		<a href="#" class="sticky-product-close">
+			<svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+	        	<title>{{lang 'common.close'}}</title>
+	        	<desc>{{lang 'common.close'}}</desc>
+	        	<use xlink:href="#icon-close"></use>
+	        </svg>
+		</a>
+		<div class="sticky-product-wrapper">
+			<div class="sticky-product">
+				<div class="sticky-image">
+					{{> components/common/responsive-img
+	                    image=product.main_image
+	                    class=""
+	                    fallback_size=theme_settings.productgallery_size
+	                    lazyload=theme_settings.lazyload_mode
+	                    default_image=theme_settings.default_image_product
+	                }}
+				</div>
+				<div class="sticky-content">
+					{{#if product.brand}}
+	                    <h2 class="sticky-brand"><span>{{product.brand.name}}</span></h2>
+	                {{/if}}
+	                <h3 class="sticky-title" style="-webkit-box-orient: vertical;">{{product.title}}</h3>
+	                <div class="sticky-price">
+	                	{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+	                        {{> components/products/price price=product.price}}
+	                    {{/or}}
+	                </div>
+	                <form class="form sticky-form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add-2>
+		                <input type="hidden" name="action" value="add">
+		                <input type="hidden" name="product_id" value="{{product.id}}"/>
+		                {{#if product.options.length}}
+		                    <div class="sticky-options">
+		                    	<div class="sticky-options-label">
+		                    		<span class="text">{{lang 'products.choose_options'}}</span>
+		                    		<svg class="icon"><use xlink:href="#icon-chevron-down"></use></svg>
+		                    	</div>
+		                        <div class="sticky-options-dropdown haloCustomScrollbar"></div>
+		                    </div>
+		                {{/if}}
+		                {{#if product.options.length}}
+			                <div class="sticky-actions" data-product-sku-add="{{product.sku}}">
+			                    {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+			                        <div class="form-action">
+			                        	{{#if product.options.length}}
+			                        		<button type="submit" class="button button--primary" disabled {{#if product.options.length}}{{#each product.options}}{{#all (if type '!=' 'Configurable_PickList_Swatch') (if type '!=' 'Configurable_PickList_Set')}} disabled2{{/all}}{{/each}}{{/if}} data-wait-message="{{lang 'products.adding_to_cart'}}">{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}</button>
+			                        	{{/if}}
+			                        </div>
+			                    {{else}}
+			                    	<div class="form-action form-action2">
+			                           	<span class="form-action-text">
+			                           		<span class="text">{{lang 'common.restrict_to_login'}}</span>
+			                           	</span>
+			                        </div>
+			                    {{/or}}
+		                	</div>
+			            {{else}}
+			            	{{#if product.can_purchase}}
+			                	<div class="sticky-actions" data-product-sku-add="{{product.sku}}">
+				                    {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+				                        <div class="form-action">
+				                        	<button type="submit" class="button button--primary" data-wait-message="{{lang 'products.adding_to_cart'}}">{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}</button>
+				                        </div>
+				                    {{else}}
+				                    	<div class="form-action form-action2">
+				                           	<span class="form-action-text">
+				                           		<span class="text">{{lang 'common.restrict_to_login'}}</span>
+				                           	</span>
+				                        </div>
+				                    {{/or}}
+			                	</div>
+			                {{/if}}
+			                {{#if product.out_of_stock}}
+			                	<div class="sticky-actions">
+				                    {{#if product.out_of_stock_message}}
+			                            <div class="form-action form-action2">
+			                                <span class="form-action-text">
+			                                	<span class="text">{{product.out_of_stock_message}}</span>
+			                                </span>
+			                            </div>
+			                        {{else}}
+			                            <div class="form-action form-action2">
+			                                <span class="form-action-text">
+			                                	<span class="text">{{lang products.sold_out}}</span>
+			                                </span>
+			                            </div>
+			                        {{/if}}
+			                    </div>
+			                {{/if}}
+			            {{/if}}
+		            </form>
+		            {{#if settings.show_wishlist}}
+	                    <a href="/wishlist.php?action=add&product_id={{product.id}}" class="sticky-wishlist">
+		                    <span class="text">{{lang 'products.wishlist_text'}}</span>
+		                    <svg class="icon" role="img" aria-label="{{lang 'account.wishlists.heading'}}">
+                                <title>{{lang 'account.wishlists.heading'}}</title>
+                                <desc>{{lang 'account.wishlists.heading'}}</desc>
+                                <use xlink:href="#icon-heart"></use>
+                            </svg>
+		                </a>
+	                {{/if}}
+				</div>
+			</div>
+		</div>
+		<div class="sticky-product-expand">
+            <svg class="icon"><use xlink:href="#icon-external-add"></use></svg>
+        </div>
+	</div>
+{{/if}}

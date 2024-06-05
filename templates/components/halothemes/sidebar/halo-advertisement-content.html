@@ -1,0 +1,15 @@
+{{#if theme_settings.halo-sidebar-custom-block}}
+	<div class="sidebarBlock" id="advertisement-content">
+		{{#if theme_settings.halo-sidebar-custom-block-title}}
+	    	<h3 class="sidebarBlock-heading">{{theme_settings.halo-sidebar-custom-block-title}}</h3>
+	    {{/if}}
+	    {{#or (if theme_settings.halo-sidebar-custom-block-text1) (if theme_settings.halo-sidebar-custom-block-text2) (if theme_settings.halo-sidebar-custom-block-text3) (if theme_settings.halo-sidebar-custom-block-text4)}}
+		    <div class="sidebarBlock-content">
+		    	<div class="advertisement-content">
+			        <p>{{theme_settings.halo-sidebar-custom-block-text1}} {{theme_settings.halo-sidebar-custom-block-text2}}</p>
+					<p>{{theme_settings.halo-sidebar-custom-block-text3}} {{theme_settings.halo-sidebar-custom-block-text4}}</p>
+		    	</div>
+		    </div>
+		{{/or}}
+	</div>
+{{/if}}

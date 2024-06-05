@@ -1,0 +1,23 @@
+{{#partial "page"}}
+	<div class="page-container">
+	    <div class="container">
+	        <div class="breadcrumb-wrapper">
+	            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+	        </div>
+	        <div class="page page-account">
+	            <div class="page-header">
+	                <h1 class="page-heading">{{lang 'create_account.created.heading'}}</h1>
+	            </div>
+	            <main class="page-content">
+	            	<div class="account">
+		        		<div class="account-body">
+		        			<p class="new-password-text">{{{lang 'create_account.created.intro' store_name=settings.store_name email=customer.email}}}</p>
+	            			<a class="button button--primary" href="{{create_account.continue_url}}">{{lang 'create_account.created.continue'}}</a>
+		        		</div>
+		        	</div>
+	            </main>
+	        </div>
+	    </div>
+	</div>
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,43 @@
+<div class="item" data-item-id="product-{{product.id}}">
+    <a href="{{product.url}}" class="first-info" data-product-url>
+        <img src="{{getImage product.main_image 'thumb_size' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}" title="{{product.main_image.alt}}"/>
+    </a>
+    <div class="second-info">
+        <div class="first product-item" data-product-id="product-{{product.id}}">
+            <a class="product-title product-grid-image" href="{{product.url}}">
+                <span class="text">{{product.title}}</span>
+            </a>
+            <div class="prod-price" data-test-info-type="price">
+                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                    {{> components/products/price price=product.price customer=customer}}
+                {{else}}
+                    {{> components/common/login-for-pricing}}
+                {{/or}}
+            </div>
+            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                {{#if product.options}}
+                    <a href="{{product.url}}" class="button button--primary">
+                        <span>{{lang 'products.choose_options'}}</span>
+                    </a>
+                {{else}}
+                    {{#if product.can_purchase }}
+                        <a href="/cart.php?action=add&product_id={{product.id}}" class="button button--primary{{#unless settings.data_tag_enabled}} halo-add-to-cart{{/unless}}" data-product-id="{{product.id}}">
+                            <span>{{lang 'products.add_to_cart'}}</span>
+                        </a>
+                    {{else}}
+                        {{#if product.out_of_stock_message}}
+                            <a href="{{product.url}}" class="button button--primary button--sold-out">
+                                <span>{{lang 'products.sold_out_label'}}</span>
+                            </a>
+                        {{else}}
+                            <a href="{{product.url}}" class="button button--primary button--sold-out">
+                                <span>{{lang 'products.sold_out_label'}}</span>
+                            </a>
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+            {{/or}}
+        </div>
+        <a class="text-no-underline second" href="{{product.url}}"></a>
+    </div>
+</div>

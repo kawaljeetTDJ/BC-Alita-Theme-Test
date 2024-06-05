@@ -1,0 +1,18 @@
+{{#if listid}}
+	<div class="halo-block halo-block-product" data-list-id="{{listid}}" id="product-by-list-{{id}}">
+		<div class="loadingOverlay"></div>
+		<div class="container">
+			<div class="halo-block-header">
+	            <h3 class="title">{{title}}</h3>
+	        </div>
+	        {{#if block_layout}}
+	        	<div class="productCarousel"></div>
+	        {{else}}
+	        	<ul class="productGrid col-{{block_column}}" id="block_{{id}}" data-block="block_{{id}}"></ul>
+	        {{/if}}
+		</div>
+	</div>
+{{/if}}
+{{#if page_type '==' 'default'}}
+    {{{region name="home_below_products_by_ids"}}}
+{{/if}}

@@ -1,0 +1,55 @@
+<div class="productView-reviews-wrapper">
+    {{#if reviews.total}}
+        <div class="productReview-total">
+            <span>
+                {{lang 'products.reviews.link_to_review' total=reviews.total}}
+            </span>
+        </div>
+        <ul class="productReviews-list" id="productReviews-list">
+            {{#each reviews.list}}
+                <li class="productReview">
+                    <article itemprop="review" itemscope itemtype="http://schema.org/Review">
+                        <header>
+                            <h5 itemprop="name" class="productReview-title">
+                                <span class="productReview-title-text">{{{ sanitize title }}}</span>
+                                <span class="productReview-rating rating--small" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                                    {{> components/products/ratings rating=rating}}
+                                    <span class="productReview-ratingNumber" itemprop="ratingValue">{{ rating }}</span>
+                                </span>
+                            </h5>
+                            {{#if name}}
+                                <meta itemprop="author" content="{{name}}">
+                                <p class="productReview-author">
+                                    {{lang 'products.reviews.post_on_by' date=date name=name }}
+                                </p>
+                            {{else}}
+                                <p class="productReview-author">
+                                    {{lang 'products.reviews.post_on_by' date=date name=(lang 'products.reviews.anonymous_poster')}}
+                                </p>
+                            {{/if}}
+                        </header>
+                        <p itemprop="reviewBody" class="productReview-body">{{{ sanitize text }}}</p>
+                    </article>
+                </li>
+            {{/each}}
+        </ul>
+        {{#or pagination.reviews.next pagination.reviews.previous}}
+            {{> components/common/paginator pagination.reviews}}
+        {{/or}}
+        <div class="button-createReview">
+            <a class="button button--secondary button--transparent-2" href="#" data-reveal-id="modal-review-form">{{lang 'products.reviews.write_a_review'}}</a>
+        </div>
+    {{else}}
+        <div class="alertBox alertBox--warning">
+            <div class="alertBox-column alertBox-icon">
+                <svg class="icon"><use xlink:href="#icon-info"></use></svg>
+            </div>
+            <p class="alertBox-column alertBox-message">
+                {{lang 'products.reviews.write_a_review_text'}}
+            </p>
+        </div>
+        <div class="button-createReview">
+            <a class="button button--secondary button--transparent-2" href="#" data-reveal-id="modal-review-form">{{lang 'products.reviews.write_a_review'}}</a>
+        </div>
+    {{/if}}
+</div>

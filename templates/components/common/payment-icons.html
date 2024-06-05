@@ -1,0 +1,69 @@
+{{#with theme_settings}}
+    {{#or show_accept_amex show_accept_discover show_accept_mastercard show_accept_paypal show_accept_visa show_accept_amazonpay show_accept_googlepay show_accept_klarna}}
+    <div class="footer-payment-icons">
+        {{#if show_accept_visa}}
+            <svg class="footer-payment-icon" role="img" aria-label="Visa">
+                <title>Visa</title>
+                <desc>Visa</desc>
+                <use xlink:href="#icon-logo-visa"></use>
+            </svg>
+        {{/if}}
+        {{#if show_accept_mastercard}}
+            <svg class="footer-payment-icon" role="img" aria-label="Mastercard">
+                <title>Mastercard</title>
+                <desc>Mastercard</desc>
+                <use xlink:href="#icon-logo-mastercard"></use>
+            </svg>
+        {{/if}}
+        {{#if show_accept_amex}}
+            <svg class="footer-payment-icon" role="img" aria-label="Amex">
+                <title>Amex</title>
+                <desc>Amex</desc>
+                <use xlink:href="#icon-logo-american-express"></use>
+            </svg>
+        {{/if}}
+        {{#if show_accept_discover}}
+            <svg class="footer-payment-icon" role="img" aria-label="Discover">
+                <title>Discover</title>
+                <desc>Discover</desc>
+                <use xlink:href="#icon-logo-discover"></use>
+            </svg>
+        {{/if}}
+        {{#if show_accept_paypal}}
+            <svg class="footer-payment-icon" role="img" aria-label="Paypal">
+                <title>Paypal</title>
+                <desc>Paypal</desc>
+                <use xlink:href="#icon-logo-paypal"></use>
+            </svg>
+        {{/if}}
+        {{#if show_accept_amazonpay}}
+            <svg class="footer-payment-icon" role="img" aria-label="Amazonpay">
+                <title>Amazonpay</title>
+                <desc>Amazonpay</desc>
+                <use xlink:href="#icon-logo-amazonpay"></use>
+            </svg>
+        {{/if}}
+        {{#if show_accept_googlepay}}
+            <svg class="footer-payment-icon" role="img" aria-label="Google Pay">
+                <title>Google Pay</title>
+                <desc>Google Pay</desc>
+                <use xlink:href="#icon-logo-googlepay"></use>
+            </svg>
+        {{/if}}
+        {{#if show_accept_klarna}}
+            <svg class="footer-payment-icon" role="img" aria-label="Klarna">
+                <title>Klarna</title>
+                <desc>Klarna</desc>
+                <use xlink:href="#icon-logo-klarna"></use>
+            </svg>
+        {{/if}}
+        {{#if show_accept_estern_union}}
+            <svg class="footer-payment-icon" role="img" aria-label="Estern Union">
+                <title>Estern Union</title>
+                <desc>Estern Union</desc>
+                <use xlink:href="#icon-logo-estern-union"></use>
+            </svg>
+        {{/if}}
+    </div>
+    {{/or}}
+{{/with}}

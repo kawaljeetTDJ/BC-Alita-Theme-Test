@@ -1,0 +1,60 @@
+// =============================================================================
+// Wishlist List (CSS)
+// =============================================================================
+
+.wishlists-table {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+
+    .table-tbody{
+        a{
+            &:not(.button){
+                display: inline-block;
+                vertical-align: top;
+                position: relative;
+                font-size: $fontSize-root;
+                font-weight: $fontWeight-bold;
+                color: $color-textBase;
+                line-height: 1.75;
+                letter-spacing: $letterSpacing-base;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.wishlist-header {
+    display: none;
+    text-align: center;
+}
+
+.modal .wishlist-header {
+    display: block;
+}
+
+.wishlist-form {
+    @include grid-row();
+
+    margin-left: auto;
+    margin-right: auto;
+    max-width: remCalc(550px);
+
+    .form-field {
+        @include grid-column(12);
+    }
+
+    &[data-account-wishlist-form]{
+        .form-field{
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+.share-wishlist {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: remCalc(650px);
+    text-align: center;
+}

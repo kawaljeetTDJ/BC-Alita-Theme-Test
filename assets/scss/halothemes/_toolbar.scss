@@ -1,0 +1,225 @@
+.halo-toolbar{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 30px 0;
+
+    .page-sidebar-mobile-wrapper{
+    	margin-bottom: 0;
+    }
+
+    @media (min-width: 320px) and (max-width: 1024px){
+    	&.sticky-down{
+	    	.has-stickyToolbar & {
+	    		position: fixed;
+	    		top: 0;
+	    		left: 0;
+	    		right: 0;
+	    		padding: 10px 15px;
+	    		background: #ffffff;
+	    		z-index: 98;
+	    		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	    		animation-name: fadeInDown;
+			    animation-duration: .5s;
+			    animation-fill-mode: both;
+	    	}
+
+	    	.stickyNavigation.has-stickyToolbar & {
+	    		top: 51px
+	    	}
+    	}
+    }
+
+	@media (min-width: 1025px){
+	    margin-bottom: 45px;
+	}
+}
+
+.toolbar-wrapper{
+	display: flex;
+	text-align: right;
+	padding: 0;
+
+	.toolbar-item{
+		display: block;
+		font-size: 0;
+		letter-spacing: 0;
+	}
+
+	.view-as-btn{
+		display: flex;
+		align-items: center;
+
+		.btn-view{
+			display: block;
+		    width: 46px;
+		    height: 46px;
+		    padding: 0 16px;
+		    background: #faf8f6;
+
+		    svg{
+		    	width: 100%;
+		    	height: 100%;
+		    	fill: #b9b8b7;
+		    }
+
+		    &.current-view{
+		    	background: $buttonStyle-default-backgroundColorActive;
+
+		    	svg{
+		    		fill: $buttonStyle-default-colorActive;
+		    	}
+		    }
+		}
+	}
+
+	.actionBar{
+		display: none;
+		vertical-align: top;
+		margin: 0;
+
+		.form-field{
+			border: 0;
+			border-radius: 0;
+			margin-bottom: 0;
+			display: flex;
+			align-items: center;
+		}
+
+		.form-label{
+		    display: none;
+		    vertical-align: middle;
+			font-size: $fontSize-root - 2px;
+			font-weight: $fontWeight-bold;
+			letter-spacing: $letterSpacing-base;
+		    margin-right: 20px;
+		    margin-bottom: 0;
+		    padding: 0;
+		    line-height: 1;
+		    color: $color-textBase;
+		    text-transform: uppercase;
+		    min-width: 55px;
+		}
+
+		.form-select{
+			font-size: $fontSize-root - 2px;
+			font-weight: $fontWeight-normal;
+			letter-spacing: $letterSpacing-base;
+			height: 40px;
+			line-height: 40px;
+			color: $color-textSecondary;
+			border: 1px solid #787878;
+			border-width: 0 0 1px 0;
+			padding: 0 25px 0 0;
+			background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fal' data-icon='chevron-down' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' class='svg-inline--fa fa-chevron-down fa-w-14 fa-3x'%3E%3Cpath fill='%23787878' d='M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z' class=''%3E%3C/path%3E%3C/svg%3E");
+			background-size: 10px;
+			background-position: right 0 top 15px;
+		}
+	}
+
+	&:not(.toolbar-mobile){
+		flex: 1;
+		justify-content: center;
+	}
+
+	&.toolbar-mobile{
+		justify-content: flex-end;
+	}
+
+	@media (max-width: 550px){
+		.actionBar{
+			&[data-show-by]{
+				display: inline-block;
+
+				.form-select{
+					font-size: $fontSize-root;
+					border-color: #faf8f6;
+					border-width: 1px;
+					height: 46px;
+					line-height: 46px;
+					padding: 0 25px 0 15px;
+					background-color: #faf8f6;
+					background-position: right 10px top 18px;
+				}
+			}
+		}
+	}
+
+	@media (min-width: 551px){
+		.actionBar{
+			.form-select{
+				min-width: 100px;
+			}
+		}
+
+		.actionBar-2{
+			display: inline-block;
+
+			&[data-show-by]{
+				margin-left: 15px;
+			}
+		}
+	}
+
+	@media (min-width: 992px){
+		.actionBar{
+			.form-label{
+				display: inline-block;
+			}
+
+			.form-select{
+				padding-left: 15px;
+			}
+		}
+
+		.actionBar-2{
+			&[data-show-by]{
+				margin-left: 30px;
+			}
+		}
+	}
+
+	@media (min-width: 1025px){
+		width: 100%;
+		justify-content: flex-end;
+
+		.actionBar{
+			display: inline-block;
+
+			.form-field{
+				&:only-child{
+					margin-left: 30px;
+				}
+			}
+
+			&.actionBar-2{
+				.form-select{
+					min-width: 150px;
+				}
+			}
+		}
+
+		&:not(.toolbar-mobile){
+			justify-content: flex-end;
+		}
+
+		&.toolbar-mobile{
+			display: none;
+		}
+	}
+
+	@media (min-width: 1200px){
+		.actionBar{
+			&[data-show-products]{
+				margin-left: 40px;
+			}
+
+			&.actionBar-2{
+				.form-select{
+					min-width: 192px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,185 @@
+// =============================================================================
+// FORMS (CSS)
+// =============================================================================
+
+
+// Select boxes
+// -----------------------------------------------------------------------------
+
+.form-select {
+    appearance: none;
+    background-image: $select-backgroundImage;
+    background-position: $select-backgroundPosition;
+    border-radius: $select-borderRadius;
+    padding: $select-padding;
+
+    &:hover {
+        border-color: $select-hover-borderColor;
+    }
+}
+
+
+// Form labels
+// -----------------------------------------------------------------------------
+
+.form-label {
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-normal;
+    letter-spacing: $letterSpacing-base;
+    line-height: 25px;
+    text-transform: none;
+    margin: 0 0 4px 0;
+
+    small {
+        float: $opposite-direction;
+        margin-top: $form-label-small-marginTop;
+    }
+}
+
+
+// Form labels (inline small text)
+// -----------------------------------------------------------------------------
+
+.form-label--inlineSmall {
+
+    small {
+        color: stencilColor("color-textSecondary");
+        float: none;
+        font-size: inherit;
+        font-weight: fontWeight("normal");
+        margin-left: spacing("quarter");
+        text-transform: none;
+    }
+}
+
+// Form input
+// -----------------------------------------------------------------------------
+
+.form-input{
+    font-size: $fontSize-root;
+    font-style: italic;
+    font-weight: $fontWeight-normal;
+    -webkit-text-size-adjust: 100%;
+    border-radius: 0;
+    max-width: 100%;
+    min-height: 50px;
+    height: auto;
+    line-height: 22px;
+    padding: 0 15px;
+    margin: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &[rows]{
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    &::-webkit-input-placeholder {
+        color: stencilColor('input-font-color');
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+        position: relative;
+        text-transform: unset;
+        transition: $anchor-transition;
+    }
+
+    &:-ms-input-placeholder {
+        color: stencilColor('input-font-color');
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+        position: relative;
+        text-transform: unset;
+        transition: $anchor-transition;
+    }
+
+    &::placeholder {
+        color: stencilColor('input-font-color');
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+        position: relative;
+        text-transform: unset;
+        transition: $anchor-transition;
+    }
+
+    &:focus{
+        &::-webkit-input-placeholder {
+            left: 5%;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &:-ms-input-placeholder {
+            left: 5%;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &::placeholder {
+            left: 5%;
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}
+
+.form-field{
+    &.form-field-radio{
+        position: relative;
+        padding: 13px 0 0 0;
+
+        .form-label{
+            display: inline-block;
+            vertical-align: top;
+            width: auto;
+            margin: 0 25px 0 0;
+            line-height: 20px;
+
+            &:last-child{
+                display: inline-block;
+                margin-bottom: 0;
+            }
+        }
+
+        .form-radio{
+            + .form-label{
+                font-size: $fontSize-root;
+                font-weight: $fontWeight-normal;
+                color: $color-textSecondary;
+                padding-left: 23px;
+
+                &:before{
+                    width: 14px;
+                    height: 14px;
+                    border-color: #cecece;
+                }
+
+                &:after{
+                    width: 0;
+                    height: 0;
+                    border: 4px solid #787878;
+                    border-radius: 50%;
+                    top: 6px;
+                    left: 3px;
+                }
+            }
+        }
+    }
+
+    &.form-field-radio2{
+        padding-top: 0;
+        padding-bottom: 33px;
+        border-bottom: 1px solid #e6e6e6;
+
+        .form-label{
+            &:first-child{
+                display: block;
+                margin-right: 0;
+                margin-bottom: 16px;
+            }
+        }
+    }
+}

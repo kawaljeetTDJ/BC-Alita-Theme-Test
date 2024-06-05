@@ -1,0 +1,138 @@
+{{#partial "page"}}
+{{inject 'comparisons' comparisons}}
+{{inject 'compareRemoveMessage' (lang 'compare.no_remove')}}
+<div class="container">
+    <div class="breadcrumb-wrapper">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    </div>
+    <div class="page page-compare">
+        <div class="page-header">
+            <h1 class="page-heading">{{lang 'compare.header' products=comparisons.length}}</h1>
+            {{{region name="category_below_header"}}}
+        </div>
+        <div class="page-content">
+            <table class="compareTable">
+                <thead>
+                    <tr class="compareTable-row">
+                        <th class="compareTable-heading">
+                            <span class="compareTable-headingText">{{lang 'compare.heading_1'}}</span>
+                        </th>
+                        <th class="compareTable-heading">
+                            <span class="compareTable-headingText">{{lang 'compare.heading_2'}}</span>
+                        </th>
+                        <th class="compareTable-heading text-center">
+                            <span class="compareTable-headingText">{{lang 'compare.heading_3'}}</span>
+                        </th>
+                        <th class="compareTable-heading text-center">
+                            <span class="compareTable-headingText">{{lang 'compare.heading_4'}}</span>
+                        </th>
+                        <th class="compareTable-heading">
+                            <span class="compareTable-headingText">{{lang 'compare.heading_5'}}</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each comparisons}}
+                    <tr class="compareTable-row">
+                        <td class="compareTable-product">
+                            <article class="card">
+                                <figure class="card-figure">
+                                    <div class="card-img-container">
+                                        {{> components/common/responsive-img
+                                            image=image
+                                            class="card-image"
+                                            fallback_size=../theme_settings.product_size
+                                            lazyload=../theme_settings.lazyload_mode
+                                            default_image=../theme_settings.default_image_product
+                                        }}
+                                    </div>
+                                    <a class="compareTable-removeProduct" data-comparison-remove href="{{#if remove_url}}{{remove_url}}{{else}}#{{/if}}">
+                                        <svg class="icon">
+                                            <use xlink:href="#icon-close"></use>
+                                        </svg>
+                                    </a>
+                                </figure>
+                                <div class="card-body">
+                                    {{#if brand.name}}
+                                        <p class="card-brand" data-test-info-type="brandName">{{brand.name}}</p>
+                                    {{/if}}
+                                    <h4 class="card-title">
+                                        <a href="{{url}}" style="-webkit-box-orient: vertical;">{{name}}</a>
+                                    </h4>
+                                    <div class="price-wrapper">
+                                        <div class="card-price" data-test-info-type="price">
+                                            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                                                {{> components/products/price price=price}}
+                                            {{else}}
+                                                {{> components/common/login-for-pricing}}
+                                            {{/or}}
+                                        </div>
+                                    </div>
+                                    <div class="card-figcaption-group">
+                                        {{#or ../customer (if ../theme_settings.restrict_to_login '!==' true)}}
+                                            {{#if show_cart_action}}
+                                                {{#if has_options}}
+                                                    <a href="{{url}}" class="button card-action" data-product-id="{{id}}">
+                                                        <span>{{lang 'products.choose_options'}}</span>
+                                                    </a>
+                                                {{/if}}
+                                                {{#if pre_order}}
+                                                    <a href="{{pre_order_add_to_cart_url}}" class="button card-action">
+                                                        <span>{{lang 'products.pre_order'}}</span>
+                                                    </a>
+                                                {{/if}}
+                                                {{#if add_to_cart_url }}
+                                                    <a href="{{add_to_cart_url}}" class="button card-action">
+                                                        <span>{{lang 'products.add_to_cart'}}</span>
+                                                    </a>
+                                                {{/if}}
+                                                {{#if out_of_stock_message }}
+                                                    <a href="{{url}}" class="button card-action" data-product-id="{{id}}">
+                                                        <span>{{out_of_stock_message}}</span>
+                                                    </a>
+                                                {{/if}}
+                                            {{/if}}
+                                        {{/or}}
+                                    </div>
+                                </div>
+                            </article>
+                        </td>
+                        <td class="compareTable-item">{{ summary }}</td>
+                        <td class="compareTable-item text-center">
+                            {{#if rating}}
+                                {{> components/products/ratings rating=rating}}
+                            {{else}}
+                                {{lang 'compare.no_review'}}
+                            {{/if}}
+                        </td>
+                        <td class="compareTable-item text-center">
+                            {{#if availability}}
+                                {{ availability }}
+                            {{else}}
+                                {{lang 'common.not_applicable'}}
+                            {{/if}}
+                        </td>
+                        <td class="compareTable-item">
+                            {{#if custom_fields}}
+                                <ul>
+                                    {{#each custom_fields}}
+                                        {{#startsWith '__' name}}
+                                        {{else}}
+                                            <li>{{name}}: {{{value}}}</li>
+                                        {{/startsWith}}
+                                    {{/each}}
+                                </ul>
+                            {{else}}
+                                {{lang 'common.not_applicable'}}
+                            {{/if}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <p class="compareText">{{lang 'compare.no_compare'}}</p>
+        </div>
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,28 @@
+{{#partial "page"}}
+<div class="page-container">
+    <div class="container">
+        <div class="breadcrumb-wrapper">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        </div>
+        <div class="page page-normal">
+            <div class="page-header">
+                <h1 class="page-heading">
+                    {{#if subscription.error}}
+                        {{lang 'newsletter.subscribed_heading_error'}}
+                    {{else}}
+                        {{lang 'newsletter.subscribed_heading'}}
+                    {{/if}}
+                </h1>
+            </div>
+            <main class="page-content">
+                {{#if subscription.error}}
+                    {{> components/common/alert/alert-error subscription.error}}
+                {{else}}
+                    {{> components/common/alert/alert-success (lang 'newsletter.subscribed_message')}}
+                {{/if}}
+            </main>
+        </div>
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}

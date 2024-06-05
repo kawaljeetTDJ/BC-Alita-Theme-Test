@@ -1,0 +1,91 @@
+{{#partial "page"}}
+    {{#if theme_settings.halo-google-map}}
+        <div class="halo-google-map">
+            {{> components/halothemes/halo-google-map}}
+        </div>
+    {{/if}}
+    <div class="container">
+        <div class="breadcrumb-wrapper">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        </div>
+        <div class="page page-contact">
+            <div class="page-header">
+                <h1 class="page-heading">{{page.title}}</h1>
+            </div>
+            <main class="page-content">
+                {{#if page.sub_pages}}
+                    <nav class="navBar navBar--sub">
+                        <ul class="navBar-section account-navigation">
+                            {{#each page.sub_pages}}
+                                <li class="navBar-item">
+                                    <a class="navBar-action" href="{{url}}">
+                                        <span class="text">{{title}}</span>
+                                    </a>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </nav>
+                {{/if}}
+                <div class="halo-contact-form">
+                    <div id="contact-us-page">
+                        {{#if forms.contact.success}}
+                            <div id="contact-us-success">{{{lang 'forms.contact_us.successful' shopPath=urls.home}}}</div>
+                        {{else}}
+                            {{{page.content}}}
+                            {{> components/page/contact-us-form}}
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="halo-contact-info">
+                    {{#if theme_settings.contact_us_info-title}}
+                        <h3 class="title">{{theme_settings.contact_us_info-title}}</h3>
+                    {{/if}}
+                    <div class="content">
+                        {{#or (if theme_settings.contact_us_info-text1) (if theme_settings.contact_us_info-text2) (if theme_settings.contact_us_info-text3)}}
+                            <div class="description">{{theme_settings.contact_us_info-text1}} {{theme_settings.contact_us_info-text2}} {{theme_settings.contact_us_info-text3}}</div>
+                        {{/or}}
+                        {{#if theme_settings.contact_us_info-btn}}
+                            <div class="sample">
+                                <a href="{{theme_settings.contact_us_info-btnlink}}" class="button button--secondary button--transparent-2">{{theme_settings.contact_us_info-btn}}</a>
+                            </div>
+                        {{/if}}
+                        <div class="store-address">{{nl2br settings.address}}</div>
+                        {{#or (if theme_settings.contact_us_info-mail) (if theme_settings.contact_us_info-phone)}}
+                            <div class="store-info">
+                                {{#if theme_settings.contact_us_info-mail}}
+                                    <div class="item">
+                                        Email: <a href="mailto:{{theme_settings.contact_us_info-mail}}">
+                                                    <span class="text">{{theme_settings.contact_us_info-mail}}</span>
+                                                </a>
+                                    </div>
+                                {{/if}}
+                                {{#if theme_settings.contact_us_info-phone}}
+                                    <div class="item">
+                                        Toll-free: <a href="tel:{{theme_settings.contact_us_info-phone}}">
+                                                        <span class="text">{{theme_settings.contact_us_info-phone}}</span>
+                                                    </a>
+                                    </div>
+                                {{/if}}
+                            </div>
+                        {{/or}}
+                        {{#or (if theme_settings.contact_us_info-hours1) (if theme_settings.contact_us_info-hours2) (if theme_settings.contact_us_info-hours3)}}
+                            <div class="store-info">
+                                {{#if theme_settings.contact_us_info-hours1}}
+                                    <div class="item">{{theme_settings.contact_us_info-hours1}}</div>
+                                {{/if}}
+                                {{#if theme_settings.contact_us_info-hours2}}
+                                    <div class="item">{{theme_settings.contact_us_info-hours2}}</div>
+                                {{/if}}
+                                {{#if theme_settings.contact_us_info-hours3}}
+                                    <div class="item">{{theme_settings.contact_us_info-hours3}}</div>
+                                {{/if}}
+                            </div>
+                        {{/or}}
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{{/partial}}
+
+{{> layout/base}}

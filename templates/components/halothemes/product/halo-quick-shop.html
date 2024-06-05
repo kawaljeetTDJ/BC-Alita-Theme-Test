@@ -1,0 +1,35 @@
+<div class="halo-quickShop">
+    <div class="halo-quickShop-header">
+        <span class="halo-quickShop-title">{{lang 'products.choose_options'}}</span>
+        <a href="#" class="halo-quickShop-close" aria-label="Close" role="button">
+            <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+                <title>{{lang 'common.close'}}</title>
+                <desc>{{lang 'common.close'}}</desc>
+                <use xlink:href="#icon-close"></use>
+            </svg>
+        </a>
+    </div>
+    <div class="halo-quickShop-content haloCustomScrollbar">
+        <div class="productView-details product-options">
+            <div class="productView-options halo-productOptions">
+                <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add>
+                    <input type="hidden" name="action" value="add">
+                    <input type="hidden" name="product_id" value="{{product.id}}"/>
+                    <div data-product-option-change>
+                        {{#each product.options}}
+                            {{{dynamicComponent 'components/products/options'}}}
+                        {{/each}}
+                    </div>
+                    {{#if theme_settings.halo_stock_level}}
+                        <div class="productView-optionsStock u-hiddenVisually">
+                            <span>{{lang 'products.stock_hurry_up'}}</span>
+                            <span data-stock-left></span>
+                            <span>{{lang 'products.stock_left'}}</span>
+                        </div>
+                    {{/if}}
+                    {{> components/products/add-to-cart}}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

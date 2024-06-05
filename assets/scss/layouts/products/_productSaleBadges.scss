@@ -1,0 +1,65 @@
+// =============================================================================
+// PRODUCT Sale Badges (CSS)
+// =============================================================================
+.halo-badges {
+    position: absolute;
+    top: 24px;
+    z-index: zIndex("lower");
+    display: flex;
+    flex-direction: column;
+
+    &.halo-badges-left{
+        left: 24px;
+        align-items: flex-start;
+    }
+
+    &.halo-badges-right{
+        left: auto;
+        right: 24px;
+        align-items: flex-end;
+    }
+
+    .card & {
+        top: 15px;
+
+        &.halo-badges-left{
+            left: 0;
+        }
+
+        &.halo-badges-right{
+            left: auto;
+            right: 0;
+        }
+    }
+}
+
+.halo-badge {
+    font-size: $fontSize-root - 4px;
+    font-weight: $fontWeight-normal;
+    font-style: italic;
+    line-height: 20px;
+    height: 20px;
+    padding: 0 8px;
+    margin: 0;
+    text-transform: uppercase;
+
+    &.sale-badge {
+        background: stencilColor("color_bg_product_sale_badges");
+        color: stencilColor("color_text_product_sale_badges");
+    }
+
+    &.soldOut-badge {
+        background: stencilColor("color_bg_product_soldOut_badges");
+        color: stencilColor("color_text_product_soldOut_badges");
+    }
+
+    &.new-badge {
+        background: stencilColor("color_bg_product_new_badges");
+        color: stencilColor("color_text_product_new_badges");
+    }
+
+    &.custom-badge {
+        background: stencilColor("color_bg_product_custom_badges");
+        color: stencilColor("color_text_product_custom_badges");
+    }
+}

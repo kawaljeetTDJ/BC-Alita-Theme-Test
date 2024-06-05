@@ -1,0 +1,143 @@
+// =============================================================================
+// BUTTONS (CSS)
+// =============================================================================
+
+.button {
+    font-family: $fontFamily-sans;
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-bold;
+    font-style: normal;
+    user-select: none;
+    appearance: none;
+    width: auto;
+    text-decoration: none;
+    text-align: center;
+    text-transform: capitalize;
+    border-radius: 0;
+    margin: 0;
+    padding: 0 15px;
+    height: 50px;
+    line-height: 48px;
+    letter-spacing: $letterSpacing-base;
+    border: 1px solid $buttonStyle-primary-borderColor;
+    color: $buttonStyle-primary-color;
+    background-color: $buttonStyle-primary-backgroundColor;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.button--icon {
+        svg {
+            fill: stencilColor("button--icon-svg-color");
+        }
+    }
+
+    &.button--primary{
+        &:active{
+            color: $buttonStyle-primary-colorActive;
+            border-color: $buttonStyle-primary-borderColorActive;
+            background-color: $buttonStyle-primary-backgroundColorActive;
+        }
+    }
+
+    &.button--secondary{
+        color: $buttonStyle-default-color;
+        background-color: $buttonStyle-default-backgroundColor;
+        border-color: $buttonStyle-default-borderColor;
+
+        &:active{
+            color: $buttonStyle-default-colorActive;
+            border-color: $buttonStyle-default-borderColorActive;
+            background-color: $buttonStyle-default-backgroundColorActive;
+        }
+    }
+
+    &.button--transparent{
+        background: transparent;
+        border-color: $buttonStyle-primary-color;
+        color: $buttonStyle-primary-color;
+    }
+
+    &.button--transparent-2{
+        background: transparent;
+        border-color: $buttonStyle-default-borderColor;
+        color: $buttonStyle-default-borderColor;
+    }
+
+    &.disable,
+    &[disabled]{
+        cursor: not-allowed;
+        pointer-events: none;
+        background: stencilColor('container-fill-dark');
+        border-color: stencilColor('container-fill-dark');
+        color: $color-textSecondary;
+        outline: 0!important;
+
+        &:hover,
+        &:focus,
+        &:active{
+            background: stencilColor('container-fill-dark');
+            border-color: stencilColor('container-fill-dark');
+            color: $color-textSecondary;
+        }
+    }
+
+    @media (min-width: 1025px){
+        height: 50px;
+        line-height: 48px;
+        padding-left: 30px;
+        padding-right: 30px;
+
+        &.button--primary{
+            &:hover,
+            &:focus{
+                color: $buttonStyle-primary-colorHover;
+                border-color: $buttonStyle-primary-borderColorHover;
+                background-color: $buttonStyle-primary-backgroundColorHover;
+            }
+        }
+
+        &.button--secondary{
+            &:hover,
+            &:focus{
+                color: $buttonStyle-default-colorHover;
+                border-color: $buttonStyle-default-borderColorHover;
+                background-color: $buttonStyle-default-backgroundColorHover;
+            }
+        }
+
+        &.button--transparent{
+            transition: all .7s cubic-bezier(0.19, 1, 0.22, 1);
+
+            &:hover,
+            &:focus{
+                color: $color-textBase;
+                border-color: $buttonStyle-primary-colorHover;
+                background: $buttonStyle-primary-colorHover;
+            }
+
+            &:active{
+                color: $color-textBase;
+                border-color: $buttonStyle-primary-colorActive;
+                background: $buttonStyle-primary-colorActive;
+            }
+        }
+
+        &.button--transparent-2{
+            transition: all .7s cubic-bezier(0.19, 1, 0.22, 1);
+
+            &:hover,
+            &:focus{
+                color: $buttonStyle-default-colorHover;
+                border-color: $buttonStyle-default-borderColorHover;
+                box-shadow: inset 10em 0 0 0 $buttonStyle-default-backgroundColorHover;
+            }
+
+            &:active{
+                color: $buttonStyle-default-colorActive;
+                border-color: $buttonStyle-default-borderColorActive;
+                box-shadow: inset 10em 0 0 0 $buttonStyle-default-backgroundColorActive;
+            }
+        }
+    }
+}

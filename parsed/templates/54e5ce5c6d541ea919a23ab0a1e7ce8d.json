@@ -1,0 +1,3 @@
+{
+  "components/halothemes/product/halo-product-countdown": "{{#if theme_settings.halo-product-countdown-show}}\r\n\t{{#if theme_settings.halo-product-countdown '==' 'all'}}\r\n\t\t<div class=\"productView-countDown countdown_{{id}}\" data-countdown-id=\"{{id}}\" data-countdown=\"{{theme_settings.halo-product-countdown-time}}\"></div>\r\n\t{{else if theme_settings.halo-product-countdown '==' 'custom'}}\r\n\t\t{{#each custom_fields}}\r\n\t\t    {{#if name '==' '__countdown'}}\r\n\t\t        <div class=\"productView-countDown countdown_{{../../id}}\" data-countdown-id=\"{{../../id}}\" data-countdown=\"{{{value}}}\"></div>\r\n\t\t    {{/if}}\r\n\t\t{{/each}}\r\n\t{{/if}}\r\n{{/if}}\r\n"
+}

@@ -1,0 +1,202 @@
+// =============================================================================
+// COMPARE (CSS)
+// =============================================================================
+
+
+// Compare table layout
+// -----------------------------------------------------------------------------
+//
+// 1. Foundation Magellan plugin.
+//
+// -----------------------------------------------------------------------------
+
+.compareTable {
+    border: 1px solid #e6e6e6;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    margin: 0;
+
+    @media (max-width: 1024px){
+        display: none;
+    }
+}
+
+.compareText{
+    display: block;
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-normal;
+    margin: 0;
+    line-height: 1.75;
+    letter-spacing: $letterSpacing-base;
+    color: $color-textSecondary;
+
+    @media (min-width: 801px){
+        display: none;
+    }
+}
+
+.compareTable-row {
+    vertical-align: top;
+
+    .compareTable-item{
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        line-height: 1.75;
+        letter-spacing: $letterSpacing-base;
+        color: $color-textSecondary;
+    }
+
+    + .compareTable-row {
+        .compareTable-heading,
+        .compareTable-item {
+            border-top: container("border");
+        }
+
+        .compareTable-heading:empty {
+            border-top: 0;
+        }
+    }
+}
+
+
+// Compare table headings
+// -----------------------------------------------------------------------------
+
+.compareTable-heading {
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-bold;
+    letter-spacing: $letterSpacing-base;
+    color: $color-textBase;
+    padding: 11px 15px;
+    position: relative;
+    text-align: center;
+    width: 0;
+
+    @media (min-width: 1025px){
+        width: grid-calc(3, $total-columns);
+    }
+}
+
+.compareTable-headingText {
+    white-space: nowrap;
+}
+
+
+// Compare table item
+// -----------------------------------------------------------------------------
+
+.compareTable-item {
+    padding: (spacing("double") + spacing("sixth")) spacing("base") (spacing("base") + spacing("sixth"));
+
+    @include breakpoint("medium") {
+        padding-top: spacing("base") + spacing("sixth");
+    }
+}
+
+// Compare action
+// -----------------------------------------------------------------------------
+
+.compareTable {
+    th, td {
+        border: 1px solid #e6e6e6;
+        border-spacing: 0px;
+    }
+
+    thead {
+        text-align: center;
+    }
+
+    .compareTable-item.text-center, 
+    .compareTable-heading.text-center {
+        width: 150px;
+    }
+}
+
+.compareTable-product {
+    padding: 2rem 1rem;
+
+    .card {
+        border: none;
+        text-align: center;
+
+        .card-img-container {
+            .card-image{
+                border: 0;
+                width: 50%;
+            }
+
+            &:before {
+                content: none;
+            }
+
+            &:after {
+                padding-bottom: 75%;
+            }
+        }
+
+        .card-body {
+            text-align: center;
+
+            .card-brand{
+                margin: 15px 0 5px 0;
+                color: $color-textSecondary;
+            }
+
+            .card-figcaption-group {
+                max-width: 270px;
+                margin-top: 20px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .card-action{
+                padding-top: 0;
+                padding-bottom: 0;
+                line-height: 50px;
+            }
+
+            .card-title{
+                margin-bottom: 10px;
+            }
+
+            .card-price{
+                justify-content: center;
+            }
+        }
+    }
+
+    .compareTable-removeProduct {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 32px;
+        height: 32px;
+        padding: 10px;
+        background-color: $buttonStyle-primary-backgroundColor;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .icon {
+            display: block;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            fill: $buttonStyle-primary-color;
+        }
+    }
+
+    @media (min-width: 1025px){
+        .compareTable-removeProduct {
+            &:hover{
+                background-color: $buttonStyle-primary-backgroundColorHover;
+
+                .icon{
+                    fill: $buttonStyle-primary-colorHover;
+                }
+            }
+        }
+    }
+}

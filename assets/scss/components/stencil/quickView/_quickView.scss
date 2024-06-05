@@ -1,0 +1,95 @@
+// =============================================================================
+// QUICK VIEW (CSS)
+// =============================================================================
+
+.quickView {
+    @include clearfix();
+
+    .productView--quickView{
+        padding-top: 0;
+    }
+
+    .halo-quickView-left {
+        width: 100%;
+    }
+
+    .halo-quickView-right{
+        width: 100%;
+
+    	.productView-details{
+    		width: 100%;
+    	}
+    }
+
+    .productView-image-wrapper{
+    	width: 100%;
+    }
+
+    .productView-thumbnail-wrapper{
+    	width: 100%;
+    	padding-right: 0;
+    	margin-top: 20px;
+
+    	.productView-for{
+            padding: 0 45px;
+
+            &:not(.slick-slider){
+                white-space: unset;
+                overflow: unset;
+
+                > div{
+                    width: 100%;
+                }
+            }
+        }
+
+        .slick-arrow{
+            margin-top: 0;
+            top: 50%!important;
+            bottom: auto!important;
+            transform: translateY(-50%)!important;
+
+            &.slick-prev{
+                left: 0;
+            }
+
+            &.slick-next{
+                left: auto;
+                right: 0;
+            }
+        }
+    }
+
+    .productView-thumbnail{
+    	padding: 0 8px;
+    }
+
+    [data-product-attribute]{
+        .form-option{ 
+            .form-option-expanded{
+                display: none;
+            }
+
+            &:hover{
+                .form-option-expanded{
+                    display: block;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 991px){
+        padding: 30px 15px;
+    }
+
+    @media (min-width: 992px){
+        .halo-quickView-left {
+            width: calc(100% - 500px)
+        }
+
+        .halo-quickView-right{
+            width: 500px;
+            padding-left: 30px;
+        }
+    }
+}

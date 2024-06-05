@@ -1,0 +1,274 @@
+// =============================================================================
+// CATEGORY (CSS)
+// =============================================================================
+
+
+// Category header
+// -----------------------------------------------------------------------------
+
+.category-header-image {
+    width: 100%;
+}
+
+// Product Listing - Advertisment Banner
+// -----------------------------------------------------------------------------
+.product-advertisment{
+    .content-wrapper{
+        display: block;
+        text-align: center;
+        margin: 15px 0 0 0;
+        @include clearfix;
+
+        .title{
+            display: block;
+            font-size: $fontSize-root;
+            font-weight: $fontWeight-bold;
+            line-height: 26px;
+            letter-spacing: $letterSpacing-base;
+            color: $color-textBase;
+            margin: 0 0 32px 0;
+        }
+
+        .button{
+            text-transform: uppercase;
+            min-width: 140px;
+        }
+    }
+
+    @media (min-width: 1025px){
+        .image-wrapper{
+            &:hover{
+                &:before{
+                    top: 0;
+                }
+            }
+        }
+
+        .content-wrapper{
+            .title{
+                max-width: 220px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+}
+
+// Product Listing - Compare Button
+// -----------------------------------------------------------------------------
+.compare-link{
+    pointer-events: none;
+    display: none;
+
+    .button{
+    	background: #ffffff;
+    	
+        .countPill{
+            position: relative;
+            top: unset;
+            left: unset;
+            bottom: unset;
+            right: unset;
+            display: inline;
+            background: transparent;
+            border-radius: 0;
+            color: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+            height: auto;
+            width: auto;
+            vertical-align: unset;
+        }
+    }
+
+    @media (min-width: 1025px){
+        display: block;
+        position: fixed;
+        top: auto;
+        bottom: 130px;
+        right: 30px;
+        z-index: 100;
+        pointer-events: auto;
+        transform: translateY(-50%);
+
+        .button{
+            display: none;
+
+            &.show{
+                display: block;
+            }
+        }
+    }
+}
+
+// Product Listing Show More
+// -----------------------------------------------------------------------------
+.halo-product-show-more{
+    flex: 1;
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0 0 20px 0;
+    @include clearfix;
+
+    .button{
+        width: 210px;
+        margin: auto;
+        text-transform: uppercase;
+
+        &:before{
+            content: '';
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #c5c5cf;
+            border-radius: 100%;
+            border-top: 2px solid transparent;
+            -webkit-animation: load-animate infinite linear 1s;
+            animation: load-animate infinite linear 1s;
+        }
+
+        &.loading{
+            pointer-events: none;
+            font-size: 0;
+
+            svg{
+                display: none;
+            }
+
+            &:before{
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    @media (min-width: 768px){
+        margin-bottom: 0;
+    }
+}
+
+// Product Listing - Banner Top
+// -----------------------------------------------------------------------------
+.page-listing-header{
+    position: relative;
+    margin: 0 0 44px 0;
+
+    &--banner{
+        display: block;
+        height: 250px;
+        background: #faf8f6;
+    }
+
+    &--content{
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        transform: translateY(-50%);
+        z-index: 3;
+
+        .breadcrumb-wrapper{
+            text-align: center;
+        }
+
+        .page-heading{
+            text-align: center;
+        }
+    }
+
+    img{
+        display: block;
+        width: 100%;
+
+        &.lazyload,
+        &.lazyloading{
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            margin: auto;
+        }
+    }
+
+    p{
+        display: block;
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        line-height: 1.75;
+        padding: 15px;
+        margin: 0;
+
+        + p{
+            margin-top: 15px;
+        }
+    }
+
+    .halo-listing-top-banner{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    &.has-banner{
+        .page-listing-header--banner{
+            position: relative;
+
+            &:before{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(124,101,91,.3);
+                z-index: 2;
+            }
+        }
+
+        .breadcrumb{
+            color: $color-white;
+
+            &.is-active{
+                .breadcrumb-label{
+                    color: $color-white;
+                }
+            }
+
+            &:before{
+                color: $color-white;
+            }
+        }
+
+        .page-heading{
+            color: $color-white;
+        }
+    }
+
+    @media (min-width: 1025px){
+        &--banner{
+            height: 300px;
+        }
+
+        .halo-listing-top-banner{
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+}
+
+// Product Listing - Banner Bottom
+// -----------------------------------------------------------------------------
+.page-listing-footer{
+    display: block;
+    padding: 15px 0 30px 0;
+    @include clearfix;
+}

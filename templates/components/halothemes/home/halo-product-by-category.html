@@ -1,0 +1,54 @@
+{{#each categories}}	
+    {{#if id '==' ../cateid}}
+		<div class="halo-block halo-block-product" data-category-id="{{id}}" data-category-url="{{url}}" id="product-by-cate-{{id}}">
+			<div class="loadingOverlay"></div>
+			<div class="container">
+				<div class="halo-block-header">
+		            <h3 class="title">{{name}}</h3>
+		        </div>
+		        {{#if ../block_layout}}
+		        	<div class="productCarousel"></div>
+		        {{else}}
+		        	<ul class="productGrid col-{{../block_column}}" id="block_{{id}}" data-block="block_{{id}}"></ul>
+		        {{/if}}
+			</div>
+		</div>
+	{{/if}}
+	{{#each children}}
+		{{#if id '==' ../../cateid}}
+			<div class="halo-block halo-block-product" data-category-id="{{id}}" data-category-url="{{url}}" id="product-by-cate-{{id}}">
+				<div class="loadingOverlay"></div>
+				<div class="container">
+					<div class="halo-block-header">
+			            <h3 class="title">{{name}}</h3>
+			        </div>
+			        {{#if ../../block_layout}}
+			        	<div class="productCarousel"></div>
+			        {{else}}
+			        	<ul class="productGrid col-{{../../block_column}}" id="block_{{id}}" data-block="block_{{id}}"></ul>
+			        {{/if}}
+				</div>
+			</div>
+		{{/if}}
+		{{#each children}}
+			{{#if id '==' ../../../cateid}}
+				<div class="halo-block halo-block-product" data-category-id="{{id}}" data-category-url="{{url}}" id="product-by-cate-{{id}}">
+					<div class="loadingOverlay"></div>
+					<div class="container">
+						<div class="halo-block-header">
+				            <h3 class="title">{{name}}</h3>
+				        </div>
+				        {{#if ../../../block_layout}}
+				        	<div class="productCarousel"></div>
+				        {{else}}
+				        	<ul class="productGrid col-{{../../../block_column}}" id="block_{{id}}" data-block="block_{{id}}"></ul>
+				        {{/if}}
+					</div>
+				</div>
+			{{/if}}
+		{{/each}}
+	{{/each}}
+{{/each}}
+{{#if page_type '==' 'default'}}
+    {{{region name="home_below_products_by_category"}}}
+{{/if}}

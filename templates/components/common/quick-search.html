@@ -1,0 +1,15 @@
+<form class="form" onsubmit="return false" data-url="{{urls.search}}" data-quick-search-form>
+    <fieldset class="form-fieldset">
+        <div class="form-field">
+            <label class="is-srOnly" for="search_query">{{lang "search.quick_search.input_label"}}</label>
+            <input class="form-input" data-search-quick name="search_query" id="search_query" data-error-message="{{lang 'search.error.empty_field'}}" placeholder="{{lang 'search.quick_search.input_placeholder'}}" autocomplete="off">
+            <button type="submit" class="button button--primary"><svg class="icon"><use xlink:href="#icon-search"></use></svg></button>
+        </div>
+    </fieldset>
+</form>
+<div class="haloQuickSearchResults quickSearchResults haloCustomScrollbar" data-bind="html: results"></div>
+{{#if theme_settings.halo-before-quick-results}}
+    <div class="haloQuickSearchResults quickSearchResultsCustom haloCustomScrollbar">
+        {{> components/halothemes/search/halo-before-quick-results productsnew=products.new}}
+    </div>
+{{/if}}

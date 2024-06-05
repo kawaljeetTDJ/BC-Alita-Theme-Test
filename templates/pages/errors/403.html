@@ -1,0 +1,28 @@
+{{#partial "page"}}
+<div class="page-container">
+    <div class="container">
+        <div class="breadcrumb-wrapper">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        </div>
+        <div class="page page-normal page-errors">
+            <div class="page-header">
+            	<h1 class="page-heading">
+                	<span class="heading">{{lang 'forbidden.heading'}}</span>
+                	<span class="text">{{lang 'forbidden.page_heading'}}</span>
+                </h1>
+            </div>
+            <main class="page-content">
+            	<p class="page-normal-text u-textAlignCenter">
+		            {{lang 'forbidden.if_you_were_signed_in'}}
+		            <a href="{{urls.auth.login}}">
+		            	<span class="text">{{lang 'forbidden.sign_in'}}</span>
+		            </a>
+		            {{lang 'forbidden.to_continue'}}
+		        </p>
+		        {{> components/common/search-box}}
+            </main>
+        </div>
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,3 @@
+{
+  "components/halothemes/sidebar/halo-search-sidebar": "<div class=\"halo-sidebar halo-search-sidebar halo-sidebar-left\" id=\"halo-search-sidebar\">\n    <div class=\"halo-sidebar-header\">\n\t\t<span class=\"title\">{{lang 'common.search'}}</span>\n\t\t<a href=\"#\" class=\"close\">\n\t\t\t<svg class=\"icon\" role=\"img\" aria-label=\"{{lang 'common.close'}}\">\n            \t<title>{{lang 'common.close'}}</title>\n            \t<desc>{{lang 'common.close'}}</desc>\n            \t<use xlink:href=\"#icon-close\"></use>\n            </svg>\n\t\t</a>\n\t</div>\n    <div class=\"halo-sidebar-wrapper\"></div>\n</div>\n"
+}

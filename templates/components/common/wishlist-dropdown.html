@@ -1,0 +1,39 @@
+{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+    <form action="{{product.add_to_wishlist_url}}" class="form form-wishlist form-action{{#if product.out_of_stock}} form-wishlist-2{{/if}}{{#unless product.out_of_stock}}{{#if theme_settings.halo_buy_it_now}} form-wishlist-3{{/if}}{{/unless}}" data-wishlist-add method="post">
+{{else}}
+    <form action="{{product.add_to_wishlist_url}}" class="form form-wishlist form-action" data-wishlist-add method="post">
+{{/or}}
+    <a aria-controls="wishlist-dropdown"
+        aria-expanded="false"
+        class="button dropdown-menu-button"
+        data-dropdown="wishlist-dropdown-{{product.id}}"
+        href="#"
+    >
+        <span class="text">{{lang 'account.wishlists.add_item'}}</span>
+        <svg class="icon" role="img" aria-label="{{lang 'account.wishlists.heading'}}">
+            <title>{{lang 'account.wishlists.heading'}}</title>
+            <desc>{{lang 'account.wishlists.heading'}}</desc>
+            <use xlink:href="#icon-heart"></use>
+        </svg>
+    </a>
+    <ul aria-hidden="true" class="dropdown-menu" data-dropdown-content id="wishlist-dropdown-{{product.id}}">
+        {{#if customer.wishlists}}
+            {{#each customer.wishlists}}
+                <li>
+                    <input class="button {{#if this.num_items '!==' '0'}}button--has-items{{/if}}"
+                        formaction="{{this.add_url}}&product_id={{../product.id}}"
+                        type="submit"
+                        value="{{this.name}}"
+                    >
+                </li>
+            {{/each}}
+        {{else}}
+            <li>
+                <input class="button" type="submit" value="{{lang 'account.wishlists.add_to_default'}}">
+            </li>
+        {{/if}}
+        <li>
+            <a data-wishlist class="button" href="/wishlist.php?action=addwishlist&product_id={{product.id}}">{{lang 'account.wishlists.create_new'}}</a>
+        </li>
+    </ul>
+</form>

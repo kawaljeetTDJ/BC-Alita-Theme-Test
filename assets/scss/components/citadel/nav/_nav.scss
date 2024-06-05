@@ -1,0 +1,243 @@
+// =============================================================================
+// NAV (CSS)
+// =============================================================================
+
+
+// Citadel inline messages
+// -----------------------------------------------------------------------------
+//
+// 1. Remove the margin-left we add to default lists.
+//
+// -----------------------------------------------------------------------------
+.navBar {
+    list-style-type: none;
+    margin: 0;
+}
+
+.navList{
+    list-style-type: none;
+    margin: 0;
+
+    .navList-item{
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 0;
+
+        a{
+            display: inline-block;
+            vertical-align: top;
+            font-size: $fontSize-root;
+            font-weight: $fontWeight-normal;
+            line-height: 35px;
+            letter-spacing: $letterSpacing-base;
+            text-transform: unset;
+            color: $color-textSecondary;
+            padding: 0;
+            transition: unset;
+            width: auto;
+
+            > .text{
+                line-height: initial;
+                padding: 0 0 1px 0;
+            }
+
+            &.navList-action--rating{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding-left: 0;
+
+                .rating--small{
+                    margin-right: 5px;
+                }
+            }
+
+            &.is-active{
+                color: $color-textLink-hover;
+
+                > .text{
+                    background-image: linear-gradient(transparent 97%, $color-textLink-hover 3%);
+                    background-repeat: repeat-x;
+                    background-position-y: 0;
+                }
+            }
+        }
+
+        &.navList-reset{
+            a{
+                color: $color-textLink;
+                font-style: italic;
+
+                > .text{
+                    background-image: linear-gradient(transparent 97%, $color-textLink-hover 3%);
+                    background-repeat: repeat-x;
+                    background-position-y: 0;
+                }
+            }
+        }
+    }
+
+    &.haloCustomScrollbar{
+        max-height: 225px;
+        overflow-y: auto;
+    }
+
+    @media (min-width: 1025px){
+        .navList-item{
+            a{
+                &:hover{
+                    color: $color-textLink-hover;
+
+                    > .text{
+                        background-image: linear-gradient(transparent 97%, $color-textLink-hover 3%);
+                        background-repeat: repeat-x;
+                        background-position-y: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.navView-all,
+.navView-clear{
+    display: block;
+    margin: 16px 0 0 0;
+    @include clearfix;
+
+    a{
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        font-style: italic;
+        color: $color-textLink;
+        letter-spacing: $letterSpacing-base;
+        line-height: 1.5;
+
+        > span{
+            padding: 0 0 1px 0;
+            background-image: linear-gradient(transparent 97%, $color-textLink-hover 3%);
+            background-repeat: repeat-x;
+            background-position-y: 0;
+        }
+    }
+}
+
+// NavList action checkbox
+// -----------------------------------------------------------------------------
+//
+// Purpose: Display a checkbox next to an actionable link, without actually using
+// a checkbox element.
+//
+// 1. Position checkbox so it is vertically centered
+//
+// -----------------------------------------------------------------------------
+
+.navList-action--checkbox {
+    @include checkRadioBase();
+    @include checkBox-base();
+
+    &:before,
+    &:after {
+        top: 50%; // 1
+    }
+
+    &:before {
+        margin-top: -$checkRadio-outerSize / 2;
+    }
+
+    &:after {
+        margin-top: -$checkRadio-outerSize / 2 + remCalc(1);
+    }
+
+    &:focus {
+        @include checkRadioBase--focus();
+    }
+
+    &.is-disabled {
+        @include checkRadioBase--disabled();
+    }
+
+    &.is-checked,
+    &.is-selected {
+        @include checkRadioBase--checked();
+    }
+}
+
+
+// NavList action close
+// -----------------------------------------------------------------------------
+//
+.navList-action-close {
+    background: $navList-action-close-background;
+    border-radius: $navList-action-close-borderRadius;
+    display: inline-block;
+    float: right;
+    line-height: 0;
+    opacity: 0;
+    padding: $navList-action-close-padding;
+    transition: $navList-action-close-transition;
+    visibility: hidden;
+
+    .icon {
+        @include square($navList-action-close-iconSize);
+        fill: stencilColor("color-textLink");
+    }
+
+    .navList-action.is-selected:hover & {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+
+// Page Subnavigation
+// -----------------------------------------------------------------------------
+
+.navBar--sub {
+    margin-bottom: spacing("single") * 3;
+    text-align: center;
+
+    .navBar-section {
+        float: none;
+    }
+
+    .navBar-item {
+        float: none;
+        margin: 0 spacing("half");
+
+        @include breakpoint("medium") {
+            display: inline-block;
+        }
+
+        // scss-lint:disable SelectorDepth, NestingDepth
+        &.is-active {
+            @include breakpoint("medium") {
+                border-bottom: 1px solid stencilColor("color-textBase");
+            }
+
+            > .navBar-action {
+                color: color("greys", "dark");
+            }
+        }
+
+        &.navBar-item--separate {
+            @include breakpoint("medium") {
+                border-left: 1px solid stencilColor("color-textSecondary");
+                margin: 0;
+                padding-left: spacing("half");
+            }
+        }
+    }
+
+    .navBar-action {
+        color: stencilColor("color-textSecondary");
+        font-size: fontSize("base");
+        padding: 0;
+
+        // scss-lint:disable NestingDepth
+        &:hover {
+            color: stencilColor("color-textSecondary--hover");
+        }
+    }
+}

@@ -1,0 +1,4 @@
+{
+  "components/halothemes/gallery/halo-banners": "{{#if banner '==' 'halo-top-banner'}}\r\n    {{> components/halothemes/gallery/halo-layout-banner find=\"halo-top-banner\"}}\r\n{{/if}}\r\n{{#if banner '==' 'halo-fullwidth-banner'}}\r\n    {{> components/halothemes/gallery/halo-layout-banner find=\"halo-fullwidth-banner\"}}\r\n{{/if}}\r\n{{#if banner '==' 'halo-testimonial'}}\r\n    {{> components/halothemes/gallery/halo-layout-banner find=\"halo-testimonial\"}}\r\n{{/if}}\n",
+  "components/halothemes/gallery/halo-layout-banner": "{{!--\r\nArguments:\r\n    - find (string)\r\n--}}\r\n{{#if banners.top}}\r\n    {{#each banners.top}}\r\n        {{#if (occurrences this ../find) '>' 0}}\r\n            {{{this}}}\r\n        {{/if}}\r\n    {{/each}}\r\n{{/if}}\r\n{{#if banners.bottom}}\r\n    {{#each banners.bottom}}\r\n        {{#if (occurrences this ../find) '>' 0}}\r\n            {{{this}}}\r\n        {{/if}}\r\n    {{/each}}\r\n{{/if}}\n"
+}

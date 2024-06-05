@@ -1,0 +1,53 @@
+<div class="alertBox alertBox--error productAttributes-message" style="display:none">
+    <div class="alertBox-column alertBox-icon">
+        <svg class="icon"><use xlink:href="#icon-info"></use></svg>
+    </div>
+    <p class="alertBox-column alertBox-message"></p>
+</div>
+<div class="productView-actions">
+    {{#if theme_settings.show_product_quantity_box}}
+        <div class="form-field form-field--increments">
+            <label class="form-label" for="qty[]">{{lang 'products.quantity'}}</label>
+            <div class="form-increment" data-quantity-change>
+                <input class="form-input form-input--incrementTotal"
+                    id="qty[]"
+                    name="qty[]"
+                    type="number"
+                    value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
+                    data-quantity-min="{{product.min_purchase_quantity}}"
+                    data-quantity-max="{{product.max_purchase_quantity}}"
+                    min="1"
+                    pattern="[0-9]*"
+                    aria-live="polite">
+            </div>
+        </div>
+    {{/if}}
+    {{#all layout sticky}}
+        <div class="form-actionFix{{#unless theme_settings.show_product_quantity_box}} form-actionFix2{{/unless}}">
+    {{/all}}
+        {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+            <div class="form-action{{#unless theme_settings.show_product_quantity_box}} form-action2{{/unless}}" role="status" aria-live="polite">
+                <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary" type="submit"
+                    value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
+            </div>
+        {{else}}
+            <div class="form-action{{#unless theme_settings.show_product_quantity_box}} form-action2{{/unless}}">
+                <span class="form-action-text">
+                    <span class="text">{{lang 'common.restrict_to_login'}}</span>
+                </span>
+            </div>
+        {{/or}}
+    {{#all layout sticky}}
+        </div>
+    {{/all}}
+</div>
+{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+    {{#if theme_settings.halo_buy_it_now}}
+        <div class="productView-actions productView-actions--buyItNow">
+            <div class="form-action form-action--buyItNow">
+                <input id="form-action-buyItNow" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--secondary button--transparent-2 button--buyItNow" type="submit"
+                value="{{lang 'products.buy_it_now'}}">
+            </div>
+        </div>
+    {{/if}}
+{{/or}}

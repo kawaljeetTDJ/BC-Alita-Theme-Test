@@ -1,0 +1,23 @@
+{{#partial "page"}}
+    <div class="container">
+        <div class="breadcrumb-wrapper">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        </div>
+        <div class="page page-account">
+            <div class="page-header">
+                <h1 class="page-heading">{{lang 'account.payment_methods.heading' }}</h1>
+            </div>
+           {{> components/account/navigation account_page='payment_methods'}}
+            <main class="page-content">
+                <div class="account">
+                    <div class="account-body">
+                        <section class="account-content account-content2">
+                           {{> components/account/payment-methods-list }}
+                        </section>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{{/partial}}
+{{> layout/base}}

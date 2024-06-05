@@ -1,0 +1,63 @@
+{{#if theme_settings.halo_recent_post}}
+	<div class="halo-block halo-block-post" id="halo-block-post">
+		<div class="container">
+		    <div class="halo-block-content">
+		        <div class="halo-recent-post">
+			        {{#or (if theme_settings.halo_recent_post-subtitle) (if theme_settings.halo_recent_post-title) (if theme_settings.halo_recent_post-text-1) (if theme_settings.halo_recent_post-text-2) (if theme_settings.halo_recent_post-btn)}}
+						<div class="halo-recent-post-item halo-block-header">
+							<div class="halo-recent-post-title">
+								{{#if theme_settings.halo_recent_post-subtitle}}
+									<span class="subtitle">{{theme_settings.halo_recent_post-subtitle}}</span>
+								{{/if}}
+								{{#if theme_settings.halo_recent_post-title}}
+					            	<h3 class="title">{{theme_settings.halo_recent_post-title}}</h3>
+					            {{/if}}
+					            {{#or (if theme_settings.halo_recent_post-text-1) (if theme_settings.halo_recent_post-text-2)}}
+					            	<span class="desc">{{theme_settings.halo_recent_post-text-1}} {{theme_settings.halo_recent_post-text-2}}</span>
+					            {{/or}}
+					            {{#if theme_settings.halo_recent_post-btn}}
+					            	<a href="{{theme_settings.halo_recent_post-link}}" class="button button--secondary button--transparent-2">
+					            		{{theme_settings.halo_recent_post-btn}}
+					            	</a>
+					            {{/if}}
+							</div>
+				        </div>
+				    {{/or}}
+				    <div class="halo-recent-post-item">
+		        		{{#each post}}
+			        		<div class="item{{#if @first}} itemFirst{{/if}}">
+			        			<div class="itemWrapper">
+						            <div class="image-wrapper">
+						                <a href="{{url}}" class="image">
+						                    {{> components/common/responsive-img
+							                    image=thumbnail
+							                    fallback_size=../theme_settings.recent_blog_size
+							                    lazyload=../theme_settings.lazyload_mode
+							                    default_image=../theme_settings.default_image_product
+							                }}
+						                </a>
+						            </div>
+							        <div class="content-wrapper">
+							            <p class="date">{{#if author}}{{lang 'blog.posted_by' name=author}} on {{/if}}{{date_published}}</p>
+							            <h4 class="title">
+							                <a href="{{url}}" style="-webkit-box-orient: vertical;">{{title}}</a>
+							            </h4>
+							            <div class="summary">
+							                {{{summary}}}&hellip;
+							            </div>
+							            {{#if show_read_more}}
+					                        <a href="{{url}}" class="link">
+					                        	<span class="text">{{lang 'blog.read_more'}}</span>
+					                        </a>
+					                    {{/if}}
+							        </div>
+			        			</div>
+						    </div>
+						{{/each}}
+				    </div>
+		        </div>
+		    </div>
+		</div>
+	</div>
+	{{{region name="home_below_recent_posts"}}}
+{{/if}}

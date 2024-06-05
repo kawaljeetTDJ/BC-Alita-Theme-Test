@@ -1,0 +1,1594 @@
+.halo-block{
+	display: block;
+	position: relative;
+
+	&-header{
+		width: 100%;
+	    display: block;
+	    position: relative;
+	    margin: 0 0 50px 0;
+	    text-align: center;
+
+	    .subtitle{
+	    	display: block;
+	    	font-size: $fontSize-root;
+	    	font-weight: $fontWeight-bold;
+	    	line-height: 1.75;
+	    	letter-spacing: $letterSpacing-base;
+	    	color: $color-textSecondary;
+	    	text-transform: uppercase;
+	    	margin: 0 0 14px 0;
+	    }
+
+	    .title{
+	    	font-family: $fontFamily-headings;
+	    	font-size: $h3-font-size + 8px;
+	    	font-weight: $fontWeight-normal;
+	    	line-height: 32px;
+	    	letter-spacing: $letterSpacing-base;
+	    	margin: 0;
+	    	color: $header-font-color;
+	    }
+
+	    .desc{
+	    	display: block;
+    	    font-size: $fontSize-root;
+		    font-weight: $fontWeight-normal;
+		    letter-spacing: $letterSpacing-base;
+		    line-height: 1.75;
+		    padding: 0 15px;
+		    color: $color-textSecondary;
+		    margin: 30px 0 40px 0;
+	    }
+
+	    .text{
+	    	display: block;
+	    	font-family: $fontFamily-headings;
+	    	font-size: $fontSize-root;
+	    	font-style: italic;
+	    	font-weight: $fontWeight-normal;
+	    	line-height: 2;
+	    	letter-spacing: $letterSpacing-base;
+	    	color: $color-textSecondary;
+	    	width: 100%;
+	    	padding: 0 15px;
+	    	max-width: 850px;
+	    	margin: 0 auto;
+	    }
+
+	    .button{
+	    	text-transform: uppercase;
+	    	min-width: 225px;
+	    }
+	}
+
+	&-content{
+		display: block;
+		text-align: center;
+		@include clearfix;
+	}
+
+	&-wrapper{
+		display: block;
+		position: relative;
+	}
+
+	&-footer{
+		display: block;
+		text-align: center;
+		padding: 30px 0;
+		@include clearfix;
+
+		.button{
+			text-transform: uppercase;
+			min-width: 245px;
+		}
+	}
+
+	@media (min-width: 1025px){
+		&-header{
+			.text{
+				padding-bottom: 60px;
+			}
+		}
+	}
+}
+
+// Halo Product
+// -----------------------------------------------------------------------------
+.halo-block-product{
+	padding: 50px 0;
+
+	&[data-category-id]{
+		.loadingOverlay{
+			display: block;
+		}
+	}
+
+	&[data-list-id]{
+		.loadingOverlay{
+			display: block;
+		}
+	}
+
+	@media (min-width: 1025px){
+		padding-top: 70px;
+		padding-bottom: 100px;
+
+		.page-type-product &{
+			padding-bottom: 80px;
+		}
+	}
+}
+
+// Halo Description Product
+// -----------------------------------------------------------------------------
+.halo-desc-block{
+	padding: 30px 0;
+	@include clearfix;
+
+	.halo-block-content{
+		text-align: unset;
+		padding: 0;
+
+		.halo-fullwidth-banner{
+			padding-top: 0;
+		}
+	}
+}
+
+// Halo Image Tabs
+// -----------------------------------------------------------------------------
+.halo-image-tabs{
+	padding: 25px 0; 
+
+	.tabs{
+		display: block;
+	    font-size: 0;
+	    letter-spacing: 0;
+	    padding: 0;
+	    border: 0;
+	    margin: 0;
+	    list-style: none;
+	    white-space: nowrap;
+	    overflow-x: auto;
+
+	    .tab{
+	    	display: inline-block;
+		    vertical-align: top;
+		    width: auto;
+		    margin: 0 0 0 15px;
+		    background: 0;
+		    border: 0;
+		    float: none;
+
+		    &:first-child{
+		    	margin-left: 0;
+		    }
+
+		    &.is-active{
+		    	.tab-title{
+		    		background: stencilColor('global_style');
+		    		border-color: stencilColor('global_style');
+		    		color: $color-white;
+		    	}
+		    }
+	    }
+
+	    .tab-title{
+	    	font-size: $fontSize-root;
+	    	font-weight: $fontWeight-bold;
+	    	letter-spacing: $letterSpacing-base;
+	    	line-height: 1;
+	    	color: $color-textBase;
+	    	text-transform: uppercase;
+	    	border: 1px solid $color-textBase;
+	    	padding: 15px 30px;
+	    }
+	}
+
+	.tabs-contents{
+		margin-bottom: 0;
+
+		.tab-content{
+			padding-top: 30px;
+			padding-bottom: 0;
+		}
+	}
+
+	&--wrapper{
+		display: block;
+		font-size: 0;
+		letter-spacing: 0;
+		margin: 0;
+		@include clearfix;
+	}
+
+	&--item{
+		display: none;
+		vertical-align: top;
+		width: 100%;
+		padding: 0;
+		margin: 0;
+	}
+
+	&--portfolio{
+		display: block;
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.image-wrapper{
+		display: block;
+		overflow: hidden;
+		position: relative;
+		text-align: center;
+		padding: 0 0 30px 0;
+
+		img{
+			width: 100%;
+
+			&.lazyload,
+			&.lazyloading{
+				width: auto;
+				height: auto;
+				margin: auto;
+				object-fit: contain;
+			}
+		}
+
+		.button{
+			display: none;
+			min-width: 130px;
+			text-transform: uppercase;
+		}
+	}
+
+	.content-wrapper{
+		position: absolute;
+		top: auto;
+		bottom: 15px;
+		left: 15px;
+		width: calc(100% - 30px);
+		display: block;
+		text-align: center;
+		padding: 15px  15px 0 15px;
+		margin: 0 auto;
+		background: rgba(124,101,91,.3);
+
+		.title{
+			display: block;
+			font-size: 20px;
+			font-weight: $fontWeight-normal;
+			font-style: italic;
+			letter-spacing: $letterSpacing-base;
+			line-height: 2;
+			margin: 0 0 10px 0;
+			color: $color-white;
+		}
+
+		.desc{
+			display: block;
+			font-size: $fontSize-root;
+			font-weight: $fontWeight-normal;
+			font-style: italic;
+			line-height: 1.75;
+			letter-spacing: $letterSpacing-base;
+			color: $color-white;
+		}
+
+		.button{
+			min-width: 130px;
+			text-transform: uppercase;
+			margin-top: 12px;
+			margin-bottom: 15px;
+		}
+	}
+
+	&--button{
+		display: none;
+		vertical-align: top;
+		text-align: center;
+		padding: 41px 0 0 0;
+
+		.button{
+			text-transform: uppercase;
+			min-width: 210px;
+		}
+	}
+
+	@media (min-width: 551px){
+		&--wrapper{
+			margin-left: -8px;
+			margin-right: -8px;
+		}
+
+		&--item{
+			width: 50%;
+			padding-left: 8px;
+			padding-right: 8px;
+		}
+	}
+
+	@media (min-width: 992px){
+		&--item{
+			width: 33.33333333%;
+		}
+	}
+
+	@media (min-width: 1025px){
+		padding-bottom: 50px;
+		
+		.tabs{
+		    display: flex;
+		    flex-wrap: wrap;
+		    justify-content: center;
+		    white-space: unset;
+		    overflow-x: hidden;
+
+		    .tab{
+			    margin-left: 20px;
+
+			    .tab-title{
+			    	border-color: transparent;
+			    	background: transparent;
+			    }
+
+			    &.is-active{
+			    	.tab-title{
+			    		color: stencilColor('global_style');
+			    		border-color: stencilColor('global_style');
+			    		background: transparent;
+			    	}
+			    }
+		    }
+
+		    .tab-title{
+		    	padding-top: 32px;
+		    	padding-left: 15px;
+		    	padding-right: 35px;
+		    	padding-bottom: 12px;
+
+		    	&:hover{
+		    		color: $color-textLink-active;
+			    	border-color: $color-textLink-active;
+		    	}
+		    }
+		}
+
+		.tabs-contents{
+			.tab-content{
+				padding-top: 73px;
+			}
+		}
+
+		&--wrapper{
+			margin-left: -17px;
+			margin-right: -17px;
+		}
+
+		&--item{
+			padding-left: 17px;
+			padding-right: 17px;
+			margin-bottom: 34px;
+		}
+
+		&--portfolio{
+			&:hover{
+				.image-wrapper{
+					.button{
+						top: calc(50% - 50px);
+						opacity: 1;
+						visibility: visible;
+						pointer-events: auto;
+					}
+
+					&:before{
+						top: 0;
+						opacity: 1;
+						visibility: visible;
+					}
+				}
+
+				.content-wrapper{
+					top: auto;
+					bottom: 34px;
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+
+		.image-wrapper{
+			padding-bottom: 0;
+
+			.button{
+				display: block;
+				position: absolute;
+				top: 100%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				opacity: 0;
+				visibility: hidden;
+				pointer-events: none;
+				transition: all ease .5s;
+				z-index: 2;
+				margin-top: 0;
+			}
+
+			&:before{
+				content: '';
+				display: block;
+				position: absolute;
+				top: -100%;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(255,255,255,.7);
+				z-index: 1;
+				opacity: 0;
+				visibility: hidden;
+				transition: all ease .5s;
+			}
+		}
+
+		.content-wrapper{
+			top: 100%;
+			left: 50%;
+			z-index: 3;
+			opacity: 0;
+			visibility: hidden;
+			transition: all ease .5s;
+			transform: translateX(-50%);
+			padding-bottom: 15px;
+			width: 100%;
+			max-width: 390px;
+			background: transparent;
+
+			.title{
+				color: $header-font-color;
+			}
+
+			.desc{
+				color: $color-textSecondary;
+			}
+
+			.button{
+				display: none;
+			}
+		}
+	}
+
+	@media (min-width: 1280px){
+		&--portfolio{
+			&:hover{
+				.image-wrapper{
+					.button{
+						top: 50%;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Halo Gallery
+// -----------------------------------------------------------------------------
+.halo-gallery{
+	padding: 0 0 50px 0;
+
+	&-top{
+		display: block;
+		padding: 0 0 15px 0;
+		@include clearfix;
+
+		.content-wrapper{
+			padding-top: 30px!important; 
+			padding-bottom: 30px!important;
+		}
+	}
+
+	&-bottom{
+		display: block;
+	    white-space: nowrap;
+	    font-size: 0;
+	    letter-spacing: 0;
+	    overflow-x: auto;
+	    overflow-y: hidden;
+	    margin: 0 -15px;
+	    padding: 0 0 0 15px;
+		@include clearfix;
+	}
+
+	&-left{
+		display: block;
+		width: 100%;
+	}
+
+	&-right{
+		display: block;
+		width: 100%;
+	}
+
+	&-image{
+		display: block;
+		position: relative;
+		overflow: hidden;
+	}
+
+	&-item{
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 15px 0 0;
+		white-space: normal;
+		width: 300px;
+		@include clearfix;
+
+		.content-wrapper{
+			padding-top: 30px!important;
+			padding-bottom: 0!important;
+		}
+
+		&.halo-gallery-itemFirst{
+			.content-wrapper{
+				&.content-wrapper-1{
+					display: none;
+				}
+
+				&.content-wrapper-2{
+					display: block;
+				}
+			}
+		}
+	}
+
+	&-itemLeft{
+		display: block;
+		width: 100%;
+	}
+
+	&-itemRight{
+		display: block;
+		width: 100%;
+	}
+
+	.content-wrapper{
+		display: block;
+		padding: 0;
+		margin: 0;
+		@include clearfix;
+
+		.title{
+			display: block;
+			font-size: 30px;
+			font-weight: $fontWeight-normal;
+			letter-spacing: $letterSpacing-base;
+			line-height: 32px;
+			text-align: left;
+			margin: 0 0 21px 0;
+		}
+
+		.desc{
+			display: block;
+			font-size: $fontSize-root;
+			font-weight: $fontWeight-normal;
+			letter-spacing: $letterSpacing-base;
+			line-height: 1.75;
+			color: $color-textSecondary;
+			width: 100%;
+			max-width: 560px;
+			margin: 0 0 40px 0;
+		}
+
+		.button{
+			text-transform: uppercase;
+			min-width: 180px;
+		}
+	}
+
+	.image-wrapper{
+		display: block;
+		position: relative;
+		overflow: hidden;
+		width: auto;
+
+		img{
+	        &.lazyload,
+	        &.lazyloading{
+	            width: auto;
+	            height: auto;
+	            object-fit: contain;
+	            margin: auto;
+	        }
+
+	        &.lazyloaded{
+	            width: 100%;
+	            height: auto;
+	            transition: all .7s ease;
+	        }
+	    }
+
+	    .image-label{
+	    	display: block;
+	    	position: absolute;
+	    	top: auto;
+	    	bottom: 30px;
+	    	left: auto;
+	    	right: 30px;
+	    	background: #ffffff;
+	    	font-size: $fontSize-root - 2px;
+	    	font-weight: $fontWeight-normal;
+	    	color: $color-textSecondary;
+	    	letter-spacing: $letterSpacing-base;
+	    	line-height: 40px;
+	    	height: 40px;
+	    	text-transform: uppercase;
+	    	padding: 0 35px;
+	    	z-index: 2;
+	    }
+	}
+
+	@media (min-width: 768px){
+		&-top{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: nowrap;
+			margin-left: -15px;
+			margin-right: -15px;
+			padding-bottom: 30px;
+
+			.image-wrapper{
+				float: right;
+			}
+		}
+
+		&-bottom{
+			white-space: unset;
+			overflow: hidden;
+			margin-left: 0;
+			margin-right: 0;
+			padding-left: 0;
+		}
+
+		&-left,
+		&-right{
+			width: 50%;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+
+		&-image{
+			.image-wrapper{
+				float: none;
+			}
+		}
+
+		&-item{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: nowrap;
+			margin-left: -15px;
+			margin-right: -15px;
+			width: auto;
+
+			&.halo-gallery-itemFirst{
+				.halo-gallery-itemRight{
+					order: unset;
+				}
+
+				.content-wrapper{
+					.title{
+						&:before{
+							left: auto;
+						    right: -28.5%;
+						}
+					}
+
+					&.content-wrapper-1{
+						display: block;
+					}
+
+					&.content-wrapper-2{
+						display: none;
+					}
+				}
+			}
+
+			&.halo-gallery-itemLast{
+				text-align: right;
+
+				.content-wrapper{
+					.title{
+						text-align: right;
+
+						&:before{
+							left: -28.5%;
+						}
+					}
+
+					.desc{
+						text-align: right;
+					}
+				}
+			}
+		}
+
+		&-itemLeft,
+		&-itemRight{
+			width: 50%;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+
+		.content-wrapper{
+			.title{
+				position: relative;
+
+				&:before{
+					content: "";
+				    position: absolute;
+				    top: 20px;
+				    left: -48.5%;
+				    background-color: stencilColor('global_style');
+				    width: 140px;
+				    height: 1px;
+				    z-index: 1;
+				}
+			}
+		}
+	}
+
+	@media (min-width: 992px){
+		&-item{
+			&.halo-gallery-itemFirst{
+				.content-wrapper{
+					.title{
+						&:before{
+						    right: -21.5%;
+						}
+					}
+				}
+			}
+
+			&.halo-gallery-itemLast{
+				.content-wrapper{
+					.title{
+						&:before{
+						    left: -21.5%;
+						}
+					}
+				}
+			}
+		}
+
+		.content-wrapper{
+			.title{
+				&:before{
+					left: -35.5%;
+				}
+			}
+		}
+	}
+
+	@media (min-width: 1025px){
+		&-top{
+			padding-bottom: 50px;
+
+			.content-wrapper{
+				padding-bottom: 16px!important;
+			}
+		}
+
+		&-bottom{
+			padding-top: 100px;
+			padding-bottom: 50px;
+		}
+
+		&-item{
+			.image-wrapper{
+				max-width: 570px;
+				margin: 0 auto;
+			}
+
+			&.halo-gallery-itemFirst{
+				align-items: flex-start;
+
+				.image-wrapper{
+					margin-left: 0;
+				}
+
+				.content-wrapper{
+					padding-top: 93px!important;
+
+					.title{
+						&:before{
+						    right: -30%;
+						}
+					}
+				}
+			}
+
+			&.halo-gallery-itemLast{
+				position: relative;
+				margin-top: -305px;
+				align-items: flex-end;
+
+				.content-wrapper{
+					text-align: left;
+					padding-bottom: 95px!important;
+					margin-left: 0;
+
+					.title{
+						text-align: left;
+
+						&:before{
+							left: -30%;
+						}
+					}
+
+					.desc{
+						text-align: left;
+					}
+				}
+			}
+		}
+
+		.content-wrapper{
+			max-width: 570px;
+			margin: 0 auto;
+
+			.title{
+				&:before{
+					left: -30%;
+				}
+			}
+		}
+
+		.image-wrapper{
+			&:before{
+	            content: "";
+	            width: 100%;
+	            height: 100%;
+	            top: 100%;
+	            right: 0;
+	            left: auto;
+	            z-index: 2;
+	            transform: none;
+	            position: absolute;
+	            transition: $anchor-transition;
+	            background-color: rgba(0,0,0,.25);
+	            background: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.25) 100%);
+	        }
+
+	        &:hover{
+	        	&:before{
+	        		top: 0;
+	        	}
+	        }
+		}
+	}
+
+	@media (min-width: 1600px){
+		&-item{
+			&.halo-gallery-itemFirst{
+				.content-wrapper{
+					.title{
+						&:before{
+						    right: -35.5%;
+						}
+					}
+				}
+			}
+
+			&.halo-gallery-itemLast{
+				.content-wrapper{
+					.title{
+						&:before{
+						    left: -35.5%;
+						}
+					}
+				}
+			}
+		}
+
+		.content-wrapper{
+			.title{
+				&:before{
+				    left: -35.5%;
+				}
+			}
+		}
+	}
+}
+
+// Halo Exhibition
+// -----------------------------------------------------------------------------
+.halo-exhibition{
+	padding: 50px 0;
+
+	&-wrapper{
+		display: block;
+		font-size: 0;
+		letter-spacing: 0;
+		margin: 0;
+	    padding: 0 0 0 15px;
+		overflow: auto;
+	    white-space: nowrap;
+	}
+
+	&-block{
+		display: inline-block;
+		vertical-align: top;
+		width: auto;
+	}
+
+	&-item{
+		display: inline-block;
+		vertical-align: top;
+		width: 300px;
+		margin: 0 15px 0 0;
+		padding: 0;
+		white-space: normal;
+	}
+
+	.content-wrapper{
+		display: block;
+		padding: 40px 0 0 0;
+		margin: 0;
+		@include clearfix;
+
+		.title{
+			display: block;
+			font-size: 30px;
+			font-weight: $fontWeight-normal;
+			letter-spacing: $letterSpacing-base;
+			line-height: 32px;
+			text-align: left;
+			margin: 0 0 24px 0;
+		}
+
+		.desc{
+			display: block;
+			font-size: $fontSize-root;
+			font-weight: $fontWeight-normal;
+			letter-spacing: $letterSpacing-base;
+			line-height: 1.75;
+			color: $color-textSecondary;
+			width: 100%;
+			margin: 0 0 40px 0;
+		}
+
+		.button{
+			text-transform: uppercase;
+			min-width: 180px;
+		}
+	}
+
+	.image-wrapper{
+		display: block;
+		position: relative;
+		overflow: hidden;
+		width: auto;
+
+		img{
+	        &.lazyload,
+	        &.lazyloading{
+	            width: auto;
+	            height: auto;
+	            object-fit: contain;
+	            margin: auto;
+	        }
+
+	        &.lazyloaded{
+	            width: 100%;
+	            height: auto;
+	            transition: all .7s ease;
+	        }
+	    }
+
+	    .image-label{
+	    	display: block;
+	    	position: absolute;
+	    	top: auto;
+	    	bottom: 30px;
+	    	left: auto;
+	    	right: 30px;
+	    	background: #ffffff;
+	    	font-size: $fontSize-root - 2px;
+	    	font-weight: $fontWeight-normal;
+	    	color: $color-textSecondary;
+	    	letter-spacing: $letterSpacing-base;
+	    	line-height: 40px;
+	    	height: 40px;
+	    	text-transform: uppercase;
+	    	padding: 0 35px;
+	    	z-index: 2;
+	    }
+	}
+
+	@media (min-width: 768px){
+		&-item{
+			width: 400px;
+		}
+	}
+
+	@media (min-width: 1025px){
+		padding-bottom: 75px;
+
+		&-wrapper{
+			white-space: normal;
+			width: auto;
+			padding-left: 0;
+			margin-left: -25px;
+			margin-right: -25px;
+		}
+
+		&-block{
+			padding-left: 25px;
+			padding-right: 25px;
+			width: calc(100%/3);
+
+			&.halo-exhibition-blockCenter{
+				padding-top: 50px;
+			}
+		}
+
+		&-item{
+			width: 100%;
+
+			+ .halo-exhibition-item{
+				margin-top: 50px;
+			}
+		}
+
+		.image-wrapper{
+			&:before{
+	            content: "";
+	            width: 100%;
+	            height: 100%;
+	            top: 100%;
+	            right: 0;
+	            left: auto;
+	            z-index: 2;
+	            transform: none;
+	            position: absolute;
+	            transition: $anchor-transition;
+	            background-color: rgba(0,0,0,.25);
+	            background: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.25) 100%);
+	        }
+
+	        &:hover{
+	        	&:before{
+	        		top: 0;
+	        	}
+	        }
+		}
+	}
+
+	@media (min-width: 1200px){
+		&-wrapper{
+			margin-left: -50px;
+			margin-right: -50px;
+		}
+
+		&-block{
+			padding-left: 50px;
+			padding-right: 50px;
+
+			&.halo-exhibition-blockCenter{
+				padding-top: 100px;
+			}
+		}
+
+		&-item{
+			+ .halo-exhibition-item{
+				margin-top: 100px;
+			}
+		}
+	}
+
+	@media (min-width: 1600px){
+		&-wrapper{
+			width: auto;
+			margin-left: -70px;
+			margin-right: -70px;
+		}
+
+		&-block{
+			padding-left: 70px;
+			padding-right: 70px;
+
+			&.halo-exhibition-blockCenter{
+				padding-top: 142px;
+			}
+		}
+
+		&-item{
+			+ .halo-exhibition-item{
+				margin-top: 150px;
+			}
+		}
+	}
+}
+
+// Halo Blog Post
+// -----------------------------------------------------------------------------
+.halo-block-post{
+	background: #f3f0ee;
+	padding: 50px 0;
+
+	.halo-block-header{
+		.title{
+			font-size: 40px;
+			line-height: 1.2;
+			text-transform: uppercase;
+		}
+	}
+
+	@media (min-width: 1025px){
+		padding-top: 100px;
+		padding-bottom: 150px;
+	}
+}
+
+.halo-recent-post{
+	display: block;
+	font-size: 0;
+	letter-spacing: 0;
+	margin: 0;
+	@include clearfix;
+
+	&-item{
+		display: block;
+		width: 100%;
+		font-size: 0;
+		letter-spacing: 0;
+		padding: 0;
+		margin: 0;
+
+		.item{
+			display: inline-block;
+		    vertical-align: top;
+		    position: relative;
+		    padding: 0;
+		    margin: 0 15px 0 0;
+		    white-space: normal;
+		    width: auto;
+		}
+
+		&.halo-block-header{
+			margin-bottom: 50px;
+		}
+
+		&:not(.halo-block-header){
+			width: auto;
+		    white-space: nowrap;
+		    overflow-x: auto;
+		    overflow-y: hidden;
+		    margin-left: -15px;
+		    margin-right: -15px;
+		    padding-left: 15px;
+		}
+	}
+
+	.itemWrapper{
+		display: block;
+		width: 300px;
+    	overflow: hidden;
+		box-shadow: 0 1px 3px -2px rgba(0,0,0,.1), 0 1px 2px -2px rgba(0,0,0,.15);
+
+		.image-wrapper{
+			display: block;
+			overflow: hidden;
+			position: relative;
+
+			.image{
+				display: block;
+		        position: relative;
+		        max-width: get-width(stencilString('recent_blog_size'));
+				@include lazy-loaded-padding('recent_blog_size');
+
+				&:before{
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					z-index: 2;
+					background: rgba(90,75,69,.1);
+				}
+			}
+
+			img{
+				@include lazy-loaded-img;
+		        opacity: 1;
+		        visibility: visible;
+		        border: 0;
+		        width: 100%;
+		        height: 100%;
+		        object-fit: cover;
+		        margin-top: 0;
+		        margin-bottom: 0;
+		        transition: $anchor-transition;
+			}
+		}
+
+		.content-wrapper{
+			display: block;
+			background: #ffffff;
+			padding: 27px 50px 47px 50px;
+			text-align: left;
+
+			.date{
+				display: block;
+				font-size: $fontSize-root - 2px;
+				font-weight: $fontWeight-normal;
+				font-style: italic;
+				line-height: 26px;
+				letter-spacing: $letterSpacing-base;
+				color: $color-textSecondary;
+				margin: 0 0 12px 0;
+			}
+
+			.title{
+				display: block;
+				font-family: $fontFamily-sans;
+				font-size: $fontSize-root + 4px;
+				font-weight: $fontWeight-bold;
+				letter-spacing: $letterSpacing-base;
+				line-height: 26px;
+				color: $color-textBase;
+				margin: 0 0 23px 0;
+
+				> a{
+					color: inherit;
+					overflow: hidden;
+			        display: -webkit-box;
+			        -webkit-line-clamp: 1;
+			        text-overflow: ellipsis;
+				}
+			}
+
+			.summary{
+				font-size: $fontSize-root;
+				font-weight: $fontWeight-normal;
+				letter-spacing: $letterSpacing-base;
+				line-height: 1.75;
+				color: $color-textSecondary;
+				margin: 0 0 24px 0;
+			}
+
+			.link{
+				display: block;
+				font-size: $fontSize-root;
+				font-weight: $fontWeight-normal;
+				line-height: 26px;
+				letter-spacing: $letterSpacing-base;
+				color: $color-textLink;
+				transition: unset;
+				text-transform: capitalize;
+
+				.text{
+					padding: 0 0 1px 0;
+					background-image: linear-gradient(transparent 97%, $color-textLink 3%);
+                    background-repeat: repeat-x;
+                    background-position-y: 0;
+				}
+			}
+		}
+	}
+
+	@media (min-width: 551px){
+		.itemWrapper{
+			width: 400px;
+		}
+	}
+
+	@media (min-width: 992px){
+		&-item{
+			.item{
+				display: inline-block;
+				vertical-align: top;
+				width: 50%;
+				padding: 0 15px;
+				margin-right: 0;
+			}
+
+			&.halo-block-header{
+				width: 100%;
+			}
+
+			&:not(.halo-block-header){
+				padding-left: 0;
+			}
+		}
+
+		&-title{
+			display: block;
+			width: 100%;
+			max-width: 830px;
+			margin: 0 auto;
+		}
+
+		.itemWrapper{
+			width: 100%;
+		}
+	}
+
+	@media (min-width: 1025px){
+		margin-left: 0;
+		margin-right: 0;
+
+		&-item{
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 0;
+			margin-right: 0;
+
+			&.halo-block-header{
+				width: 400px;
+				text-align: left;
+				margin-bottom: 0;
+			}
+
+			&:not(.halo-block-header){
+				width: calc(100% - 400px);
+				margin: 0 -15px;
+			}
+
+			.item{
+				+ .item{
+					margin-top: 150px;
+				}
+			}
+		}
+
+		&-title{
+			max-width: 270px;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.itemWrapper{
+			.image-wrapper{
+				&:before{
+					content: "";
+		            width: 100%;
+		            height: 100%;
+		            top: 100%;
+		            right: 0;
+		            left: auto;
+		            z-index: 2;
+		            transform: none;
+		            position: absolute;
+		            transition: $anchor-transition;
+		            background-color: rgba(0,0,0,.25);
+		            background: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.25) 100%);
+				}
+
+				&:hover{
+					&:before{
+						top: 0;
+					}
+				}
+			}
+
+			.content-wrapper{
+				.link{
+					&:hover{
+						color: $color-textLink-hover;
+
+						.text{
+							background-image: linear-gradient(transparent 97%, $color-textLink-hover 3%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Site Map
+// -----------------------------------------------------------------------------
+.sitemap-list{
+	margin: 0;
+
+	&--item{
+		display: block;
+	    position: relative;
+	    margin: 0;
+	    padding: 0;
+		list-style: none;
+
+		+ .sitemap-list--item{
+			margin-top: 30px;
+			padding-top: 25px;
+		}
+	}
+
+	&--title{
+		font-size: $h4-font-size;
+	    font-weight: $fontWeight-normal;
+	    letter-spacing: $letterSpacing-base;
+	    line-height: 1;
+	    color: $color-textBase;
+	    margin: 0 0 20px 0;
+	    text-transform: capitalize;
+	}
+
+	&--subItem{
+		display: block;
+
+		> a{
+			font-size: $fontSize-root;
+		    font-weight: $fontWeight-normal;
+		    line-height: 45px;
+		    letter-spacing: $letterSpacing-base;
+		    text-transform: uppercase;
+		    color: $color-textBase;
+		    transition: unset;
+
+		    span{
+		    	padding: 0 0 1px 0;
+		    }
+		}
+
+		li{
+			a{
+				font-size: $fontSize-root;
+			    font-weight: $fontWeight-normal;
+			    padding: 0;
+			    margin: 0;
+			    color: $color-textBase;
+			    text-transform: capitalize;
+			    letter-spacing: $letterSpacing-base;
+			    line-height: 45px;
+			    transition: unset;
+
+			    span{
+			    	padding: 0 0 1px 0;
+			    }
+			}
+		}
+
+		&.sitemap-list--viewAll{
+    		> a{
+			    font-style: italic;
+			    color: $color-textLink;
+			    text-transform: capitalize;
+
+			    span{
+			    	padding: 0 0 1px 0;
+				    background-image: linear-gradient(transparent 97%,$color-textLink 3%);
+				    background-repeat: repeat-x;
+				    background-position-y: 0;
+			    }
+    		}
+		}
+	}
+
+	@media (min-width: 1025px){
+		li{
+			a{
+				&:hover{
+					color: $color-textLink-hover;
+
+					span{
+						background-image: linear-gradient(transparent 97%, $color-textLink-hover 3%);
+	                    background-repeat: repeat-x;
+	                    background-position-y: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Halo Icon With Text
+// -----------------------------------------------------------------------------
+.halo-block-icon-text{
+	.halo-row{
+		display: block;
+		padding: 40px 0;
+		margin: 0;
+    	white-space: nowrap;
+    	overflow: auto;
+    	font-size: 0;
+    	letter-spacing: 0;
+
+    	&-slider{
+    		display: inline-block;
+    		vertical-align: top;
+    		width: 300px;
+    		margin: 0 15px 2px 0;
+    		padding: 0;
+    		overflow: hidden;
+    	}
+
+	    &-item{
+	    	display: block;
+	    	margin: 0;
+			padding: 0;
+			width: 100%;
+	    }
+	}
+
+	.icon-with-text{
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+		font-size: 0;
+		letter-spacing: 0;
+	    max-width: 300px;
+	    margin-left: auto;
+	    margin-right: auto;
+	    position: relative;
+	    text-align: left;
+
+	    .icon{
+		    display: inline-block;
+		    vertical-align: middle;
+	    	width: 30px;
+	    	height: 30px;
+	    }
+
+	    .content{
+		    display: inline-block;
+		    vertical-align: middle;
+		    padding: 0 0 0 20px;
+		    white-space: normal;
+
+		    .title{
+		    	font-family: $fontFamily-sans;
+		    	font-size: $fontSize-root - 2px;
+			    font-weight: $fontWeight-normal;
+			    letter-spacing: $letterSpacing-base;
+			    line-height: 24px;
+			    color: $buttonStyle-primary-backgroundColor;
+			    margin: 0;
+			    text-transform: uppercase;
+		    }
+
+		    .desc{
+			    font-size: $fontSize-root - 2px;
+			    font-weight: $fontWeight-normal;
+			    letter-spacing: $letterSpacing-base;
+			    line-height: 24px;
+			    color: $buttonStyle-primary-backgroundColor;
+		    }
+	    }
+	}
+
+	@media (min-width: 992px){
+		.halo-row{
+	    	&-slider{
+	    		width: 400px;
+	    	}
+		}
+	}
+
+	@media (min-width: 1025px){
+		.halo-row{
+			width: auto;
+		    min-width: 100%;
+		    overflow: visible;
+		    margin-left: -15px;
+		    margin-right: -15px;
+
+		    &-slider{
+	    		width: 25%;
+	    		overflow: hidden;
+	    		margin: 0;
+	    	}
+
+		    &-item{
+			    padding-left: 15px;
+			    padding-right: 15px;
+	    	}
+		}
+	}
+}

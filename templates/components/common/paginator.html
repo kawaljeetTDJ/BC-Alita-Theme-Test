@@ -1,0 +1,108 @@
+<nav class="pagination{{#if theme_settings.halo-product-show-more}} pagination-2{{/if}}" aria-label="pagination">
+    {{#if page_type '==' 'category'}}
+        {{#if total}}
+            {{#if start}}
+                {{#if end}}
+                    {{#if end '<' total}}
+                        <div class="pagination-info">Items <span class="start">{{start}}</span> to <span class="end">{{end}}</span> of <span class="total">{{total}}</span> total</div>
+                    {{else}}
+                        <div class="pagination-info">Items <span class="start">{{start}}</span> to <span class="end">{{total}}</span> of <span class="total">{{total}}</span> total</div>
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        {{/if}}
+        {{#if theme_settings.halo-product-show-more}}
+            <div class="halo-product-show-more" id="listing-showmoreBtn">
+                {{#if next}}
+                    <a class="button button--secondary button--transparent-2" href="#">
+                        <span class="text">{{lang 'search.faceted.show-more'}}</span>
+                    </a>
+                {{else}}
+                    <a class="button button--secondary button--transparent-2 disable" href="#">
+                        <span class="text">{{lang 'common.no_more_products'}}</span>
+                    </a>
+                {{/if}}
+            </div> 
+        {{/if}}
+    {{/if}}
+    {{#if page_type '==' 'brand'}}
+        {{#if links.length}}
+            {{#each shop_by_brand}}
+                {{#if name '==' ../brand.name}}
+                    <div class="pagination-info">Items <span class="start"></span> to <span class="end"></span> of <span class="total">{{count}}</span> total</div>
+                {{/if}}
+            {{/each}}
+        {{/if}}
+        {{#if theme_settings.halo-product-show-more}}
+            <div class="halo-product-show-more" id="listing-showmoreBtn">
+                {{#if next}}
+                    <a class="button button--secondary button--transparent-2" href="#">
+                        <span class="text">{{lang 'search.faceted.show-more'}}</span>
+                    </a>
+                {{else}}
+                    <a class="button button--secondary button--transparent-2 disable" href="#">
+                        <span class="text">{{lang 'common.no_more_products'}}</span>
+                    </a>
+                {{/if}}
+            </div> 
+        {{/if}}
+    {{/if}}
+    {{#if page_type '==' 'search'}}
+        <div class="pagination-info">Items <span class="start"></span> to <span class="end"></span> of <span class="total">{{total}}</span> total</div>
+        {{#if theme_settings.halo-product-show-more}}
+            <div class="halo-product-show-more" id="listing-showmoreBtn">
+                {{#if next}}
+                    <a class="button button--secondary button--transparent-2" href="#">
+                        <span class="text">{{lang 'search.faceted.show-more'}}</span>
+                    </a>
+                {{else}}
+                    <a class="button button--secondary button--transparent-2 disable" href="#">
+                        <span class="text">{{lang 'common.no_more_products'}}</span>
+                    </a>
+                {{/if}}
+            </div> 
+        {{/if}}
+    {{/if}}
+    <ul class="pagination-list">
+        {{#if previous}}
+            <li class="pagination-item pagination-item--previous">
+                <a class="pagination-link"
+                   href="{{previous}}"
+                   {{#unless reload}}data-faceted-search-facet{{/unless}}
+                   aria-label="{{lang 'common.previous'}}"
+                >
+                    <svg class="icon">
+                        <use xlink:href="#icon-chevron-left"></use>
+                    </svg>
+                </a>
+            </li>
+        {{/if}}
+
+        {{#each links}}
+            <li class="pagination-item {{#if this.number '==' ../current}}pagination-item--current{{/if}}">
+                <a class="pagination-link"
+                   href="{{this.url}}"
+                   {{#unless reload}}data-faceted-search-facet{{/unless}}
+                   {{#if this.number '==' ../current}}aria-current="page"{{/if}}
+                   aria-label="{{lang 'common.paginator.page_of' current=this.number total=../links.length}}"
+                >
+                    {{this.number}}
+                </a>
+            </li>
+        {{/each}}
+
+        {{#if next}}
+            <li class="pagination-item pagination-item--next">
+                <a class="pagination-link"
+                   href="{{next}}"
+                   {{#unless reload}}data-faceted-search-facet{{/unless}}
+                   aria-label="{{lang 'common.next'}}"
+                >
+                    <svg class="icon">
+                        <use xlink:href="#icon-chevron-right"></use>
+                    </svg>
+                </a>
+            </li>
+        {{/if}}
+    </ul>
+</nav>

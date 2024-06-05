@@ -1,0 +1,51 @@
+<div class="halo-block halo-block-product">
+	<div class="container">
+		<div class="halo-block-header">
+            <h3 class="title">{{title}}</h3>
+        </div>
+        {{#if block_layout}}
+            {{#if settings.data_tag_enabled}}
+            	{{> components/products/carousel
+                    products=products
+                    productsnew=productsnew
+                    customArrowClass='js-top-product-arrow'
+                    block_id=block_id
+                    block_limit=block_limit
+                    block_column=block_column
+                    list="Most Popular Products"
+                }}
+            {{else}}
+            	{{> components/products/carousel
+                    products=products
+                    productsnew=productsnew
+                    customArrowClass='js-top-product-arrow'
+                    block_id=block_id
+                    block_limit=block_limit
+                    block_column=block_column
+                }}
+            {{/if}}
+        {{else}}
+            {{#if settings.data_tag_enabled}}
+                {{> components/products/no-carousel
+                    products=products
+                    productsnew=productsnew
+                    block_id=block_id
+                    block_limit=block_limit
+                    block_column=block_column
+                    list="Most Popular Products"
+                }}
+            {{else}}
+                {{> components/products/no-carousel
+                    products=products
+                    productsnew=productsnew
+                    block_id=block_id
+                    block_limit=block_limit
+                    block_column=block_column
+                }}
+            {{/if}}
+        {{/if}}
+	</div>
+</div>
+{{#if page_type '==' 'default'}}
+    {{{region name="home_below_top_products"}}}
+{{/if}}

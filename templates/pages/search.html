@@ -1,0 +1,203 @@
+---
+product_results:
+    limit: {{theme_settings.categorypage_products_per_page}}
+products:
+    featured:
+        limit: {{theme_settings.sidebar_products_per_page}}
+    new:
+        limit: 25
+    top_sellers:
+        limit: {{theme_settings.sidebar_products_per_page}}
+---
+{{inject 'categoryTree' forms.search.category_options}}
+{{inject 'searchProductsPerPage' theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.product_results.previous}}
+        <link rel="prev" href="{{pagination.product_results.previous}}">
+    {{/if}}
+    {{#if pagination.product_results.next}}
+        <link rel="next" href="{{pagination.product_results.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+    <div class="page-listing-header{{#if banners.top}} has-banner{{/if}}">
+        <div class="page-listing-header--banner">
+            {{#if banners.top}}
+                {{> components/halothemes/gallery/halo-banners banner="halo-top-banner"}}
+            {{/if}}
+        </div>
+        <div class="page-listing-header--content">
+            <div class="container">
+                <div class="breadcrumb-wrapper">
+                    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+                </div>
+                {{#if forms.search.query}}
+                    <div id="search-results-heading">
+                        {{> components/search/heading}}
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="container{{#and (if theme_settings.halo-search-sidebar) (if theme_settings.halo-sidebar-type-custom)}} container-custom-3{{/and}}">
+        <div class="page page-search page-listing{{#and (if theme_settings.halo-search-sidebar) (if theme_settings.halo-sidebar-type-custom)}} page-custom-sidebar{{/and}}">
+            {{{region name="search_below_header"}}}
+            <section class="nav">
+                <nav class="navBar navBar--sub search-nav">
+                    <ul class="navBar-section account-navigation" data-search-page-tabs role="tablist">
+                        <li role="presentation" class="navBar-item">
+                            <a aria-describedby="search-tabs-widget-description" role="tab" aria-controls="product-listing-container" id="search-results-product-count" class="navBar-action" href="{{forms.search.product_url}}" data-product-results-toggle>
+                                {{>components/search/product-count}}
+                            </a>
+                        </li>
+                        <li role="presentation" class="navBar-item">
+                            <a aria-describedby="search-tabs-widget-description" role="tab" aria-controls="search-results-content" id="search-results-content-count" class="navBar-action" href="{{forms.search.content_url}}" data-content-results-toggle>
+                                {{>components/search/content-count}}
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+            {{#if theme_settings.halo-search-sidebar}}
+                <aside class="page-sidebar{{#if forms.search.section '!=' 'product'}} u-hiddenVisually{{/if}}" id="faceted-search-container">
+                    <div class="page-sidebar-close">
+                        <span class="title">{{lang 'common.sidebar'}}</span>
+                        <a href="#" class="close">
+                            <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+                                <title>{{lang 'common.close'}}</title>
+                                <desc>{{lang 'common.close'}}</desc>
+                                <use xlink:href="#icon-close"></use>
+                            </svg>
+                        </a>
+                    </div>
+                    {{> components/search/sidebar}}
+                </aside>
+            {{/if}}
+            <main class="page-content">
+                {{#if forms.search.has_suggestions}}
+                    <div class="panel panel--large">
+                        <div class="panel-body">
+                            {{#if forms.search.suggested_query}}
+                                <div class="search-suggestion">
+                                    {{lang 'forms.search.did_you_mean'}} <strong>{{forms.search.suggested_query.query}}</strong>
+                                    <a href="{{forms.search.suggested_query.url}}" class="search-refine">
+                                        <span class="text">{{lang 'forms.search.refine'}}</span>
+                                    </a>
+                                </div>
+
+                                {{#if result_count '===' 0}}
+                                    <div class="search-suggestion">
+                                        <p>
+                                            {{lang 'forms.search.your_search_for'}}
+                                            "<strong>{{{sanitize forms.search.query}}}</strong>"
+                                            {{lang 'forms.search.no_match'}}
+                                        </p>
+                                    </div>
+                                {{/if}}
+                            {{/if}}
+
+                            {{#if category_results.length}}
+                                <div class="search-suggestion">
+                                    <h5 class="suggestion-title">{{lang 'forms.search.categories'}}</h5>
+                                    <ul class="category-suggestion-list">
+                                        {{#each category_results}}
+                                            <li class="category-suggestion">
+                                                {{#each this}}
+                                                    <a href="{{url}}">
+                                                        <span class="text">{{name}}</span>
+                                                    </a>
+                                                    {{#unless @last}} > {{/unless}}
+                                                {{/each}}
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                            {{/if}}
+
+                            {{#if brand_results.length}}
+                                <div class="search-suggestion">
+                                    <h5 class="suggestion-title">{{lang 'forms.search.brand'}}</h5>
+                                    <ul class="category-suggestion-list">
+                                        {{#each brand_results}}
+                                            <li class="category-suggestion">
+                                                <a href="{{url}}">
+                                                    <span class="text">{{name}}</span>
+                                                </a>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                            {{/if}}
+
+                            {{#if result_count '===' 0}}
+                                <div class="search-suggestion">
+                                    <h5 class="suggestion-title">{{lang 'forms.search.suggestions.title'}}</h5>
+                                    <ul>
+                                        <li>{{lang 'forms.search.suggestions.line1'}}</li>
+                                        <li>{{lang 'forms.search.suggestions.line2'}}</li>
+                                        <li>{{lang 'forms.search.suggestions.line3'}}</li>
+                                    </ul>
+                                </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                {{/if}}
+                <p role="status"
+                   aria-live="polite"
+                   class="quickSearchResultsAriaMessage aria-description--hidden u-hidden"
+                   data-search-aria-message
+                >
+                    {{{lang 'search.results.count' count=result_count search_query=(sanitize forms.search.query)}}}
+                </p>
+                <div role="tabpanel" id="search-results-content" aria-labelledby="search-results-content-count" {{#if forms.search.section '!=' 'content'}}class="u-hidden"{{/if}}>
+                    {{> components/search/content-listing}}
+                </div>
+
+                <div role="tabpanel" id="product-listing-container" aria-labelledby="search-results-product-count" {{#if forms.search.section '!=' 'product'}}class="u-hidden"{{/if}}>
+                    {{#if theme_settings.halo-search-sidebar}}
+                        <div class="halo-toolbar">
+                            <div class="page-sidebar-mobile-wrapper">
+                                <div class="page-sidebar-mobile">
+                                    <span class="text">{{lang 'common.sidebar'}}</span>
+                                    <svg class="icon" role="img" aria-label="{{lang 'common.sidebar'}}">
+                                        <title>{{lang 'common.sidebar'}}</title>
+                                        <desc>{{lang 'common.sidebar'}}</desc>
+                                        <use xlink:href="#icon-sidebar"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            {{#if product_results.products.length}}
+                                {{> components/halothemes/gallery/halo-toolbar sort=pagination.product_results.sort}}
+                            {{/if}}
+                        </div>
+                    {{else}}
+                        {{#or (if theme_settings.haloStickyToolbar_viewAs) (if theme_settings.haloStickyToolbar_limit) (if theme_settings.haloStickyToolbar_sort)}}
+                            <div class="halo-toolbar">
+                                {{#if product_results.products.length}}
+                                    {{> components/halothemes/gallery/halo-toolbar sort=pagination.product_results.sort}}
+                                {{/if}}
+                            </div>
+                        {{/or}}
+                    {{/if}}
+                    {{#if product_results.products}}
+                        {{> components/search/product-listing productsnew=products.new show_compare=product_results.show_compare}}
+                    {{else}}
+                        <p class="page-no-products">{{lang 'search_results.no_products'}} "{{sanitize forms.search.query}}"</p>
+                    {{/if}}
+                </div>
+                {{{region name="search_below_content"}}}
+            </main>
+        </div>
+    </div>
+    {{#if banners.bottom}}
+        <div class="page-listing-footer">
+            {{{region name="halo_fullwidth_banner"}}}
+            {{{region name="halo_fullwidth_banner--global"}}}
+            
+            {{{region name="halo_testimonial"}}}
+            {{{region name="halo_testimonial--global"}}}
+        </div>
+    {{/if}}
+{{/partial}}
+{{> layout/base}}

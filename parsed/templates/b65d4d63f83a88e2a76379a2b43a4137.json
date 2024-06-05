@@ -1,0 +1,3 @@
+{
+  "components/halothemes/gallery/halo-view-as": "<form class=\"actionBar\" data-show-gallery>\r\n    <div class=\"form-field\">\r\n        <label class=\"form-label\" for=\"view_as\">{{lang 'common.view_as'}}</label>\r\n        <select class=\"form-select\" name=\"view_as\" id=\"view_as\">\r\n            <option value=\"grid\" {{#if theme_settings.product_list_display_mode '===' 'grid'}}selected{{/if}}>{{lang 'common.view_grid'}}</option>\r\n            <option value=\"list\" {{#if theme_settings.product_list_display_mode '===' 'list'}}selected{{/if}}>{{lang 'common.view_list'}}</option>\r\n        </select>\r\n    </div>\r\n</form>\r\n"
+}

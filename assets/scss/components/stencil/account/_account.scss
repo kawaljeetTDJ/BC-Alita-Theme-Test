@@ -1,0 +1,726 @@
+// =============================================================================
+// ACCOUNT (CSS)
+// =============================================================================
+
+
+// Account navigation
+// -----------------------------------------------------------------------------
+
+.navBar--account {
+    display: block;
+
+    .navBar-section{
+        display: block;
+        font-size: 0;
+        letter-spacing: 0;
+        float: none;
+        margin: 0 0 2px 0;
+        text-align: center;
+        white-space: nowrap;
+        overflow-x: auto;
+        border: 1px solid #cbcbcb;
+        box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.05);
+
+        .navBar-item{
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            width: 220px;
+            float: none;
+
+            .navBar-action{
+                font-size: $fontSize-root;
+                font-weight: $fontWeight-normal;
+                color: $color-textSecondary;
+                letter-spacing: $letterSpacing-base;
+                background-color: #fafafa;
+                padding: 11px 15px 10px 15px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-transform: uppercase;
+                transition: unset;
+            }
+
+            &.is-active{
+                .navBar-action{
+                    color: $color-textBase!important;
+                    background-color: #ffffff!important;
+                }
+            }
+
+            + .navBar-item{
+                border-left: 1px solid #cbcbcb;
+            }
+        }
+    }
+
+    @media (min-width: 768px){
+        &.navBar--account2{
+            .navBar-section{
+                width: 100%;
+                max-width: 1110px;
+                margin-left: auto;
+                margin-right: auto;
+
+                .navBar-item{
+                    width: calc(100%/3);
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .navBar-section{
+            .navBar-item{
+                width: calc(100%/6);
+
+                .navBar-action{
+                    &:hover{
+                        color: $buttonStyle-primary-colorHover;
+                        background-color: $buttonStyle-primary-backgroundColorHover;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Account headings
+// -----------------------------------------------------------------------------
+
+.account-heading {
+    font-size: $fontSize-root + 4px;
+    font-weight: $fontWeight-normal;
+    letter-spacing: $letterSpacing-base;
+    line-height: 28px;
+    border-bottom: 1px solid #e6e6e6;
+    margin: 0;
+    padding-bottom: spacing("base");
+}
+
+.account-description{
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-normal;
+    color: $color-textSecondary;
+    letter-spacing: $letterSpacing-base;
+    line-height: 1.75;
+    margin: 30px 0 0 0;
+
+    + .account-list{
+        &.account-list2{
+            margin-top: 15px;
+        }
+    }
+}
+
+// Account list
+// -----------------------------------------------------------------------------
+
+.account-list {
+    list-style: none;
+    margin: 0;
+
+    + .account-heading{
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+
+    &.account-list2{
+        list-style-type: decimal;
+        list-style-position: inside;
+    }
+}
+
+.account-listItem {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 45px 0;
+    position: relative;
+
+    img {
+        width: 100%;
+    }
+
+    .account-product-image {
+        @include lazy-loaded-img;
+    }
+}
+
+
+.account-listShipping {
+    border-bottom: container("border");
+    font-weight: fontWeight("bold");
+    padding: (spacing("single") + spacing("third")) 0;
+
+    .account-listShipping-title {
+        margin: 0;
+        text-transform: inherit;
+    }
+}
+
+.account-product {
+    @include media;
+}
+
+.account-product-figure {
+    display: flex;
+    align-items: center;
+    margin: 0 30px 0 0;
+    position: relative;
+    width: 100px;
+
+    @include lazy-loaded-padding('productview_thumb_size');
+}
+
+.account-product-download {
+    border-radius: 50%;
+    height: remCalc(33px);
+    padding: 0;
+    position: absolute;
+    right: -(spacing("half"));
+    top: -(spacing("half"));
+    width: remCalc(33px);
+    z-index: 1;
+
+    .icon {
+        height: spacing("single");
+        margin-top: spacing("quarter");
+        width: spacing("single");
+    }
+
+    svg {
+        fill: color("whites", "bright");
+    }
+}
+
+.account-product-body {
+    overflow: hidden;
+    padding: 0 0 50px 0;
+    position: relative;
+
+    .definitionList {
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        margin: 0;
+    }
+
+    @media (min-width: 551px){
+        padding-bottom: 0;
+    }
+}
+
+.account-product-title {
+    font-family: $fontFamily-sans;
+    font-size: $fontSize-root + 2px;
+    font-weight: $fontWeight-bold;
+    line-height: 28px;
+    letter-spacing: $letterSpacing-base;
+    color: $color-textBase;
+    margin: 0;
+    text-transform: capitalize;
+
+    > a {
+        position: relative;
+        text-decoration: none;
+        top: -8px;
+    }
+
+    + .account-product-description{
+        position: relative;
+        top: -8px;
+    }
+}
+
+.account-product-description{
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-normal;
+    color: $color-textSecondary;
+    line-height: 26px;
+    letter-spacing: $letterSpacing-base;
+    margin: 0;
+
+    + .account-product-details{
+        margin-top: 12px;
+    }
+}
+
+.account-product-subtitle {
+    color: color("greys", "light");
+    font-family: fontFamily("sans");
+    font-size: $fontSize-root;
+    margin: -(spacing("eighth")) 0 spacing("base");
+    text-transform: inherit;
+}
+
+.account-product-price {
+    float: right;
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-bold;
+    color: $color-textBase;
+}
+
+.account-product-description{
+    + .definitionList {
+        margin: -(spacing("base") + spacing("quarter")) 0 spacing("single");
+        
+        .definitionList-value,
+        .definitionList-key{
+            font-size: $fontSize-root;
+            font-weight: $fontWeight-normal;
+            color: $color-textSecondary;
+            line-height: 1.75;
+            letter-spacing: $letterSpacing-base;
+        }
+    }
+}
+
+.account-product-title{
+    + .definitionList{
+        .definitionList-value,
+        .definitionList-key{
+            font-size: $fontSize-root;
+            font-weight: $fontWeight-normal;
+            color: $color-textSecondary;
+            line-height: 1.75;
+            letter-spacing: $letterSpacing-base;
+        }
+    }
+
+    + .is-read{
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        color: $color-textSecondary;
+        line-height: 1.75;
+        letter-spacing: $letterSpacing-base;
+        margin: 0;
+        padding: 45px 0 0 0;
+    }
+}
+
+
+.account-product-refundQty {
+    color: color("greys", "light");
+    margin-bottom: 0;
+}
+
+.account-product-details {
+    @include grid-row($behavior: "nest");
+}
+
+.account-product-detail {
+    @include grid-column(12);
+
+    + .account-product-detail {
+        margin-top: spacing("base");
+    }
+
+    + .account-product-detail--full {
+
+        @include breakpoint("small") {
+            margin-top: spacing("single");
+        }
+    }
+
+    @media (min-width: 551px){
+        width: 50%;
+
+        + .account-product-detail {
+            margin-top: 0;
+        }
+    }
+
+    @media (min-width: 1025px){
+        width: auto;
+
+        + .account-product-detail {
+            margin-left: 35px;
+        }
+    }
+
+    @media (min-width: 1600px){
+        width: auto;
+
+        + .account-product-detail {
+            margin-left: 70px;
+        }
+    }
+}
+
+.account-product-detail--large {
+
+    @include breakpoint("large") {
+        width: grid-calc(6, $total-columns);
+    }
+}
+
+.account-product-detail--full {
+    width: 100%;
+}
+
+.account-product-detail-heading {
+    color: $color-textBase;
+    font-family: $fontFamily-sans;
+    font-size: $fontSize-root - 2px;
+    font-weight: $fontWeight-normal;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: $letterSpacing-base;
+    line-height: 28px;
+    margin: 0;
+    text-decoration: underline;
+    text-underline-position: under;
+
+    + span{
+        display: block;
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        font-style: italic;
+        color: $color-textSecondary;
+        line-height: 26px;
+        letter-spacing: $letterSpacing-base;
+    }
+}
+
+
+// Vertically aligned product view
+// -----------------------------------------------------------------------------
+
+.account-product--alignMiddle {
+    display: table;
+    width: 100%;
+
+    .account-product-checkItem {
+        display: table-cell;
+        position: relative;
+        vertical-align: middle;
+        width: 2rem;
+
+        @include breakpoint("large") {
+            left: -2.5rem;
+        }
+
+        // scss-lint:disable SelectorDepth, NestingDepth
+        .form-label {
+            height: spacing("single");
+            margin: 0;
+            padding: 0;
+            width: spacing("single");
+        }
+    }
+
+    .account-product-figure,
+    .account-product-body {
+        display: table-cell;
+    }
+
+    .account-product-figure {
+        float: none;
+        margin-right: 0;
+
+        @include breakpoint("large") {
+            left: -2rem;
+        }
+    }
+
+    .account-product-body {
+        padding-left: 2rem;
+        vertical-align: middle;
+
+        @include breakpoint("large") {
+            padding-left: 0;
+        }
+    }
+}
+
+
+// Account product totals
+// -----------------------------------------------------------------------------
+
+.account-orderTotal {
+    float: right;
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-normal;
+    margin: 0;
+    width: grid-calc(8, $total-columns);
+}
+
+.account-orderTotal-key,
+.account-orderTotal-value {
+    margin: 0;
+    padding: 15px 0;
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-normal;
+    letter-spacing: $letterSpacing-base;
+    line-height: 1.75;
+    color: $color-textSecondary;
+}
+
+.account-orderTotal-key {
+    color: $color-textSecondary;
+    float: left;
+
+    &:last-of-type {
+        position: relative;
+        top: spacing("fifth");
+    }
+}
+
+.account-orderTotal-value {
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-bold;
+    border-bottom: 1px solid #e6e6e6;
+    color: $color-textBase;
+    text-align: right;
+
+    &:last-child {
+        border-bottom: 0;
+        font-weight: $fontWeight-bold;
+        font-size: $fontSize-root + 4px;
+    }
+}
+
+
+// Account status
+// -----------------------------------------------------------------------------
+
+.account-orderStatus {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    @media (min-width: 551px) {
+        float: right;
+        position: inherit;
+        text-align: right;
+    }
+}
+
+.account-orderStatus-label {
+    background-color: #c6c6c6;
+    color: $color-white;
+    display: inline-block;
+    vertical-align: top;
+    font-family: $fontFamily-sans;
+    font-size: $fontSize-root - 2px;
+    font-weight: $fontWeight-bold;
+    font-style: italic;
+    line-height: 28px;
+    text-transform: uppercase;
+    margin: 15px 0 0 0;
+    padding: 7px 20px;
+
+    @media (min-width: 551px) {
+        margin-top: 0;
+
+        + .account-orderStatus-action{
+            margin-top: 10px;
+            text-decoration: underline;
+            text-underline-position: under;
+        }
+    }
+}
+
+.account-orderStatus-action {
+    display: inline-block;
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-normal;
+    font-style: italic;
+    margin: 10px 0 0 15px;
+    text-align: right;
+
+    @media (min-width: 551px) {
+        display: block;
+        margin-top: 0;
+        margin-left: 0;
+    }
+}
+
+.page-type-account_returns{
+    .account-product-title{
+        + .account-product-description{
+            top: unset;
+        }
+    }
+
+    .account-product-description{
+        a{
+            font-style: italic;
+            text-decoration: underline;
+            text-underline-position: under;
+        }
+
+        + .definitionList{
+            margin-top: 0;
+        }
+    }
+
+    .definitionList{
+        margin-bottom: 20px;
+    }
+}
+
+// Account pagination & panel
+// -----------------------------------------------------------------------------
+
+.account {
+    .button{
+        &.button--secondary{
+            background-color: transparent;
+            border-color: $buttonStyle-primary-borderColor;
+            color: $buttonStyle-primary-borderColor;
+
+            &:active{
+                color: $buttonStyle-primary-colorActive;
+                border-color: $buttonStyle-primary-borderColorActive;
+                background-color: $buttonStyle-primary-backgroundColorActive;
+            }
+        }
+    }
+
+    .pagination {
+        display: block;
+        text-align: center;
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        color: $color-textSecondary;
+        letter-spacing: $letterSpacing-base;
+        line-height: 1.75;
+        margin-top: 35px;
+    }
+
+    .pagination-list--small{
+        .pagination-item{
+            font-size: $fontSize-root;
+            font-weight: $fontWeight-normal;
+            color: $color-textSecondary;
+            letter-spacing: $letterSpacing-base;
+            line-height: 1.75;
+        }
+    }
+
+    @media (min-width: 1025px){
+        .button{
+            &.button--secondary{
+                &:hover,
+                &:focus{
+                    color: $buttonStyle-primary-colorHover;
+                    border-color: $buttonStyle-primary-borderColorHover;
+                    background-color: $buttonStyle-primary-backgroundColorHover;
+                }
+            }
+        }
+    }
+}
+
+// Sidebar blocks
+// -----------------------------------------------------------------------------
+
+.account-sidebar-block {
+    font-size: fontSize("smaller");
+
+    + .account-sidebar-block {
+        margin-top: spacing("double");
+    }
+
+    .account-heading {
+        margin-bottom: spacing("single");
+    }
+
+    .definitionList{
+        .definitionList-key,
+        .definitionList-value{
+            font-size: $fontSize-root;
+            font-weight: $fontWeight-normal;
+            color: $color-textSecondary;
+            line-height: 1.75;
+            letter-spacing: $letterSpacing-base;
+        }
+
+        .order-payments-description,
+        .order-payments-value{
+            font-size: $fontSize-root;
+            font-weight: $fontWeight-normal;
+            color: $color-textSecondary;
+            line-height: 1.75;
+            letter-spacing: $letterSpacing-base;
+        }
+
+        .order-payments-description,
+        .definitionList-key{
+            color: $color-textBase;
+            font-weight: $fontWeight-bold;
+        }
+    }
+
+    .button{
+        text-transform: uppercase;
+        min-width: 200px;
+    }
+}
+
+.account-order-address {
+    margin-bottom: 0;
+    @include u-listBullets("none");
+
+    li{
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        line-height: 1.625;
+        color: $color-textBase;
+    }
+}
+
+.account-reorder-form {
+    display: inline-block;
+}
+
+.order-payments-description {
+    color: stencilColor("color-primary");
+    font-weight: fontWeight("normal");
+    margin-top: spacing("single");
+}
+
+
+// Product downloads
+// -----------------------------------------------------------------------------
+
+.account-downloads-summary {
+    border-bottom: container("border");
+    font-size: fontSize("smaller");
+    padding-bottom: spacing("single");
+}
+
+.account-downloadsList {
+    @include u-listBullets("none");
+}
+
+.account-downloadsItem {
+    margin-bottom: spacing("single");
+
+    > :first-child {
+        margin-top: 0;
+    }
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.account-downloadsItem-title {
+    color: stencilColor("color-textSecondary");
+    font-size: fontSize("smaller");
+    margin-bottom: spacing("eighth");
+    text-transform: inherit;
+}
+
+.account-downloadsItem-description {
+    margin-bottom: 0;
+}
+
+.account-downloadsItem-availability {
+    color: stencilColor("color-textSecondary");
+}

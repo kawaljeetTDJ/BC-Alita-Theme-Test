@@ -1,0 +1,7 @@
+{{#if theme_settings.haloMegamenu}}
+    {{#if theme_settings.haloMegamenuType '==' 'Editor'}}
+        {{> components/halothemes/megamenu/halo-megamenu-editor}}
+    {{else if theme_settings.haloMegamenuType '==' 'Source'}}
+        {{> components/halothemes/megamenu/halo-megamenu-theme-file}}
+    {{/if}}
+{{/if}}

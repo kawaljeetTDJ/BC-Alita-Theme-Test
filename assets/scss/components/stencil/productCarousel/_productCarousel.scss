@@ -1,0 +1,140 @@
+// PRODUCT CAROUSEL
+// -----------------------------------------------------------------------------
+//
+// Purpose: Styles the product carousel component, which basically adds extras to the
+// vendor slick carousel, to specifically display product
+//
+// 1. If there's no JS layout the products out based on the grid.
+//
+// -----------------------------------------------------------------------------
+
+.productCarousel {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 0 -8px;
+    width: auto!important;
+
+    .slick-dots{
+        display: inline-block;
+        vertical-align: middle;
+        left: 0;
+        bottom: -45px;
+
+        li{
+            margin: 0 15px;
+            padding: 0;
+            width: auto;
+            height: auto;
+
+            button{
+                width: 8px;
+                height: 8px;
+                opacity: 1;
+                border: 1px solid stencilColor('global_style');
+                background-color: transparent;
+                transition: $anchor-transition;
+
+                &:before{
+                    display: none;
+                }
+            }
+
+            &:only-child{
+                display: none;
+            }
+
+            &.slick-active{
+                button{
+                    opacity: 1;
+                    border-color: stencilColor('global_style');
+                    background-color: stencilColor('global_style');
+                }
+            }
+        }
+    }
+
+    .slick-arrow{
+        position: absolute;
+        top: 50%;
+        display: block;
+        line-height: 0;
+        font-size: 0;
+        cursor: pointer;
+        background: transparent;
+        color: transparent;
+        transform: translate(0, -50%);
+        border: none;
+        z-index: 10;
+        padding: 0;
+        margin: 0;
+        width: 20px;
+        height: 40px;
+        border-radius: 0;
+        opacity: 1;
+        fill: $color-textBase;
+
+        &.slick-prev{
+            left: 8px;
+        }
+
+        &.slick-next{
+            right: 8px;
+        }
+
+        &.slick-disabled{
+            opacity: .25;
+        }
+
+        &:before{
+            display: none;
+        }
+    }
+
+    &:not(.slick-initialized){
+        .productCarousel-slide{
+            display: none;
+        }
+    }
+
+    .halo-block-product & {
+        margin-bottom: 0;
+    }
+
+    @media(min-width: 1025px){
+        .slick-dots{
+            bottom: -65px;
+
+            li{
+                button{
+                    width: 10px;
+                    height: 10px;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1280px){
+        .halo-block-product & {
+            padding-left: calc((100% - 1154px)/2);
+            padding-right: calc((100% - 1154px)/2);
+        }
+    }
+
+    @media (min-width: 1600px){
+        .halo-block-product & {
+            padding-left: calc((100% - 1354px)/2);
+            padding-right: calc((100% - 1354px)/2);
+        }
+    }
+}
+
+.productCarousel-slide {
+    margin: 0;
+    padding: 0 8px;
+
+    @media (min-width: 1025px){
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

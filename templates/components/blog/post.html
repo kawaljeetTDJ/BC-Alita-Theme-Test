@@ -1,0 +1,80 @@
+<article class="{{class}}">
+    {{#if post.body}}
+        <div class="{{class}}-header">
+            <div class="{{class}}-header-top">
+                <p class="{{class}}-date">{{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}{{post.date_published}}</p>
+            </div>
+            <div class="{{class}}-header-bottom">
+                <h2 class="{{class}}-title">{{post.title}}</h2>
+            </div>
+        </div>
+        {{#if post.thumbnail}}
+            <div class="{{class}}-image">
+                <div class="{{class}}-imageWrapper">
+                    {{> components/common/responsive-img
+                        image=post.thumbnail
+                        class=""
+                        fallback_size=theme_settings.blog_size
+                        lazyload=theme_settings.lazyload_mode
+                    }}
+                </div>
+            </div>
+        {{/if}}
+        <div class="{{class}}-content">
+            <div class="{{class}}-body halo-description">
+                {{{post.body}}}
+            </div>
+            <div class="{{class}}-footer">
+                {{> components/common/share type=theme_settings.halo_share code=theme_settings.halo_share_code}}
+                {{#if show_tags}}
+                    {{#if post.tags}}
+                        <div class="{{class}}-tagsWrapper">
+                            <span class="{{class}}-tagsLabel">
+                                <span>{{lang 'blog.tags'}}</span>
+                            </span>
+                            <ul class="{{class}}-tags">
+                                {{#each post.tags}}
+                                    <li class="{{../class}}-tag">
+                                        <a href="{{url}}" class="link">{{name}}</a>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    {{/if}}
+                {{/if}}
+            </div>
+        </div>
+    {{else}}
+        {{#if post.thumbnail}}
+            <a class="{{class}}-image" href="{{post.url}}">
+                <div class="{{class}}-imageWrapper">
+                    {{> components/common/responsive-img
+                        image=thumbnail
+                        class=""
+                        fallback_size=theme_settings.blog_size
+                        lazyload=theme_settings.lazyload_mode
+                        default_image=theme_settings.default_image_product
+                    }}
+                </div>
+            </a>
+        {{/if}}
+        <div class="{{class}}-content">
+            <div class="{{class}}-header">
+                <div class="{{class}}-header-top">
+                    <p class="{{class}}-date">{{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}{{post.date_published}}</p>
+                </div>
+                <div class="{{class}}-header-bottom">
+                    <h2 class="{{class}}-title">
+                        <a href="{{url}}">{{post.title}}</a></h2>
+                    </h2>
+                </div>
+            </div>
+            <div class="{{class}}-body">
+                <div class="{{class}}-summary">{{{post.summary}}}&hellip;</div>
+                {{#if show_read_more}}
+                    <a href="{{url}}" class="{{class}}-button button button--secondary button--transparent-2">{{lang 'blog.read_more'}}</a>
+                {{/if}}
+            </div>
+        </div>
+    {{/if}}
+</article>

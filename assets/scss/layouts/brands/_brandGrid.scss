@@ -1,0 +1,333 @@
+// =============================================================================
+// BRAND GRID (CSS)
+// =============================================================================
+
+.brandGrid {
+    list-style: none;
+    max-width: none;
+    width: auto;
+    font-size: 0;
+    letter-spacing: 0;
+    margin: 0 -15px;
+
+    .brand {
+        display: inline-block;
+        vertical-align: top;
+        padding: 0 15px;
+        width: 50%;
+        float: none;
+        margin: 0 0 30px 0;
+
+        .card-figure{
+            .image{
+                display: block;
+                overflow: hidden;
+                position: relative;
+                border: 1px solid #d6d6d6;
+            }
+
+            .brand-img-container{
+                display: block;
+                position: relative;
+                max-width: get-width(stencilString('brand_size'));
+                margin: 0 auto;
+                @include lazy-loaded-padding('brand_size');
+
+                img{
+                    @include lazy-loaded-img;
+                    opacity: 1;
+                    visibility: visible;
+                    border: 0;
+                    width: 100%;
+                    max-height: 100%;
+                    object-fit: contain;
+                    margin: 0 auto;
+                    font-family: 'object-fit: contain;';
+                    transition: $anchor-transition;
+
+                    &.lazyload,
+                    &.lazyloading{
+                        width: auto;
+                        height: auto;
+                        object-fit: contain;
+                        margin: auto;
+                    }
+                }
+            }
+        }
+
+        .card-body{
+            text-align: center;
+            margin: 20px 0 0;
+
+            .link{
+                font-size: $fontSize-root;
+                font-weight: $fontWeight-bold;
+                color: $color-textBase;
+                transition: unset;
+                text-transform: uppercase;
+                line-height: 26px;
+                letter-spacing: $letterSpacing-base;
+                position: relative;
+
+                .text{
+                    padding: 0 0 1px 0;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        .brand {
+            width: 33.3333333%;
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .brand {
+            width: 25%;
+
+            .card-figure{
+                .image{
+                    &:before{
+                        content: "";
+                        width: 100%;
+                        height: 100%;
+                        top: 100%;
+                        right: 0;
+                        left: auto;
+                        z-index: 2;
+                        transform: none;
+                        position: absolute;
+                        transition: $anchor-transition;
+                        background-color: rgba(0,0,0,.25);
+                        background: linear-gradient(to bottom,transparent 0,rgba(0,0,0,.25) 100%);
+                    }
+
+                    &:hover{
+                        &:before{
+                            top: 0;
+                        }
+                    }
+                }
+            }
+
+            .card-body{
+                .link{
+                    &:hover{
+                        color: $color-textLink-hover;
+
+                        span{
+                            background-image: linear-gradient(transparent 97%, $color-textLink-hover 3%);
+                            background-repeat: repeat-x;
+                            background-position-y: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .brand {
+            width: 20%;
+        }
+    }
+
+    @media (min-width: 1600px) {
+        .brand {
+            width: 16.6666666%;
+        }
+    }
+}
+
+// AZ Brand Layout
+// -----------------------------------------------------------------------------
+.haloAZBrandsTable {
+    display: flex;
+    font-size: 0;
+    letter-spacing: 0;
+    flex-flow: row nowrap;
+    margin: 0 0 30px 0;
+    overflow-x: auto;
+    padding-bottom: 5px;
+
+    li {
+        display: inline-block;
+        vertical-align: top;
+        border: 1px solid #d6d6d6;
+        border-left: none;
+
+        a {
+            font-size: $fontSize-root;
+            font-weight: $fontWeight-bold;
+            color: $color-textBase;
+            display: block;
+            height: 40px;
+            min-width: 40px;
+            line-height: 40px; 
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        &:first-child {
+            min-width: 70px;
+            border-left: 1px solid #d6d6d6;
+        }
+
+        &.disable {
+            pointer-events: none;
+
+            a{
+                color: $color-grey;
+                pointer-events: none;
+            }
+        }
+
+        &.is-active {
+            border-color: $buttonStyle-primary-borderColorActive;
+            background-color: $buttonStyle-primary-backgroundColorActive;
+
+            a{
+                color: $buttonStyle-primary-colorActive;
+            }
+        }
+    }
+
+    @media (min-width: 1025px) {
+        margin: 0 0 40px 0;
+
+        li {
+            width: 10%;
+
+            &:hover{
+                border-color: $buttonStyle-primary-borderColorActive;
+                background-color: $buttonStyle-primary-backgroundColorActive;
+
+                a{
+                    color: $buttonStyle-primary-colorActive;
+                }
+            }
+        }
+    }
+}
+
+.haloAZBrandsWrapper{
+    .azBrands-group {
+        display: none;
+        margin: 0 0 30px 0;
+
+        &-title{
+            font-size: $fontSize-root + 4px;
+            font-weight: $fontWeight-bold;
+            color: $color-textBase;
+            letter-spacing: $letterSpacing-base;
+            line-height: 35px;
+            margin: 0 0 10px 0;
+            padding: 0;
+            text-transform: uppercase;
+        }
+
+        &-list {
+            margin: 0;
+            list-style: none;
+
+            .brand-name {
+                .title {
+                    margin: 0;
+                    font-family: $fontFamily-sans;
+                    font-size: $fontSize-root;
+                    font-weight: $fontWeight-normal;
+                    color: $color-textBase;
+                    letter-spacing: $letterSpacing-base;
+                    line-height: 35px;
+                    text-transform: capitalize;
+
+                    .link{
+                        color: $color-textSecondary;
+                        padding: 0 0 1px 0;
+                        transition: unset;
+                    }
+                }
+            }
+        }
+
+        &.is-active {
+            display: block;
+        }
+    }
+
+    &.active-all {
+        column-count: 2;
+
+        .azBrands-group {
+            display: block;
+            break-inside: avoid;
+            column-break-inside: avoid;
+            page-break-inside: avoid;
+            column-count: unset;
+        }
+    }
+
+    &.is-loading{
+        .loadingOverlay{
+            display: block;
+        }
+    }
+
+    @media (min-width: 768px){
+        .azBrands-group {
+            column-count: 3;
+        }
+
+        &.active-all{
+            column-count: 3;
+        }
+    }
+
+    @media (min-width: 1025px){
+        .azBrands-group {
+            column-count: 4;
+
+            &-list{
+                .brand-name {
+                    .title {
+                        .link{
+                            &:hover{
+                                color: $color-textLink-hover;
+                                background-image: linear-gradient(transparent 97%, $color-textLink-hover 3%);
+                                background-repeat: repeat-x;
+                                background-position-y: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.active-all{
+            column-count: 4;
+        }
+    }
+
+    @media (min-width: 1280px){
+        .azBrands-group {
+            column-count: 5;
+        }
+
+        &.active-all{
+            column-count: 5;
+        }
+    }
+
+    @media (min-width: 1600px) {
+        .azBrands-group {
+            column-count: 6;
+        }
+
+        &.active-all{
+            column-count: 6;
+        }
+    }
+}

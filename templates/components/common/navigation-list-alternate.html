@@ -1,0 +1,14 @@
+{{#if children}}
+    <p class="navPages-action has-subMenu is-root" data-label="{{url}}">
+        <a class="text" href="{{url}}">{{name}}</a>
+        <span class="navPages-action-moreIcon" aria-hidden="true">
+            <svg class="icon"><use xlink:href="#icon-chevron-down" /></svg>
+        </span>
+    </p>
+    {{> components/common/navigation-dropdown}}
+{{else}}
+    <a class="navPages-action navPages-action-end" data-label="{{url}}" href="{{url}}">
+      <span class="text">{{name}}</span>
+    </a>
+{{/if}}
+

@@ -1,0 +1,43 @@
+---
+cart: true
+---
+{{#partial "page"}}
+<div class="container">
+    <div class="breadcrumb-wrapper">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    </div>
+    <div class="page page-cart{{#if theme_settings.halo_CalculateFreeShipping}} has-calculate-shipping{{/if}}">
+        <div class="page-header">
+            {{> components/cart/page-title}}
+        </div>
+        {{#if cart.items.length}}
+            {{#if theme_settings.halo-cart-notification}}
+                <div class="halo-cart-notification" data-coundown="{{theme_settings.halo-cart-notification-time}}">
+                    <span class="icon"><svg><use xlink:href="#icon-info"></use></svg></span>
+                    <span class="text">{{theme_settings.halo-cart-notification-text1}} {{theme_settings.halo-cart-notification-text2}} <span class="time"></span> {{lang 'cart.minutes'}}.</span>
+                </div>
+            {{/if}}
+        {{/if}}
+        <main class="page-content" data-cart>
+            <div data-cart-status>
+                {{> components/cart/status-messages}}
+            </div>
+            {{#if cart.items.length}}
+                <div class="loadingOverlay"></div>
+                <div class="cart-content-wrapper">
+                    <div data-cart-content class="cart-content-item">
+                        {{> components/cart/content}}
+                        {{> components/halothemes/cart/halo-cart-secure-image}}
+                    </div>
+                    <div data-cart-totals class="cart-content-item">
+                        {{> components/cart/totals}}
+                    </div>
+                </div>
+            {{else}}
+                <h3 class="cart-content-empty">{{lang 'cart.checkout.empty_cart'}}</h3>
+            {{/if}}
+        </main>
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}

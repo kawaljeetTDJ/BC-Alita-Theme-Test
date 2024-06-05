@@ -1,0 +1,67 @@
+{{#if theme_settings.halo_recently_viewed_products}}
+    <div class="halo-popup halo-recently-viewed-popup" id="halo-recently-viewed-popup">
+        <div class="halo-recently-viewed halo-recently-viewed-list" id="halo-recently-viewed-list">
+            <div class="halo-recently-viewed-collapse" data-collapse-popup>
+                <svg class="icon" role="img" aria-label="Collapse">
+                    <title>Collapse</title>
+                    <desc>Collapse</desc>
+                    <use xlink:href="#icon-collapse"></use>
+                </svg>
+            </div>
+            <div class="halo-recently-viewed-top">
+                <div class="cart-icon with-products">
+                    <a href="{{urls.cart}}" data-cart-preview>
+                        <svg class="icon" role="img" aria-label="{{lang 'cart.cart_preview'}}">
+                            <title>{{lang 'cart.cart_preview'}}</title>
+                            <desc>{{lang 'cart.cart_preview'}}</desc>
+                            <use xlink:href="#icon-cart"></use>
+                        </svg>
+                        <span class="cart-quantity {{#if cart.items}} countPill--positive{{/if}}">{{cart.quantity}}</span>
+                    </a>
+                </div>
+            </div>
+            <div class="halo-recently-viewed-content">
+                {{#if theme_settings.halo_recently_viewed_products_title}}
+                    <h3 class="title">{{theme_settings.halo_recently_viewed_products_title}}</h3>
+                {{/if}}
+                <div class="products-grid" id="recently-viewed-products-list">
+                    <div class="no-products" style="flex-direction: column; display:none;">
+                        <svg class="icon" role="img" aria-label="{{lang 'common.no_item'}}">
+                            <title>{{lang 'common.no_item'}}</title>
+                            <desc>{{lang 'common.no_item'}}</desc>
+                            <use xlink:href="#icon-no-products"></use>
+                        </svg>
+                        <div class="text">{{lang 'common.no_item'}}</div>
+                    </div>
+                </div>
+                <div id="halo-recently-viewed-tmp" style="display: none!important;"></div>
+            </div>
+            {{#if theme_settings.halo_recently_viewed_products_top }}
+                <div class="halo-recently-viewed-bottom" data-scroll-top-popup>
+                    <svg class="icon" role="img" aria-label="{{lang 'common.top'}}">
+                        <title>{{lang 'common.top'}}</title>
+                        <desc>{{lang 'common.top'}}</desc>
+                        <use xlink:href="#icon-cross-line-top"></use>
+                    </svg>
+                    <div class="text">{{lang 'common.top'}}</div>
+                </div>
+            {{/if}}
+        </div>
+        <div class="halo-recently-viewed halo-recently-viewed-wrap" id="halo-recently-viewed-wrap">
+            <div class="halo-recently-viewed-icon" data-expand-popup>
+                <svg class="icon" role="img" aria-label="Expand">
+                    <title>Expand</title>
+                    <desc>Expand</desc>
+                    <use xlink:href="#icon-expand"></use>
+                </svg>
+            </div>
+            <div class="halo-recently-viewed-icon" data-scroll-top-popup>
+                <svg class="icon" role="img" aria-label="{{lang 'common.top'}}">
+                    <title>{{lang 'common.top'}}</title>
+                    <desc>{{lang 'common.top'}}</desc>
+                    <use xlink:href="#icon-cross-line-top"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+{{/if}}

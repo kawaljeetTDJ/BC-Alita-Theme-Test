@@ -1,0 +1,126 @@
+<ul class="tabs" data-tab>
+    <li class="tab is-active">
+        <a class="tab-title" href="#tab-description">{{lang 'products.description'}}</a>
+    </li>
+    {{#all settings.show_product_reviews theme_settings.show_product_reviews theme_settings.show_product_reviews_tabs}}
+        <li class="tab productView-reviewTabLink">
+            <a class="tab-title productView-reviewTabLink" href="#tab-reviews">{{lang 'products.reviews.header'}}</a>
+        </li>
+    {{/all}}
+    {{#all product.warranty theme_settings.show_warranty_tabs}}
+        <li class="tab">
+            <a class="tab-title" href="#tab-warranty">{{lang 'products.warranty'}}</a>
+        </li>
+    {{/all}}
+    {{#all product.custom_fields theme_settings.show_custom_fields_tabs}}
+        <li class="tab">
+            <a class="tab-title" href="#tab-custom-fields">{{lang 'products.custom_fields'}}</a>
+        </li>
+    {{/all}}
+    {{#if theme_settings.show_shipping_tab}}
+        <li class="tab">
+            <a class="tab-title" href="#tab-shipping">{{lang 'products.shipping_tab'}}</a>
+        </li>
+    {{/if}}
+    {{#if theme_settings.show_custom_tab}}
+        <li class="tab">
+            <a class="tab-title" href="#tab-custom">{{lang 'products.custom_tab'}}</a>
+        </li>
+    {{/if}}
+</ul>
+<div class="tabs-contents">
+    <div class="tab-content is-active" id="tab-description">
+        <div class="toggle-title">
+            <a class="toggleLink is-open" data-collapsible href="#tab-description-mobile">
+                <span class="text">{{lang 'products.description'}}</span>
+                <span class="icon-plus">&nbsp;</span>
+            </a>
+        </div>
+        <div class="toggle-content is-open" id="tab-description-mobile">
+            {{{product.description}}}
+
+            {{#if product.description.length '>' 200}}
+                <div id="tab-descriptionShowmore" class="tab-descriptionShowmore show">
+                    <a class="button button--transparent-2 button--secondary" href="#" data-show-more-text="{{lang 'products.read_more'}}" data-show-less-text="{{lang 'products.read_less'}}"> 
+                        {{lang 'products.read_more'}}
+                    </a>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+    {{#all settings.show_product_reviews theme_settings.show_product_reviews theme_settings.show_product_reviews_tabs}}
+        <div class="tab-content" id="tab-reviews">
+            <div class="toggle-title">
+                <a class="toggleLink" data-collapsible href="#tab-reviews-mobile">
+                    <span class="text">{{lang 'products.reviews.header'}}</span>
+                    <span class="icon-plus">&nbsp;</span>
+                </a>
+            </div>
+            <div class="toggle-content" id="tab-reviews-mobile">
+                {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+            </div>
+        </div>
+    {{/all}}
+    {{#all product.warranty theme_settings.show_warranty_tabs}}
+        <div class="tab-content" id="tab-warranty">
+            <div class="toggle-title">
+                <a class="toggleLink" data-collapsible href="#tab-warranty-mobile">
+                    <span class="text">{{lang 'products.warranty'}}</span>
+                    <span class="icon-plus">&nbsp;</span>
+                </a>
+            </div>
+            <div class="toggle-content" id="tab-warranty-mobile">
+                <div class="warranty-text">{{{product.warranty}}}</div>
+            </div>
+        </div>
+    {{/all}}
+    {{#all product.custom_fields theme_settings.show_custom_fields_tabs}}
+        <div class="tab-content" id="tab-custom-fields">
+            <div class="toggle-title">
+                <a class="toggleLink" data-collapsible href="#tab-custom-fields-mobile">
+                    <span class="text">{{lang 'products.custom_fields'}}</span>
+                    <span class="icon-plus">&nbsp;</span>
+                </a>
+            </div>
+            <div class="toggle-content" id="tab-custom-fields-mobile">
+                <div class="scrollable-wrapper">
+                    <table>
+                        <tbody>
+                            {{#each product.custom_fields}}
+                                {{#startsWith '__' name}}
+                                {{else}}
+                                    <tr>
+                                        <td class="tb-title">{{name}}</td>
+                                        <td>{{value}}</td>
+                                    </tr>
+                                {{/startsWith}}
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    {{/all}}
+    {{#if theme_settings.show_shipping_tab}}
+        <div class="tab-content" id="tab-shipping">
+            <div class="toggle-title">
+                <a class="toggleLink" data-collapsible href="#tab-shipping-mobile">
+                    <span class="text">{{lang 'products.shipping_tab'}}</span>
+                    <span class="icon-plus">&nbsp;</span>
+                </a>
+            </div>
+            <div class="toggle-content" id="tab-shipping-mobile"></div>
+        </div>
+    {{/if}}
+    {{#if theme_settings.show_custom_tab}}
+        <div class="tab-content" id="tab-custom">
+            <div class="toggle-title">
+                <a class="toggleLink" data-collapsible href="#tab-custom-mobile">
+                    <span class="text">{{lang 'products.custom_tab'}}</span>
+                    <span class="icon-plus">&nbsp;</span>
+                </a>
+            </div>
+            <div class="toggle-content" id="tab-custom-mobile"></div>
+        </div>
+    {{/if}}
+</div>

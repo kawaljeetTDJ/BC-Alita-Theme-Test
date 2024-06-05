@@ -1,0 +1,57 @@
+---
+blog:
+    recent_posts:
+        limit: 3
+products:
+    featured:
+        limit: {{theme_settings.sidebar_products_per_page}}
+    new:
+        limit: 25
+    top_sellers:
+        limit: {{theme_settings.sidebar_products_per_page}}
+---
+{{#partial "page"}}
+<div class="container{{#if theme_settings.halo-blog-sidebar}} container-custom-3{{/if}}">
+	<div class="breadcrumb-wrapper">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    </div>
+    <div class="page page-blog{{#if theme_settings.halo-blog-sidebar}} page-custom-sidebar{{/if}}">
+        <div class="page-header">
+            <h1 class="page-heading">{{ blog.name }}</h1>
+        </div>
+        {{#if theme_settings.halo-blog-sidebar}}
+            <div class="page-sidebar">
+                <div class="page-sidebar-close">
+                    <span class="title">{{lang 'common.sidebar'}}</span>
+                    <a href="#" class="close">
+                        <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+                            <title>{{lang 'common.close'}}</title>
+                            <desc>{{lang 'common.close'}}</desc>
+                            <use xlink:href="#icon-close"></use>
+                        </svg>
+                    </a>
+                </div>
+                {{> components/blog/sidebar post=blog.recent_posts}}
+            </div>
+        {{/if}}
+        <div class="page-content">
+            {{#if theme_settings.halo-blog-sidebar}}
+                <div class="page-sidebar-mobile-wrapper">
+                    <div class="page-sidebar-mobile">
+                        <span class="text">{{lang 'common.sidebar'}}</span>
+                        <svg class="icon" role="img" aria-label="{{lang 'common.sidebar'}}">
+                            <title>{{lang 'common.sidebar'}}</title>
+                            <desc>{{lang 'common.sidebar'}}</desc>
+                            <use xlink:href="#icon-sidebar"></use>
+                        </svg>
+                    </div>
+                </div>
+            {{/if}}
+            <div class="halo-blog-detail">
+            	{{> components/blog/post post=blog.post show_tags=true class="blog" settings=settings theme_settings=theme_settings}}
+            </div>
+        </div>
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}

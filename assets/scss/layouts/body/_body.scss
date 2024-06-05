@@ -1,0 +1,482 @@
+// =============================================================================
+// BODY (CSS)
+//
+// 1. Header is fixed on small screens, use the content body to create the whitespace
+//    between it and the header on all situations. If you change the spacing here,
+//    please update .heroCarousel too.
+//
+// =============================================================================
+.body {
+    display: block;
+    position: relative;
+    background-color: $body-bg;
+
+    .page-full-width & {
+        padding-bottom: 20px;
+    }
+}
+
+.page {
+    margin: 0 auto;
+    position: relative;
+    padding: 0;
+    @include clearfix;
+
+    body:not(.page-type-default) & {
+        padding-bottom: 30px;
+
+        &.page-portfolio{
+            padding-bottom: 40px;
+        }
+
+        &.page-gallery{
+            padding-bottom: 50px;
+        }
+    }
+
+    @media (min-width: 551px){
+        body:not(.page-type-default) & {
+            padding-bottom: 50px;
+        }
+    }
+
+    @media (min-width: 768px){
+        body:not(.page-type-default) & {
+            padding-bottom: 75px;
+        }
+    }
+
+    @media (min-width: 1025px){
+        body:not(.page-type-default) & {
+            padding-bottom: 100px;
+
+            &.page-product{
+                padding-bottom: 85px;
+            }
+        }
+    }
+}
+
+.page-header{
+    display: block;
+    margin: 0 0 30px 0;
+
+    @media (min-width: 1025px){
+        margin-bottom: 55px;
+
+        &.page-header-2{
+            margin-bottom: 40px;
+        }
+
+        .page-custom-sidebar &{
+            padding-right: 40px;
+        }
+    }
+
+    @media (min-width: 1600px){
+        .page-custom-sidebar &{
+            padding-right: calc((100vw - 1485px)/2);
+        }
+    }
+
+    @media (min-width: 1920px){
+        .page-custom-sidebar &{
+            padding-right: calc((100vw - 1585px)/2);
+        }
+    }
+}
+
+.page-heading{
+    position: relative;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: $fontWeight-normal;
+    color: $color-textBase;
+    line-height: 40px;
+    letter-spacing: $letterSpacing-base;
+    text-align: left;
+
+    + .page-description{
+        margin-top: 55px;
+    }
+
+    &[data-cart-page-title]{
+        span{
+            font-family: $fontFamily-sans;
+            font-size: $fontSize-root;
+            font-style: italic;
+            font-weight: $fontWeight-normal;
+            color: $color-textSecondary;
+            line-height: 25px;
+            margin: 0 0 0 10px;
+            text-transform: capitalize;
+        }
+    }
+
+    .page-errors & {
+        .heading{
+            display: block;
+            text-align: center;
+            font-size: 100px;
+            color: $color-textBase;
+            font-weight: $fontWeight-bold;
+            letter-spacing: $letterSpacing-base;
+            line-height: 1;
+            margin: 0;
+        }
+
+        .text{
+            display: block;
+            text-align: center;
+            font-size: 24px;
+            font-weight: $fontWeight-bold;
+            letter-spacing: $letterSpacing-base;
+            text-transform: capitalize;
+            line-height: 1;
+            margin: 30px 0 0 0;
+        }
+    }
+
+    @media (min-width: 551px){
+        .page-errors & {
+            .text{
+                font-size: 40px;
+            }
+        }
+    }
+
+    @media (min-width: 1025px){
+        font-size: 36px;
+
+        .page-errors & {
+            .heading{
+                font-size: 200px;
+            }
+        }
+    }
+}
+
+.page-image{
+    display: block;
+    text-align: center;
+    @include clearfix;
+
+    img{
+        display: block;
+        width: auto;
+        margin: 0 auto;
+
+        &.lazyloading,
+        &.lazyload{
+            width: auto;
+            margin: auto;
+            object-fit: contain;
+        }
+    }
+}
+
+.page-description{
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    @include clearfix;
+
+    p{
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        letter-spacing: $letterSpacing-base;
+        line-height: 1.75;
+        color: $color-textSecondary;
+        margin: 0 0 25px 0;
+        padding: 0;
+        text-align: center;
+
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+
+    a{
+        transition: unset;
+
+        span{
+            padding: 0 0 1px 0;
+            background-image: linear-gradient(transparent 97%, $color-textLink 3%);
+            background-repeat: repeat-x;
+            background-position-y: 0;
+        }
+    }
+
+    .page-normal &{
+        text-align: left;
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+
+        p{
+            text-align: left;
+        }
+    }
+
+    @media (min-width: 1025px){
+        max-width: 1060px;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: auto;
+        margin-right: auto;
+
+        a{
+            &:hover{
+                color: $color-textLink-hover;
+
+                span{
+                    background-image: linear-gradient(transparent 97%, $color-textLink-hover 3%);
+                }
+            }
+        }
+    }
+}
+
+.page-sidebar {
+    position: fixed;
+    top: 0;
+    left: -101%;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 102;
+    max-width: 340px;
+    transition: all .5s ease;
+    background-color: #ffffff;
+    box-shadow: rgba(50,50,50,0.2) 0 0 10px 0;
+
+    .page-sidebar-close{
+        position: relative;
+        background-color: #faf8f6;
+        padding: 8px 30px 7px 30px;
+
+        .title{
+            display: block;
+            font-size: $fontSize-root - 2px;
+            font-weight: $fontWeight-bold;
+            letter-spacing: $letterSpacing-base;
+            line-height: 25px;
+            color: stencilColor('global_style');
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .close{
+            position: absolute;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            line-height: 1;
+
+            svg{
+                width: 16px;
+                height: 16px;
+                fill: #b9b8b7;
+            }
+        }
+    }
+
+    > nav{
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        padding: 40px 30px 100px 30px;
+    }
+
+    .page-sidebar-content{
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        padding: 40px 30px 100px 30px;
+    }
+
+    @media (max-width: 1024px){
+        &.is-open{
+            .openSidebar &{
+                left: 0;
+            }
+        }
+    }
+
+    @media (min-width: 1025px){
+        position: relative;
+        top: auto;
+        bottom: auto;
+        left: auto;
+        z-index: 5;
+        float: left;
+        width: 270px;
+        display: inline-block;
+        box-shadow: none;
+        background-color: transparent;
+        max-width: none;
+        transition: unset;
+
+        .page-sidebar-close{
+            display: none;
+        }
+
+        .page-sidebar-content{
+            padding: 0;
+            overflow: visible;
+        }
+
+        > nav{
+            padding: 0;
+            overflow: visible;
+        }
+
+        + .page-content{
+            padding-left: 30px;
+            width: calc(100% - 270px);
+        }
+
+        &.u-hiddenVisually{
+            + .page-content{
+                padding-left: 0;
+                width: 100%;
+            }
+        }
+
+        &.u-hidden{
+            + .page-content{
+                padding-left: 0;
+                width: 100%;
+            }
+        }
+
+        .page-custom-sidebar &{
+            float: right;
+            width: 350px;
+            padding: 45px 40px;
+            border: 1px solid #e6e6e6;
+            border-right-width: 0;
+
+            + .page-content{
+                width: calc(100% - 350px);
+                padding-left: 0;
+                padding-right: 30px;
+            }
+        }
+
+        .page-listing &{
+            position: sticky;
+            top: 50px;
+        }
+
+        .page-blog &{
+            position: sticky;
+            top: 50px;
+        }
+    }
+
+    @media (min-width: 1600px){
+        + .page-content{
+            padding-left: 70px;
+        }
+
+        .page-custom-sidebar &{
+            padding-top: 53px;
+            padding-bottom: 45px;
+            padding-right: calc((100vw - 1485px)/2);
+            padding-left: 95px;
+            width: 542px;
+
+            + .page-content{
+                width: calc(100% - 542px);
+                padding-right: 95px;
+            }
+        }
+    }
+
+    @media (min-width: 1920px){
+        .page-custom-sidebar &{
+            padding-right: calc((100vw - 1585px)/2);
+        }
+    }
+}
+
+.page-sidebar-mobile-wrapper{
+    display: block;
+    position: relative;
+    margin: 0 0 30px 0;
+
+    .page-sidebar-mobile{
+        position: relative;
+        display: inline-block;
+        z-index: 2;
+        cursor: pointer;
+        pointer-events: auto;
+
+        .text{
+            display: none;
+            vertical-align: middle;
+            font-size: $fontSize-root - 2px;
+            font-weight: $fontWeight-bold;
+            letter-spacing: $letterSpacing-base;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+            color: $color-textBase;
+            text-transform: uppercase;
+
+            .page-blog & {
+                display: inline-block;
+                margin-right: 10px;
+            }
+        }
+
+        .icon{
+            display: inline-block;
+            vertical-align: middle;
+            width: 46px;
+            height: 46px;
+            padding: 14px;
+            fill: #b9b8b7;
+            stroke: transparent;
+            pointer-events: none;
+            background: #faf8f6;
+        }
+    }
+
+    @media (min-width: 992px){
+        .page-sidebar-mobile{
+            .text{
+                display: inline-block;
+                margin-right: 20px;
+            }
+        }
+    }
+
+    @media (min-width: 1025px){
+        display: none;
+        margin-bottom: 0;
+    }
+}
+
+.page-content{
+    padding: 0;
+    position: relative;
+    float: left;
+    width: 100%;
+
+    .page-no-products,
+    .page-no-result{
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-normal;
+        letter-spacing: $letterSpacing-base;
+        margin: 0;
+        padding: 0;
+        line-height: 1.75;
+        color: $color-textBase;
+    }
+}

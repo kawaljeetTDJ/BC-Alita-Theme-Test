@@ -1,0 +1,128 @@
+{{#if theme_settings.productpage_image_gallery}}
+<div id="halo-instagram" class="halo-marketing-banners">
+    <div class="halo-block halo-instagram halo-instagram-2 halo-instagram-grid">
+        <div class="container">
+            {{#if theme_settings.productpage_image_gallery-title}}
+                <div class="halo-block-header">
+                    <h3 class="title">{{theme_settings.productpage_image_gallery-title}}</h3>
+                </div>
+            {{/if}}
+            <div class="halo-instagram-wrapper">
+                {{#if theme_settings.productpage_image_gallery-1}}
+                    <div class="halo-instagram-left">
+                        <div class="halo-row">
+                            <div class="halo-row-slider">
+                                <div class="halo-row-item">
+                                    <div class="halo-row-wrapperItem">
+                                        <a class="image-wrapper image-with-overlay" {{#if theme_settings.productpage_image_gallery-1-video}}href="{{theme_settings.productpage_image_gallery-1-video}}"{{else}}href="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-1}}"{{/if}} data-fancybox="instagram">
+                                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-1}}" alt="{{theme_settings.productpage_image_gallery-1}}" title="{{theme_settings.productpage_image_gallery-1}}">
+                                            {{#if theme_settings.productpage_image_gallery-1-video}}
+                                                <img class="img-icon lazyload" src="{{cdn 'img/loading.svg'}}" data-src="{{cdn 'img/video-icon.png'}}" alt="Video Icon" title="Video Icon">
+                                            {{/if}}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
+                {{#or (if theme_settings.productpage_image_gallery-2) (if theme_settings.productpage_image_gallery-3) (if theme_settings.productpage_image_gallery-4) (if theme_settings.productpage_image_gallery-5) (if theme_settings.productpage_image_gallery-6) (if theme_settings.productpage_image_gallery-7)}}
+                    <div class="halo-instagram-right">
+                        <div class="halo-row">
+                            {{#if theme_settings.productpage_image_gallery-2}}
+                                <div class="halo-row-slider">
+                                    <div class="halo-row-item">
+                                        <div class="halo-row-wrapperItem">
+                                            <a class="image-wrapper image-with-overlay" {{#if theme_settings.productpage_image_gallery-2-video}}href="{{theme_settings.productpage_image_gallery-2-video}}"{{else}}href="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-2}}"{{/if}} data-fancybox="instagram">
+                                                <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-2}}" alt="{{theme_settings.productpage_image_gallery-2}}" title="{{theme_settings.productpage_image_gallery-2}}">
+                                                {{#if theme_settings.productpage_image_gallery-2-video}}
+                                                    <img class="img-icon lazyload" src="{{cdn 'img/loading.svg'}}" data-src="{{cdn 'img/video-icon.png'}}" alt="Video Icon" title="Video Icon">
+                                                {{/if}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/if}}
+                            {{#if theme_settings.productpage_image_gallery-3}}
+                                <div class="halo-row-slider">
+                                    <div class="halo-row-item">
+                                        <div class="halo-row-wrapperItem">
+                                            <a class="image-wrapper image-with-overlay" {{#if theme_settings.productpage_image_gallery-3-video}}href="{{theme_settings.productpage_image_gallery-3-video}}"{{else}}href="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-3}}"{{/if}} data-fancybox="instagram">
+                                                <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-3}}" alt="{{theme_settings.productpage_image_gallery-3}}" title="{{theme_settings.productpage_image_gallery-3}}">
+                                                {{#if theme_settings.productpage_image_gallery-3-video}}
+                                                    <img class="img-icon lazyload" src="{{cdn 'img/loading.svg'}}" data-src="{{cdn 'img/video-icon.png'}}" alt="Video Icon" title="Video Icon">
+                                                {{/if}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/if}}
+                            {{#if theme_settings.productpage_image_gallery-4}}
+                                <div class="halo-row-slider">
+                                    <div class="halo-row-item">
+                                        <div class="halo-row-wrapperItem">
+                                            <a class="image-wrapper image-with-overlay" {{#if theme_settings.productpage_image_gallery-4-video}}href="{{theme_settings.productpage_image_gallery-4-video}}"{{else}}href="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-4}}"{{/if}} data-fancybox="instagram">
+                                                <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-4}}" alt="{{theme_settings.productpage_image_gallery-4}}" title="{{theme_settings.productpage_image_gallery-4}}">
+                                                {{#if theme_settings.productpage_image_gallery-4-video}}
+                                                    <img class="img-icon lazyload" src="{{cdn 'img/loading.svg'}}" data-src="{{cdn 'img/video-icon.png'}}" alt="Video Icon" title="Video Icon">
+                                                {{/if}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/if}}
+                            {{#if theme_settings.productpage_image_gallery-5}}
+                                <div class="halo-row-slider">
+                                    <div class="halo-row-item">
+                                        <div class="halo-row-wrapperItem">
+                                            <a class="image-wrapper image-with-overlay" {{#if theme_settings.productpage_image_gallery-5-video}}href="{{theme_settings.productpage_image_gallery-5-video}}"{{else}}href="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-5}}"{{/if}} data-fancybox="instagram">
+                                                <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-5}}" alt="{{theme_settings.productpage_image_gallery-5}}" title="{{theme_settings.productpage_image_gallery-5}}">
+                                                {{#if theme_settings.productpage_image_gallery-5-video}}
+                                                    <img class="img-icon lazyload" src="{{cdn 'img/loading.svg'}}" data-src="{{cdn 'img/video-icon.png'}}" alt="Video Icon" title="Video Icon">
+                                                {{/if}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/if}}
+                            {{#if theme_settings.productpage_image_gallery-6}}
+                                <div class="halo-row-slider">
+                                    <div class="halo-row-item">
+                                        <div class="halo-row-wrapperItem">
+                                            <a class="image-wrapper image-with-overlay" {{#if theme_settings.productpage_image_gallery-6-video}}href="{{theme_settings.productpage_image_gallery-6-video}}"{{else}}href="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-6}}"{{/if}} data-fancybox="instagram">
+                                                <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-6}}" alt="{{theme_settings.productpage_image_gallery-6}}" title="{{theme_settings.productpage_image_gallery-6}}">
+                                                {{#if theme_settings.productpage_image_gallery-6-video}}
+                                                    <img class="img-icon lazyload" src="{{cdn 'img/loading.svg'}}" data-src="{{cdn 'img/video-icon.png'}}" alt="Video Icon" title="Video Icon">
+                                                {{/if}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/if}}
+                            {{#if theme_settings.productpage_image_gallery-7}}
+                                <div class="halo-row-slider">
+                                    <div class="halo-row-item">
+                                        <div class="halo-row-wrapperItem">
+                                            <a class="image-wrapper image-with-overlay" {{#if theme_settings.productpage_image_gallery-7-video}}href="{{theme_settings.productpage_image_gallery-7-video}}"{{else}}href="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-7}}"{{/if}} data-fancybox="instagram">
+                                                <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/product_images/uploaded_images/{{theme_settings.productpage_image_gallery-7}}" alt="{{theme_settings.productpage_image_gallery-7}}" title="{{theme_settings.productpage_image_gallery-7}}">
+                                                {{#if theme_settings.productpage_image_gallery-7-video}}
+                                                    <img class="img-icon lazyload" src="{{cdn 'img/loading.svg'}}" data-src="{{cdn 'img/video-icon.png'}}" alt="Video Icon" title="Video Icon">
+                                                {{/if}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                {{/or}}
+            </div>
+            {{#if theme_settings.productpage_image_gallery-btn}}
+                <div class="halo-block-footer">
+                    <a class="button button--primary" href="{{theme_settings.productpage_image_gallery-link}}">{{theme_settings.productpage_image_gallery-btn}}</a>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
+{{/if}}

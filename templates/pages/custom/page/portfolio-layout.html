@@ -1,0 +1,17 @@
+{{#partial "page"}}
+    <div class="page-normal-header page-normal-header-2">
+        <div class="page-normal-header--content">
+            <div class="container">
+                <div class="breadcrumb-wrapper">
+                    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+                </div>
+                <h1 class="page-heading">{{page.title}}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="page page-normal page-portfolio">
+        {{{page.content}}}
+    </div>
+    {{{region name="page_builder_content"}}}
+{{/partial}}
+{{> layout/base}}

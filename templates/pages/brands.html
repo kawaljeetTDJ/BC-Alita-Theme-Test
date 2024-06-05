@@ -1,0 +1,51 @@
+---
+brands:
+    limit: {{theme_settings.brandpage_brands_per_page}}
+---
+{{#partial "page"}}
+<div class="container">
+    <div class="breadcrumb-wrapper">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    </div>
+    <div class="page page-brands">
+        <div class="page-header">
+            <h1 class="page-heading">{{lang 'brand.label'}}</h1>
+            {{{region name="brands_below_header"}}}
+        </div>
+        <main class="page-content">
+            {{#if theme_settings.halo_brandAZlayout}}
+                {{> components/halothemes/halo-azbrand}}
+            {{else}}
+                <ul class="brandGrid">
+                    {{#each brands}}
+                        <li class="brand">
+                            <article class="card">
+                                <figure class="card-figure">
+                                    <a class="image" href="{{url}}">
+                                        <div class="brand-img-container">
+                                            {{> components/common/responsive-img
+                                                image=image
+                                                fallback_size=../theme_settings.brand_size
+                                                lazyload=../theme_settings.lazyload_mode
+                                                default_image=../theme_settings.default_image_brand
+                                            }}
+                                        </div>
+                                    </a>
+                                </figure>
+                                <div class="card-body">
+                                    <a class="link" href="{{url}}">
+                                        <span class="text">{{name}}</span>
+                                    </a>
+                                </div>
+                            </article>
+                        </li>
+                    {{/each}}
+                </ul>
+                {{> components/common/paginator pagination.brands}}
+            {{/if}}
+            {{{region name="brands_below_content"}}}
+        </main>
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}

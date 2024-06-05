@@ -1,0 +1,3 @@
+{
+  "components/products/description": "<div class=\"halo-block halo-desc-block\" id=\"halo-desc-block\">\n\t<div class=\"container\">\n\t\t<div class=\"halo-block-header\">\n\t\t    <h2 class=\"title\">{{lang 'products.description'}}</h2>\n\t\t</div>\n\t\t<div class=\"halo-block-content productView-description halo-description\" {{#if settings.data_tag_enabled}} data-event-type=\"product\" {{/if}}>\n\t\t    {{{product.description}}}\n\t\t</div>\n\t</div>\t\n</div>\n\n"
+}
